@@ -1,0 +1,31 @@
+name: mybinder
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - ca-certificates=2020.12.5=h033912b_0
+  - certifi=2020.12.5=py36h79c6626_1
+  - libblas=3.9.0=8_openblas
+  - libcblas=3.9.0=8_openblas
+  - libcxx=11.1.0=habf9029_0
+  - libffi=3.3=h046ec9c_2
+  - libgfortran=5.0.0=9_3_0_h6c81a4c_19
+  - libgfortran5=9.3.0=h6c81a4c_19
+  - liblapack=3.9.0=8_openblas
+  - libopenblas=0.3.12=openmp_h54245bb_1
+  - llvm-openmp=11.0.1=h7c73e74_0
+  - ncurses=6.2=h2e338ed_4
+  - numpy=1.19.5=py36h08dc641_1
+  - openssl=1.1.1j=hbcf498f_0
+  - pip=21.0.1=pyhd8ed1ab_0
+  - python=3.6.13=h7728216_0_cpython
+  - python_abi=3.6=1_cp36m
+  - readline=8.0=h0678c8f_2
+  - setuptools=49.6.0=py36h79c6626_3
+  - sqlite=3.34.0=h17101e1_0
+  - tk=8.6.10=h0419947_1
+  - wheel=0.36.2=pyhd3deb0d_0
+  - xz=5.2.5=haf1e3a3_1
+  - zlib=1.2.11=h7795811_1010
+prefix: /Users/dom/anaconda3/envs/mybinder
+
