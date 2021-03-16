@@ -1,4 +1,4 @@
-<p style="text-align: center;">[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/dlodola/public/HEAD) &nbsp; [<img src="./.logos/LI-In-Bug.png" height="20">](https://www.linkedin.com/in/domenico-lodola/)</p>
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/dlodola/public/HEAD) &nbsp; [<img src="./.logos/LI-In-Bug.png" height="20">](https://www.linkedin.com/in/domenico-lodola/)
 
 |  #  | Title | Open in | Comment |
 |:---:|-------|:-------:| --------|
