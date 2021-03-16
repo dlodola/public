@@ -4,4 +4,4 @@
 
 | Title | Link | Comment |
 |-------|:----:| --------|
-| One.  | [<img src="./.logos/jupyter-logo.png" height="25">](https://nbviewer.jupyter.org/github/dlodola/public/blob/main/Untitled.ipynb) [<img src="./.logos/binder-favicon.png" height="25">](https://mybinder.org/v2/gh/https://nbviewer.jupyter.org/github/dlodola/public/blob/main/Untitled.ipynb/HEAD) | Some description here |
+| One.  | [<img src="./.logos/jupyter-logo.png" height="25">](https://nbviewer.jupyter.org/github/dlodola/public/blob/main/Untitled.ipynb) [<img src="./.logos/binder-favicon.png" height="25">](https://mybinder.org/v2/gh/dlodola/public/main?filepath=Untitled.ipynb) | Some description here |
