@@ -1,2 +1,4 @@
 theme: jekyll-theme-slate
+title: My Title
+description: My description
 show_downloads: "true"
