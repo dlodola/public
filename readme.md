@@ -1,4 +1,4 @@
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/dlodola/public/HEAD)
+Open this repository in an interective jupyter notebook seesion using Binder: [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/dlodola/public/HEAD)
 
 [<img src="./.logos/LI-In-Bug.png" height="20">](https://www.linkedin.com/in/domenico-lodola/)
 
