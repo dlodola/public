@@ -2,6 +2,7 @@
 layout: post
 title:  "First Post"
 tags: python matplotlib lithologies
+notebook: Untitled
 ---
 
 <!--more-->
