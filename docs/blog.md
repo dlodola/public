@@ -8,7 +8,7 @@
     </div>
     <div class="blog-body"><h1><a href="{{ site.url }}{{ post.url }}">{{ post.title }}</a></h1>
     {{ post.excerpt }}
-    {% if post.tags %}
+    {% if post.tags != empty %}
         <small>tags: <em>{{ post.tags | join: "</em> - <em>" }}</em></small>
     {% endif %}</div>
     <div class="blog-footer"><small>by: {{ post.author | "author" }}</small> | <small>posted on {{ post.date | date: "%-d %B %Y" }}</small></div>
