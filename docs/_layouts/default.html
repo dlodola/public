@@ -48,13 +48,13 @@
         
         {% if page.notebook %}
         <p>
-          <a href="https://github.com/dlodola/{{ site.repository }}/blob/main/{{ page.notebook }}.ipynb">
+          <a href="https://github.com/dlodola/{{ site.repository }}/blob/main/jupyter{{ page.notebook }}.ipynb">
             <img alt="github" src="{{ site.url }}/assets/logos/github_bw.png" onmouseover="this.src='{{ site.url }}/assets/logos/github.png'" onmouseout="this.src='{{ site.url }}/assets/logos/github_bw.png'" height="30px" />
           </a>
-          <a href="https://nbviewer.jupyter.org/github/dlodola/{{ site.repository }}/blob/main/{{ page.notebook }}.ipynb">
+          <a href="https://nbviewer.jupyter.org/github/dlodola/{{ site.repository }}/blob/main/jupyter{{ page.notebook }}.ipynb">
             <img alt="jupyter" src="{{ site.url }}/assets/logos/jupyter_bw.png" onmouseover="this.src='{{ site.url }}/assets/logos/jupyter.png'" onmouseout="this.src='{{ site.url }}/assets/logos/jupyter_bw.png'" height="30px" />
           </a>
-          <a href="https://mybinder.org/v2/gh/dlodola/{{ site.repository }}/main?filepath={{ page.notebook }}.ipynb">
+          <a href="https://mybinder.org/v2/gh/dlodola/{{ site.repository }}/main/jupyter?filepath={{ page.notebook }}.ipynb">
             <img alt="binder" src="{{ site.url }}/assets/logos/binder_bw.png" onmouseover="this.src='{{ site.url }}/assets/logos/binder.png'" onmouseout="this.src='{{ site.url }}/assets/logos/binder_bw.png'" height="30px" />
           </a>
         </p>
