@@ -39,10 +39,10 @@
         {% endif %}
         
         <ul>
-        {% for member in site.data.links %}
+        {% for link in site.data.links %}
           <li>
-            <a href="./{{ links.link }}">
-            {{ links.name }}
+            <a href="./{{ link.url }}">
+            {{ link.name }}
             </a>
           </li>
         {% endfor %}
