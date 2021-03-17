@@ -1,0 +1,5 @@
+- name: index
+  link: index.md
+  
+- name: page 1
+  link: page1.md
