@@ -2,7 +2,11 @@
 
 # Welcome to my public repository on GitHub!
 
+This GitHub repository contains some of my tricks and tools in python that may be of use to geologists, especially those working in the oil & gas sector.
+
 A good place to start is by visiting the [project page](https://dlodola.github.io/public/).
+
+Below is a list of jupyter notebooks that demonstrate solutions to various day-to-day tasks. You can launch an interactive jupyter notebook session in [Binder](https://mybinder.org) by clicking on the logo at the top of this page. All the notebooks are in the `jupyter` folder.
 
 <!--
 |  #  | Title | Open in | Comment |
