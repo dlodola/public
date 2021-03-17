@@ -22,7 +22,12 @@ div.blog-footer {
   margin-bottom:25px;
 }
 
+section.h1.a {
+  color:#000;
+  font-weight: bold;
+}
+
 section.h1.a:hover, section.h1.a:focus {
-  color:#222;
+  color:#000;
   font-weight: bold;
 }
