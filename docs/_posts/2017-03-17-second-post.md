@@ -3,8 +3,6 @@ layout: post
 title: "My Second Post"
 ---
 
-# Welcome
-
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a dolor ante. Curabitur a diam in risus lacinia volutpat vitae ut tellus. Morbi at tortor eget tellus feugiat tempus. Aliquam erat volutpat. Integer imperdiet orci vitae pulvinar tempor. Nam ultrices orci ut ipsum pretium facilisis. Curabitur eu leo ante.
 <!--more-->
 Ut rutrum, velit non ornare congue, sapien mauris ultricies mi, nec rhoncus neque arcu vel arcu. Donec ex ex, interdum nec erat nec, mollis auctor augue. Pellentesque vitae est sed libero ornare pharetra non sit amet turpis. Phasellus orci ex, suscipit eu tincidunt quis, sagittis at dui. Mauris vitae pellentesque mauris, gravida aliquet nisl. Nam pretium sodales elit, et ultricies nisi suscipit sit amet. Nulla facilisi. Praesent euismod elementum odio id porttitor.
