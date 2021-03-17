@@ -41,9 +41,7 @@
         <ul>
         {% for link in site.data.links %}
           <li>
-            <a href="/public/{{ link.url }}">
-            {{ link.name }}
-            </a>
+            <a href="/public/{{ link.url }}">{{ link.type }}<strong>{{ link.name }}</strong></a>
           </li>
         {% endfor %}
         </ul>
