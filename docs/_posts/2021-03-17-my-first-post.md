@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "First Post"
-tags: posts tests
+tags: python matplotlib lithologies
 ---
 
 
