@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "My Second Post"
-excerpt_separator: <!--more-->
 ---
 
 # Welcome
