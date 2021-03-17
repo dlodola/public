@@ -1,3 +1,5 @@
+
+
 {% for post in site.posts %}
-    <div class="blog">{{ post.excerpt }}</div>
+    <div class="test">{{ post.excerpt }}</div>
 {% endfor %}
