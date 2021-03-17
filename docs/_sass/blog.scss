@@ -1,6 +1,19 @@
-div.blog {
-  padding:5px;
+div.blog-header {
+  padding:0px;
   background: #fff;
   border-radius:5px 5px 0 0;
+  border:1px solid #e0e0e0;
+}
+
+div.blog-body {
+  padding:5px;
+  background: #fff;
+  border:1px solid #e0e0e0;
+}
+
+div.blog-footer {
+  padding:5px;
+  background: #f4f4f4;
+  border-radius:0 0 5px 5px;
   border:1px solid #e0e0e0;
 }
