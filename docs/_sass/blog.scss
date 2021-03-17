@@ -1,4 +1,5 @@
 div.blog-header {
+  margin-top: 10px;
   padding:0px;
   background: #fff;
   border-radius:5px 5px 0 0;
@@ -10,6 +11,8 @@ div.blog-body {
   padding:5px;
   background: #fff;
   border:1px solid #e0e0e0;
+  border-top: 0;
+  border-bottom: 0;
 }
 
 div.blog-footer {
