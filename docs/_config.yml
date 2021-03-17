@@ -8,3 +8,10 @@ defaults:
       type: "posts"
     values:
       author: Domenico Lodola
+defaults:
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      excerpt_separator: <!--more-->
