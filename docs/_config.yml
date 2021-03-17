@@ -17,3 +17,9 @@ defaults:
       type: "posts"
     values:
       excerpt_separator: <!--more-->
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      category: blog
