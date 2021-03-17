@@ -5,11 +5,41 @@ tags: posts tests
 ---
 
 
-<a href="">This is my first post. Edited x3</a>
+# reduce linewidth of hatch patterns
+rcParams['hatch.linewidth'] = 0.25
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a dolor ante. Curabitur a diam in risus lacinia volutpat vitae ut tellus. Morbi at tortor eget tellus feugiat tempus. <!--more-->Aliquam erat volutpat. Integer imperdiet orci vitae pulvinar tempor. Nam ultrices orci ut ipsum pretium facilisis. Curabitur eu leo ante.
+```python
+class LimestoneHatch(HatchPatternBase):
+    
+    def __init__(self, hatch, density):
 
-Ut rutrum, velit non ornare congue, sapien mauris ultricies mi, nec rhoncus neque arcu vel arcu. Donec ex ex, interdum nec erat nec, mollis auctor augue. Pellentesque vitae est sed libero ornare pharetra non sit amet turpis. Phasellus orci ex, suscipit eu tincidunt quis, sagittis at dui. Mauris vitae pellentesque mauris, gravida aliquet nisl. Nam pretium sodales elit, et ultricies nisi suscipit sit amet. Nulla facilisi. Praesent euismod elementum odio id porttitor.
+        # number of times the path will be repeated in one direction
+        # within the unit square
+        self.num_lines = int((hatch.count('l') + \
+                            hatch.count('L')) * density)   
+        
+        # total number of vertices for the path once it has been
+        # repeated the appropriate number of times within the unit square
+        self.num_vertices = (self.num_lines ** 2 * len(path_vertices))
 
-Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec eget faucibus justo. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer felis enim, sagittis nec purus in, aliquet posuere velit. Aliquam sit amet augue ullamcorper, ullamcorper ipsum nec, posuere purus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam fermentum nisi libero. Sed vitae tristique augue. Nullam tempor, metus et vehicula molestie, arcu erat vehicula sapien, sed consectetur mi risus a elit. Phasellus elit dolor, condimentum id dignissim at, ultrices in eros. Nam aliquam lobortis turpis ut egestas. Etiam malesuada tempor nibh et vestibulum. Suspendisse cursus bibendum tristique. Curabitur id lectus lorem. Nullam mi eros, sollicitudin ac ligula a, posuere scelerisque felis.
 
+    def set_vertices_and_codes(self, vertices, codes):
+        
+        steps = np.linspace(0, 1, self.num_lines, endpoint=False)
+        offsets = np.array(np.meshgrid(steps,steps)).transpose([1,2,0]) \
+                        .reshape((self.num_lines**2, 2)) \
+                        .repeat(len(path_vertices), axis=0)
+        
+        # update values in slice of vertices array
+        vertices[:] = np.tile(path_vertices / self.num_lines, 
+                              (self.num_lines**2, 1)) + offsets
+        
+        # update values in slice of codes array
+        # all even rows are set to MOVETO & all odd rows to LINETO
+        codes[0::2] = Path.MOVETO
+        codes[1::2] = Path.LINETO
+
+
+
+_hatch_types.append(LimestoneHatch)
+```
