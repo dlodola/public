@@ -1,7 +1,6 @@
 theme: jekyll-theme-minimal
 title: My Title
 description: My description
-show_downloads: "false"
 defaults:
   -
     scope:
