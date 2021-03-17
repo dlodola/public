@@ -4,6 +4,7 @@ title:  "First Post"
 tags: python matplotlib lithologies
 ---
 
+<!--more-->
 
 ```python
 # reduce linewidth of hatch patterns
