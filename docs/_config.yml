@@ -3,7 +3,6 @@ title: My Title
 description: My description
 url: https://dlodola.github.io/public/
 repository: public
-permalink: /:categories/:year/:month/:day/:title:output_ext
 defaults:
   -
     scope:
