@@ -41,7 +41,7 @@
         <ul class="downloads">
         {% for link in site.data.links %}
           <li>
-            <a href="site.url/{{ link.url }}">{{ link.type }}<strong>{{ link.name }}</strong></a>
+            <a href="{{ site.url }}/{{ link.url }}">{{ link.type }}<strong>{{ link.name }}</strong></a>
           </li>
         {% endfor %}
         </ul>
