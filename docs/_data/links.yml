@@ -1,5 +1,5 @@
 - name: index
-  url:  index.md
+  url:  index
   
 - name: page 1
-  url:  page1.md
+  url:  page1
