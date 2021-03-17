@@ -2,6 +2,7 @@
 layout: post
 title:  "How to draw limestones in python"
 tags: python matplotlib lithologies hatch
+image: limestone.jpg
 notebook: Untitled
 ---
 
