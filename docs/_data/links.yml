@@ -3,3 +3,7 @@
   
 - name: page 1
   url:  page1
+  
+- type: View
+  name: Blog
+  url:  blog
