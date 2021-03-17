@@ -1,6 +1,6 @@
 [<img src="./.logos/LI-In-Bug.png" height="20">](https://www.linkedin.com/in/domenico-lodola/) &nbsp;&nbsp; [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/dlodola/public/HEAD)
 
-# Welcome to my public repository on github!
+# Welcome to my public repository on GitHub!
 
 A good place to start is by visiting the [project page](https://dlodola.github.io/public/).
 
