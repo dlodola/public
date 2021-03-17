@@ -1,5 +1,6 @@
 ---
 layout: post
+image: net.jpg
 title: "My Second Post"
 ---
 
