@@ -6,7 +6,7 @@
     {% if post.tags %}
         <small>tags: <em>{{ post.tags | join: "</em> - <em>" }}</em></small>
     {% endif %}</div>
-    <div class="blog-footer"><small>{{ post.author | by: "author" }}</small> | <small>{{ post.date | date: "%-d %B %Y" }}</small></div>
+    <div class="blog-footer"><small>by: {{ post.author | "author" }}</small> | <small>posted on {{ post.date | date: "%-d %B %Y" }}</small></div>
 {% endfor %}
 </div>
 
