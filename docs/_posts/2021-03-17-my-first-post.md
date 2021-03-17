@@ -5,10 +5,10 @@ tags: posts tests
 ---
 
 
+```python
 # reduce linewidth of hatch patterns
 rcParams['hatch.linewidth'] = 0.25
 
-```python
 class LimestoneHatch(HatchPatternBase):
     
     def __init__(self, hatch, density):
