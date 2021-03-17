@@ -1,8 +1,10 @@
 
 <div>
 {% for post in site.posts %}
-    <div class="blog-header"><a href="{{ site.url }}{{ post.url }}">
-        <img alt="lst" src="{{ site.url }}assets/images/jamie-lee-grady-4xQYT2RX2J8-unsplash.jpg" width="100%"/></a>
+    <div class="blog-header">
+        <a href="{{ site.url }}{{ post.url }}">
+            <img alt="lst" class="blog-header" src="{{ site.url }}assets/images/jamie-lee-grady-4xQYT2RX2J8-unsplash.jpg" width="100%"/>
+        </a>
     </div>
     <div class="blog-body"><h1><a href="{{ site.url }}{{ post.url }}">{{ post.title }}</a></h1>
     {{ post.excerpt }}
