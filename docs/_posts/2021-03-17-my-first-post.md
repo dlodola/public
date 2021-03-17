@@ -2,7 +2,6 @@
 layout: post
 title:  "First Post"
 tags: posts tests
-excerpt_separator: <!--more-->
 ---
 
 
