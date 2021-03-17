@@ -1,7 +1,7 @@
 theme: jekyll-theme-minimal
 title: My Title
 description: My description
-url: https://dlodola.github.io/public
+url: https://dlodola.github.io/public/
 defaults:
   -
     scope:
