@@ -2,3 +2,10 @@ theme: jekyll-theme-minimal
 title: My Title
 description: My description
 show_downloads: "true"
+defaults:
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      author: Domenico Lodola
