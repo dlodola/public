@@ -19,9 +19,8 @@ from matplotlib.path import Path
 from matplotlib.hatch import HatchPatternBase, _hatch_types
 import matplotlib.patches as patches
 from matplotlib import rcParams
-```
 
-```python
+
 path_vertices = np.array([[0.25,0.25],  # MOVETO
                           [0.25,0.75],  # LINETO
             
@@ -36,9 +35,8 @@ path_vertices = np.array([[0.25,0.25],  # MOVETO
                              
                           [0.75,0.],    # MOVETO
                           [0.75,0.25]]) # LINETO
-```
 
-```python
+
 # reduce linewidth of hatch patterns
 rcParams['hatch.linewidth'] = 0.25
 
