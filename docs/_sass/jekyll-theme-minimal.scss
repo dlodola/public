@@ -126,7 +126,6 @@ ul.downloads {
   float:left;
   border-right:1px solid #e0e0e0;
   height:40px;
-  vertical-align: middle;
 }
 
 .downloads li:first-child a {
@@ -159,6 +158,7 @@ ul.downloads {
 strong {
   color:#222;
   font-weight:700;
+  vertical-align: middle;
 }
 
 .downloads li + li + li {
