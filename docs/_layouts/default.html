@@ -47,7 +47,7 @@
         </ul>
         
         {% if page.notebook %}
-        <p>
+        <div class="links">
           <a href="https://github.com/dlodola/{{ site.repository }}/blob/main/jupyter/{{ page.notebook }}.ipynb">
             <img alt="github" src="{{ site.url }}/assets/logos/github_bw.png" onmouseover="this.src='{{ site.url }}/assets/logos/github.png'" onmouseout="this.src='{{ site.url }}/assets/logos/github_bw.png'" height="30px" />
           </a>
@@ -59,7 +59,7 @@
           <a href="https://mybinder.org/v2/gh/dlodola/{{ site.repository }}/HEAD?filepath=jupyter%2F{{ page.notebook }}.ipynb">
             <img alt="binder" src="{{ site.url }}/assets/logos/binder_bw.png" onmouseover="this.src='{{ site.url }}/assets/logos/binder.png'" onmouseout="this.src='{{ site.url }}/assets/logos/binder_bw.png'" height="30px" />
           </a>
-        </p>
+        </div>
         {% endif %}
         
       </header>
