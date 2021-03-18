@@ -2,7 +2,7 @@
 
 # Welcome to my public repository on GitHub!
 
-This GitHub repository contains some of my tricks and tools in python that may be of use to geologists, especially those working in the oil & gas sector.
+This GitHub repository contains some of my python tricks and tools that may be of use to geologists, especially those working in the oil & gas sector.
 
 A good place to start is by visiting the [project page](https://dlodola.github.io/public/).
 
