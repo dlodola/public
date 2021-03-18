@@ -6,10 +6,14 @@ image: limestone.jpg
 notebook: 1-limestone-hatch
 ---
 
+Matplotlib offers tentalising hatching options that will sadly leave most geologists a little frustrated. It's a little like cell pattern fills in Excel. So much potential until you actually try and use it to make satistfying lithology patterns. 
+
+You need not dispair however, as matplotlib's hatch functions can be customised to your heart's content. I show an example here of how to create a standard limestone hatch.
+
 <!--more-->
 
 ```python
-mport numpy as np
+import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.path import Path
 from matplotlib.hatch import HatchPatternBase, _hatch_types
