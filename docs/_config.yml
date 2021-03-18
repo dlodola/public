@@ -1,6 +1,6 @@
 theme: jekyll-theme-minimal
 title: My Title
-description: My description
+description: A small collection of python tricks & tools for geologists, with a focus on oil & gas.
 url: https://dlodola.github.io/public/
 repository: public
 defaults:
