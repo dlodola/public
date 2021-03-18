@@ -18,4 +18,4 @@ Below is a list of jupyter notebooks that demonstrate solutions to various day-t
 
 | # | Title | Description |     |
 |:-:|:------|:------------|:---:|
-| 1 | How to draw limetsones in python | Some description | [<img src="./.logos/jupyter-logo.png" height="25">](https://nbviewer.jupyter.org/github/dlodola/public/blob/main/Untitled.ipynb) |
+| 1 | [How to draw limetsones in python](https://nbviewer.jupyter.org/github/dlodola/public/blob/main/jupyter/1-limestone-hatch.ipynb | Some description | [<img src="./.logos/jupyter-logo.png" height="25">](https://nbviewer.jupyter.org/github/dlodola/public/blob/main/jupyter/1-limestone-hatch.ipynb) |
