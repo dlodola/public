@@ -18,7 +18,7 @@
         
         {% if site.logo %}
           <!--<img src="{{site.logo | relative_url}}" alt="Logo" />-->
-          <img class="logo" src="{{ site.url }}/assets/logos/logo-new.png" alt="Logo" />
+          <img class="logo" src="{{ site.url }}/assets/logos/logo-new.png" onmouseover="this.src=src='{{ site.url }}/assets/logos/logo-color.png'"  onmouseout="this.src=src='{{ site.url }}/assets/logos/logo-new.png'"alt="Logo" />
         {% endif %}
 
         <p>{{ site.description | default: site.github.project_tagline }}</p>
