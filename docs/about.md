@@ -12,7 +12,7 @@ My interest in programming goes back quite a way. It all started in my early tee
 
 I started using Python _c._ 2018 while creating ArcGIS toolboxes to speed up some of my geospatial workflows. I quickly came to realize that Python was the perfect programming language for my needs: brutally efficient coding, highly versatile, and seemingly limitless extensibility. I have since expanded my use of Python beyond ArcGIS and in to all areas of my work.
 
-Python may not be right for you, but for me it's the perfect symbiosis of form and function. Get it right and it's hard to know what more rewarding, the beauty of the code you have written or the functionality you have created.
+Python may not be right for you, but for me it's the perfect symbiosis of form and function. Get it right and it's hard to know what's more rewarding, the beauty of the code you have written or the functionality you have created.
 
 ## Contact
 
