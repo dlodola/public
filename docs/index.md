@@ -2,13 +2,13 @@
 
 Welcome to the homepage of my public GitHub repository.
 
-You will find in the [How-Tos](./posts) section a number of articles on Python tricks and tools for exploration geologist and the wider geoscience community. I hope you will find them useful.
+You will find in the [How-Tos](./posts) section a number of articles on Python tricks and tools for exploration geologists and the wider geoscience community. I hope you will find them useful.
 
-Many of these articles will have an accompanying Jupyter Notebook or a Python library. In the case of the former, a number of links to the notebook will be provided in the sidebar to the left. The table below gives an explanation of what these various links are.
+Many of these articles will have an accompanying Jupyter Notebook or a Python library. In the case of the former, a number of links to the notebook will be provided in the sidebar to the left. The table below gives an explanation of what these various links are. In the case of a library, a link to the appropriate Python file(s) will be provided.
 
 |Icon|Description|
 |:--:|:---|
-|<img src="./assets/logos/github_bw.png" alt="GitHub" height="25" />|Link to notebook in repository|
+|<img src="./assets/logos/github_bw.png" alt="GitHub" height="25" />|Link to notebook in the GitHub repository|
 |<img src="./assets/logos/jupyter_bw.png" alt="Jupyter" height="25" />|Link to static view of notebook in Jupyter|
 |<img src="./assets/logos/binder_bw.png" alt="Binder" height="25" />|Link to interactive notebook in [Binder](https://mybinder.org) <small>_(may take a while to load)_</small>|
 
