@@ -14,4 +14,8 @@ I started using Python _c._ 2018 when I began creating ArcGIS toolboxes to speed
 
 For contact details, please connect with me on [LinkedIn](https://www.linkedin.com/in/domenico-lodola).
 
+## The logo
+
+The logo is a stylized image of a Eurasian Skylard
+
 

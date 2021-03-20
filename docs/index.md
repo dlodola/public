@@ -1,7 +1,10 @@
 # Welcome!
 
-Welcome to the GitHub page of my public repository.
+Welcome to the homepage of my public GitHub repository.
 
+You will find in the [How-Tos](./posts) section a number of articles on Python tricks and tools for exploration geologist and the wider geoscience community. Many of these articles will have an accompanying Jupyter Notebook or a Python library. In the case of the former, a number of links to the notebook will be provided in the sidebar to the left. The table below gives an explanation of what these various links are.
+
+Most articles will feature a link to a LinkedIn post at the bottom of the page. Please follow that link if you wish to comment, ask a question, _etc._
 
 |Icon|Description|
 |:--:|:---|
