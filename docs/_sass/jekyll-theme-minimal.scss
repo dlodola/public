@@ -131,7 +131,6 @@ ul.downloads {
   float:left;
   border-right:1px solid #e0e0e0;
   height:40px;
-  padding-top: 12px;
 }
 
 .downloads li:first-child a {
@@ -148,12 +147,14 @@ ul.downloads {
   color:#676767;
   display:block;
   text-align:center;
-  padding-top:6px;
+  /*padding-top:6px;*/
+  padding-top:12px;
   height:34px;
 }
 
 .downloads a:hover, .downloads a:focus {
-  color:#675C5C;
+/*  color:#675C5C; */
+  color:#006699;
   font-weight:bold;
 }
 
