@@ -5,5 +5,5 @@
   url:  about
   
 - type: View
-  name: Blog
-  url:  blog
+  name: How-Tos
+  url:  posts
