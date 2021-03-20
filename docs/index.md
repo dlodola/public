@@ -8,7 +8,7 @@ Many of these articles will have an accompanying Jupyter Notebook or a Python li
 
 |Icon|Description|
 |:--:|:---|
-|<img src="./assets/logos/github_bw.png" alt="GitHub" height="25" />|Link to the notebook in the GitHub repository|
+|<img src="./assets/logos/github_bw.png" alt="GitHub" height="25" />|Link to the notebook or library file(s) in the GitHub repository|
 |<img src="./assets/logos/jupyter_bw.png" alt="Jupyter" height="25" />|Link to a static view of the notebook in Jupyter|
 |<img src="./assets/logos/binder_bw.png" alt="Binder" height="25" />|Link to an interactive notebook in [Binder](https://mybinder.org) <small>_(may take a while to load)_</small>|
 
