@@ -1,6 +1,8 @@
 
 <h1>Articles</h1>
 
+---
+
 <div>
 {% for post in site.posts %}
     <div class="blog-header">
