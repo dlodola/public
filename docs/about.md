@@ -18,7 +18,7 @@ Python may not be right for you, but for me it's the perfect symbiosis of form a
 
 For contact details, please connect with me on [LinkedIn](https://www.linkedin.com/in/domenico-lodola).
 
-## The logo
+## Logo
 
 The logo is a stylized image of a Eurasian Skylark. Bonus points if you can figure out why I chose it.
 
