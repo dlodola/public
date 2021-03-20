@@ -16,6 +16,6 @@ For contact details, please connect with me on [LinkedIn](https://www.linkedin.c
 
 ## The logo
 
-The logo is a stylized image of a Eurasian Skylard
+The logo is a stylized image of a Eurasian Skylark. Bonus points if you can figure out why I chose it.
 
 
