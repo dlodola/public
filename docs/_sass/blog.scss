@@ -43,3 +43,8 @@ div.links{
 img.logo {
   margin: 25px 75px 50px 45px;
 }
+
+.downloads.strong.a:hover, .downloads.strong.a a:focus {
+    color:#006699;
+    font-weight:bold;
+  }
