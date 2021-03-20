@@ -1,4 +1,10 @@
+---
+layout: default
+---
+
 # Welcome!
+
+---
 
 Welcome to the homepage of my public GitHub repository.
 
