@@ -28,6 +28,8 @@ The `path_vertices` array contains the coordinates of the vertices that make up 
 
 In our example, the path is made up of 5 segments, with the pen moving at the start of each segment. The `LimestoneHatch` class automatically handles the codes for this (as well as for an arbitrary number or segments). Ultimately, any path can be used to create a hatch pattern, though the class that creates the required path vertice and code arrays would need to be updated accordingly.
 
+The `__init__()` instantiation method counts the number of flags for our limestone pattern (which we have chosen as "L") in the hatch argument
+
 ```python
 import numpy as np
 from matplotlib.path import Path
