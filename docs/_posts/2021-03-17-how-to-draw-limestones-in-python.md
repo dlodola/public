@@ -83,7 +83,9 @@ _hatch_types.append(LimestoneHatch)
 
 ## Using the custom pattern
 
-Our custom limestone hatch is now ready to be used alongside Matplotlib objects that accept `hatch` as an argument: most polygons including `bar`, `fill_between`, `contourf`, and children of `Polygon`.
+Our custom limestone hatch is now ready to be used alongside Matplotlib objects that accept `hatch` as an argument: most polygons including `bar`, `fill_between`, `fill_betweenx`, `contourf`, and children of `Polygon`.
+
+Below is a short script that was used to create Figure 1 with the custom limestone hatch pattern used as appropriate: all that is needed is to provided the value `L` the `hatch` argument. The built-in hatch patterns continue to work as expected.
 
 ```python
 # reduce linewidth of hatch patterns
