@@ -12,7 +12,7 @@ You need not despair however, as Matplotlib's hatch functions can be customized 
 
 <!--more-->
 
-![existing hatches](../assets/images/posts/article-1/hatches.png)
+![existing hatches]({{ site.url }}assets/images/posts/article-1/hatches.png)
 
 ```python
 import numpy as np
