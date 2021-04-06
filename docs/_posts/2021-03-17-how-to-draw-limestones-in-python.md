@@ -8,7 +8,7 @@ notebook: 1-limestone-hatch
 
 Matplotlib offers tantalizing hatching options that will sadly leave most geologists a little frustrated. It's a little like pattern fills in Excel - so much potential until you actually try and use it to make satisfying lithology logs. 
 
-You need not despair however, as Matplotlib's hatch functions can be customized to your heart's content. I show an example here of how to create a standard limestone hatch, but the methodology can be generalized to created pretty much any lithology pattern you want.
+Unlike Excel however, you can customize Matplotlib's hatch function to your heart's content. I show an example here of how to create a standard limestone hatch, but the methodology can be generalized to created pretty much any lithology pattern you want.
 
 <!--more-->
 
@@ -25,20 +25,20 @@ import matplotlib.patches as patches
 from matplotlib import rcParams
 
 
-path_vertices = np.array([[0.25,0.25],  # MOVETO
-                          [0.25,0.75],  # LINETO
+path_vertices = np.array([[0.25,0.25],
+                          [0.25,0.75],
             
-                          [0,0.25],     # MOVETO
-                          [1,0.25],     # LINETO
+                          [0,0.25],
+                          [1,0.25],
                              
-                          [0,0.75],     # MOVETO
-                          [1,0.75],     # LINETO
+                          [0,0.75],
+                          [1,0.75],
                              
-                          [0.75,0.75],  # MOVETO
-                          [0.75,1],     # LINETO
+                          [0.75,0.75],
+                          [0.75,1],
                              
-                          [0.75,0.],    # MOVETO
-                          [0.75,0.25]]) # LINETO
+                          [0.75,0.],
+                          [0.75,0.25]])
 
 
 # reduce linewidth of hatch patterns
