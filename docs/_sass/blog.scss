@@ -52,13 +52,14 @@ img.logo {
 figure {
     display: block;
     width: 80%;
+    border-radius:5px;
     text-align: center;
     font-style: italic;
     font-size: smaller;
     text-indent: 0;
     border: thin #e0e0e0 solid;
-    margin: 0.5em;
-    padding: 0.5em;
+    margin: auto;
+    padding: 10px;
   }
 img.scaled {
     width: 100%;

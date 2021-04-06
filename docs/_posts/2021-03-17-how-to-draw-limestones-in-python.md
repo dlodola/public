@@ -81,8 +81,8 @@ _hatch_types.append(LimestoneHatch)
 
 <figure>
     <p>
-        <img class="scaled" src="{{ site.url }}assets/images/posts/article-1/custom_hatches.png" alt="custom hatches" width="500px" />
-        <figcaption>**Figure 2:** Customized limestone hatch in action.</figcaption>
+        <img class="scaled" src="{{ site.url }}assets/images/posts/article-1/custom_hatches.png" alt="custom hatches"/>
+        <figcaption><b>Figure 2:</b> Customized limestone hatch in action.</figcaption>
     </p>
 </figure>
 
