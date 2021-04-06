@@ -12,7 +12,9 @@ You need not despair however, as Matplotlib's hatch functions can be customized 
 
 <!--more-->
 
-<img src="{{ site.url }}assets/images/posts/article-1/hatches.png" alt="existing hatches" width="500px" />
+{% include image.html file="posts/article-1/hatches.png"
+alt="custom hatches" number="1"
+caption="Some lithology patterns using Matplotlib's built-in hatches." %}
 
 ```python
 import numpy as np
@@ -87,8 +89,11 @@ _hatch_types.append(LimestoneHatch)
 </figure>
 
 
-<img src="{{ site.url }}assets/images/posts/article-1/hatch_dictionary.png" alt="hatch dictionary" width="550px" />
+{% include image.html file="posts/article-1/custom_hatches.png"
+alt="custom hatches" number="2"
+caption="Customized limestone hatch in action." %}
 
-{% include image.html file="assets/images/posts/article-1/hatch_dictionary.png"
-alt="custom hatches" number="3"
-caption="This is the Jekyll logo." %}
+
+{% include image.html file="posts/article-1/hatch_dictionary.png"
+alt="hatches dictionary" number="3"
+caption="Example dictionary of multiple customized hatches." %}
