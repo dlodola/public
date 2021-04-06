@@ -22,14 +22,11 @@ caption="Some lithology patterns using Matplotlib's built-in hatches." %}
 
 ## Customized limestone pattern
 
-A hatch pattern is nothing more than a path. It must however fit within a unit square and will be repeated in the `x` and `y` directions to fill the entire hatched area. Care should therefore be taken to ensure the sides of the pattern match up as needed. 
+A hatch pattern is nothing more than a path. It must however fit within a unit square and will be repeated in the `x` and `y` directions to fill the entire hatched area. Care should therefore be taken to ensure the sides of the pattern match up as needed. Below is some code that creates such a path for a typical limestone pattern. It also contains the `LimestoneHatch` class that Matplotlib's backends will use to repeat the path as needed to fill areas to be hatched with the limestone pattern; it follows Matplolib's buit-in hatch pattern classes.
 
+The `path_vertices` array contains the coordinates of the vertices that make up the path of our desired pattern. None of the lines fall along the edge of the unit square as this can lead to unsatisfactory looking patterns. This path will ultimately be used by Matplotlib to create a Path object that it will use as the hatch pattern. A Path object requires a `[n x 2]` array of vertices and a `[n x 1]` array of codes. The array of codes tells the renderer what to do with the "pen" between vertices and can take the values `MOVETO`, `LINETO`, `CURVE3`, or `CURVE4` (the latter 2 being used to define quadratic and cubic Bézier curves respectively). A final value `CLOSEPOLY` exists to close a polygon.
 
-<!-- Below is such a path for a traditional limestone brick pattern. None of the lines fall along the edge of the unit square as this can lead to unsatisfactory looking patterns. -->
-
-The `path_vertices` array contains the coordinates of the vertices that make up the path of our desired pattern. This path will ultimately be used by Matplotlib to create a Path object that it will use as the hatch pattern. A Path object requires a `[n x 2]` array of vertices and a `[n x 1]` array of codes. The array of codes tells the renderer what to do with the "pen" between vertices and can take the values `MOVETO`, `LINETO`, `CURVE3`, or `CURVE4` (the latter 2 being used to define quadratic and cubic Bézier curves respectively). A final value `CLOSEPOLY` exists to close a polygon.
-
-In our example, the path is made up of 5 segments, with the pen moving at the start of each segment. The LimestoneHatch class we will define below automatically handles the codes for this (as well as for an arbitrary number or segments). Ultimately, any path can be used to create a hatch pattern, though the class that creates the required path vertice and code arrays would need to be updated accordingly.
+In our example, the path is made up of 5 segments, with the pen moving at the start of each segment. The `LimestoneHatch` class automatically handles the codes for this (as well as for an arbitrary number or segments). Ultimately, any path can be used to create a hatch pattern, though the class that creates the required path vertice and code arrays would need to be updated accordingly.
 
 ```python
 import numpy as np
