@@ -79,16 +79,6 @@ class LimestoneHatch(HatchPatternBase):
 _hatch_types.append(LimestoneHatch)
 ```
 
-
-
-<figure>
-    <p>
-        <img class="scaled" src="{{ site.url }}assets/images/posts/article-1/custom_hatches.png" alt="custom hatches"/>
-        <figcaption><b>Figure 2:</b> Customized limestone hatch in action.</figcaption>
-    </p>
-</figure>
-
-
 {% include image.html file="posts/article-1/custom_hatches.png"
 alt="custom hatches" number="2"
 caption="Customized limestone hatch in action." %}
