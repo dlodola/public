@@ -12,7 +12,7 @@ You need not despair however, as Matplotlib's hatch functions can be customized 
 
 <!--more-->
 
-![existing hatches]({{ site.url }}assets/images/posts/article-1/hatches.png =400x)
+<img src="{{ site.url }}assets/images/posts/article-1/hatches.png ", alt="existing hatches", width="80%" />
 
 ```python
 import numpy as np
@@ -80,9 +80,7 @@ _hatch_types.append(LimestoneHatch)
 
 
 
-![custom hatches]({{ site.url }}assets/images/posts/article-1/custom_hatches.png =80%)
+<img src="{{ site.url }}assets/images/posts/article-1/custom_hatches.png ", alt="custom hatches", width="80%" />
 
 
-
-
-![hatch dictionary]({{ site.url }}assets/images/posts/article-1/hatch_dictionary.png)
+<img src="{{ site.url }}assets/images/posts/article-1/hatch_dictionary.png ", alt="hatch dictionary", width="80%" />
