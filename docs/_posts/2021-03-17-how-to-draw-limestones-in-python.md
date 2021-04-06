@@ -12,6 +12,8 @@ Unlike Excel however, you can customize Matplotlib's hatch function to your hear
 
 <!--more-->
 
+Figure 1 shows some of the lithology patterns you can create using Matplotlib's built-in hatch types. Convincing patterns can be made for basic clastic lithologies, but there is no way to make an adequate pattern for carbonates (or indeed more advanced lithology options).
+
 {% include image.html file="posts/article-1/hatches.png"
 alt="custom hatches" number="1"
 caption="Some lithology patterns using Matplotlib's built-in hatches." %}
@@ -50,8 +52,7 @@ class LimestoneHatch(HatchPatternBase):
 
         # number of times the path will be repeated in one direction
         # within the unit square
-        self.num_lines = int((hatch.count('l') + \
-                            hatch.count('L')) * density)   
+        self.num_lines = int((hatch.count('L')) * density)   
         
         # total number of vertices for the path once it has been
         # repeated the appropriate number of times within the unit square
@@ -75,9 +76,49 @@ class LimestoneHatch(HatchPatternBase):
         codes[1::2] = Path.LINETO
 
 
-
+# add our custom hatch to Matplotlib's list of hatch types
 _hatch_types.append(LimestoneHatch)
 ```
+
+```python
+rcParams['hatch.linewidth'] = 0.25
+
+hatches = ['oo', 
+           '...',
+           '---',
+           '...---',
+           'L']
+labels = ['Conglomerate ' + u'\u2713',
+          'Sandstone ' + u'\u2713',
+          'Shale ' + u'\u2713',
+          'Shaly sandstone ' + u'\u2713',
+          'Limestone ' + u'\u2713']
+colors = ['orange',
+          'yellow',
+          'peru',
+          'yellow',
+          'lightblue']
+
+fig, ax = plt.subplots(figsize=(8.3,2))
+patch = np.array(([0,1.5,1.5,0,0], [0,0,0.5,0.5,0]))
+
+for i in range(len(hatches)):
+    ax.fill_between(patch[0] + i*2, 
+                    patch[1], 
+                    hatch=hatches[i], 
+                    fc=colors[i],
+                    ec='k',
+                    label=labels[i])
+    ax.annotate(labels[i], (i*2, .7), size=7.5)
+ax.set_xlim(-.5, 10)
+ax.set_ylim(0.9, -.25)
+ax.set_xticks([])
+ax.set_yticks([])
+ax.axis("off")
+
+plt.show()
+```
+
 
 {% include image.html file="posts/article-1/custom_hatches.png"
 alt="custom hatches" number="2"
