@@ -88,3 +88,7 @@ _hatch_types.append(LimestoneHatch)
 
 
 <img src="{{ site.url }}assets/images/posts/article-1/hatch_dictionary.png" alt="hatch dictionary" width="550px" />
+
+{% include image.html file="assets/images/posts/article-1/hatch_dictionary.png"
+alt="custom hatches" number="3"
+caption="This is the Jekyll logo." %}
