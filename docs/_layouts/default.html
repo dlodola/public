@@ -57,18 +57,24 @@
         
         {% if page.notebook %}
         <div class="links">
-          Notebook:&nbsp;&nbsp;
-          <a href="https://github.com/dlodola/{{ site.repository }}/blob/main/jupyter/{{ page.notebook }}.ipynb">
-            <img alt="github" src="{{ site.url }}/assets/logos/github_bw.png" onmouseover="this.src='{{ site.url }}/assets/logos/github.png'" onmouseout="this.src='{{ site.url }}/assets/logos/github_bw.png'" height="35px" />
-          </a>
-          &nbsp;&nbsp;
-          <a href="https://nbviewer.jupyter.org/github/dlodola/{{ site.repository }}/blob/main/jupyter/{{ page.notebook }}.ipynb">
-            <img alt="jupyter" src="{{ site.url }}/assets/logos/jupyter_bw.png" onmouseover="this.src='{{ site.url }}/assets/logos/jupyter.png'" onmouseout="this.src='{{ site.url }}/assets/logos/jupyter_bw.png'" height="35px" />
-          </a>
-          &nbsp;
-          <a href="https://mybinder.org/v2/gh/dlodola/{{ site.repository }}/HEAD?filepath=jupyter%2F{{ page.notebook }}.ipynb">
-            <img alt="binder" src="{{ site.url }}/assets/logos/binder_bw.png" onmouseover="this.src='{{ site.url }}/assets/logos/binder.png'" onmouseout="this.src='{{ site.url }}/assets/logos/binder_bw.png'" height="35px" />
-          </a>
+          <table class="links">
+            <tr>
+              <td>Notebook:</td>
+              <td>
+                <a href="https://github.com/dlodola/{{ site.repository }}/blob/main/jupyter/{{ page.notebook }}.ipynb">
+                  <img alt="github" src="{{ site.url }}/assets/logos/github_bw.png" onmouseover="this.src='{{ site.url }}/assets/logos/github.png'" onmouseout="this.src='{{ site.url }}/assets/logos/github_bw.png'" height="35px" />
+                </a>
+                &nbsp;&nbsp;
+                <a href="https://nbviewer.jupyter.org/github/dlodola/{{ site.repository }}/blob/main/jupyter/{{ page.notebook }}.ipynb">
+                  <img alt="jupyter" src="{{ site.url }}/assets/logos/jupyter_bw.png" onmouseover="this.src='{{ site.url }}/assets/logos/jupyter.png'" onmouseout="this.src='{{ site.url }}/assets/logos/jupyter_bw.png'" height="35px" />
+                </a>
+                &nbsp;
+                <a href="https://mybinder.org/v2/gh/dlodola/{{ site.repository }}/HEAD?filepath=jupyter%2F{{ page.notebook }}.ipynb">
+                  <img alt="binder" src="{{ site.url }}/assets/logos/binder_bw.png" onmouseover="this.src='{{ site.url }}/assets/logos/binder.png'" onmouseout="this.src='{{ site.url }}/assets/logos/binder_bw.png'" height="35px" />
+                </a>
+              </td>
+            </tr>
+          </table>
         </div>
         {% endif %}
         
