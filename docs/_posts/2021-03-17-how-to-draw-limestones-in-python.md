@@ -80,9 +80,9 @@ _hatch_types.append(LimestoneHatch)
 
 
 
-![custom hatche]({{ site.url }}assets/images/posts/article-1/custom_hatches.png)
+![custom hatches]({{ site.url }}assets/images/posts/article-1/custom_hatches.png)
 
 
 
 
-![hatch dictionary]({{ site.url }}assets/images/images/posts/article-1/hatch_dictionary.png)
+![hatch dictionary]({{ site.url }}assets/images/posts/article-1/hatch_dictionary.png)
