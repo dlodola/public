@@ -57,10 +57,10 @@
         
         {% if page.notebook %}
         <div class="links">
-          <table class="links">
+          <table>
             <tr>
-              <td>Notebook:</td>
-              <td>
+              <td class="links">Notebook:</td>
+              <td class="links">
                 <a href="https://github.com/dlodola/{{ site.repository }}/blob/main/jupyter/{{ page.notebook }}.ipynb">
                   <img alt="github" src="{{ site.url }}/assets/logos/github_bw.png" onmouseover="this.src='{{ site.url }}/assets/logos/github.png'" onmouseout="this.src='{{ site.url }}/assets/logos/github_bw.png'" height="35px" />
                 </a>
