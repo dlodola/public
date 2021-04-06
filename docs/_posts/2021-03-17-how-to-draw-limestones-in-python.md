@@ -12,11 +12,15 @@ Unlike Excel however, you can customize Matplotlib's hatch function to your hear
 
 <!--more-->
 
+## Built-in pattern options
+
 Figure 1 shows some of the lithology patterns you can create using Matplotlib's built-in hatch types. Convincing patterns can be made for basic clastic lithologies, but there is no way to make an adequate pattern for carbonates (or indeed more advanced lithology options).
 
 {% include image.html file="posts/article-1/hatches.png"
 alt="custom hatches" number="1"
 caption="Some lithology patterns using Matplotlib's built-in hatches." %}
+
+## Customized limestone pattern
 
 ```python
 import numpy as np
@@ -42,9 +46,6 @@ path_vertices = np.array([[0.25,0.25],
                           [0.75,0.],
                           [0.75,0.25]])
 
-
-# reduce linewidth of hatch patterns
-rcParams['hatch.linewidth'] = 0.25
 
 class LimestoneHatch(HatchPatternBase):
     
@@ -80,7 +81,10 @@ class LimestoneHatch(HatchPatternBase):
 _hatch_types.append(LimestoneHatch)
 ```
 
+## Using the custom pattern
+
 ```python
+# reduce linewidth of hatch patterns
 rcParams['hatch.linewidth'] = 0.25
 
 hatches = ['oo', 
