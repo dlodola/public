@@ -87,4 +87,4 @@ _hatch_types.append(LimestoneHatch)
 </figure>
 
 
-<img src="{{ site.url }}assets/images/posts/article-1/hatch_dictionary.png" alt="hatch dictionary" width="500px" />
+<img src="{{ site.url }}assets/images/posts/article-1/hatch_dictionary.png" alt="hatch dictionary" width="550px" />
