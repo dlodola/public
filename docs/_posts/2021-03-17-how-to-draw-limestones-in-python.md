@@ -136,6 +136,12 @@ In fact, our custom limestone hatch is now ready to be used with Matplotlib obje
 
 ## Where next?
 
+The next step is to create a custom dictionary of patterns to account for a wider variety of lithological options.
+
+Figure 3 shows some examples of the variety of patterns that can be created. Though a little more complex than `Limestone` example above, they all follow the same methodology of repeating a base pattern (defined by its `vertices` and `codes` arrays) over a unit square. Care must however be taken when choosing a flag for each pattern as you don't to be calling additional patterns by mistake. Had we used "limestone" as the flag for our example, circles would have appeared every time we used it: "o" is indeed a flag for the circle hatch!
+
 {% include image.html file="posts/article-1/hatch_dictionary.png"
 alt="hatches dictionary" number="3"
 caption="Example dictionary of multiple customized hatches." %}
+
+I hope you have found this article helpful and that it will encourage you to customize Matplotlib (or other Python libraries) to better suit your needs. 
