@@ -24,11 +24,8 @@ caption="Some lithology patterns using Matplotlib's built-in hatches." %}
 
 ```python
 import numpy as np
-import matplotlib.pyplot as plt
 from matplotlib.path import Path
 from matplotlib.hatch import HatchPatternBase, _hatch_types
-import matplotlib.patches as patches
-from matplotlib import rcParams
 
 
 path_vertices = np.array([[0.25,0.25],
@@ -83,11 +80,14 @@ _hatch_types.append(LimestoneHatch)
 
 ## Using the custom pattern
 
-Our custom limestone hatch is now ready to be used alongside Matplotlib objects that accept `hatch` as an argument: most polygons including `bar`, `fill_between`, `fill_betweenx`, `contourf`, and children of `Polygon`.
-
-Below is a short script that was used to create Figure 1 with the custom limestone hatch pattern used as appropriate: all that is needed is to provided the value `L` the `hatch` argument. The built-in hatch patterns continue to work as expected. The output is shown in Figure 2.
+Below is a short script that was used to create Figure 1 with the custom limestone hatch pattern used as appropriate. All that is needed is to provided the value `L` to the `hatch` argument; the built-in hatch patterns continue to work as expected. If you have saved the above code into a separate Python script, you will need to import it here; doing so will automatically add the `Limestone` hatch. The output is shown in Figure 2.
 
 ```python
+import matplotlib.pyplot as plt
+import matplotlib.patches as patches
+from matplotlib import rcParams
+
+
 # reduce linewidth of hatch patterns
 rcParams['hatch.linewidth'] = 0.25
 
@@ -131,6 +131,8 @@ plt.show()
 {% include image.html file="posts/article-1/custom_hatches.png"
 alt="custom hatches" number="2"
 caption="Customized limestone hatch in action." %}
+
+In fact, our custom limestone hatch is now ready to be used with Matplotlib object that accepts `hatch` as an argument: most polygons including `bar`, `fill_between`, `fill_betweenx`, `contourf`, and children of `Polygon`. This means it can be used in a wide variety of charts made with Matplotlib like lithology logs, wire-line & petrophyscial logs, chronostratigraphic charts, maps, _etc._
 
 ## Where next?
 
