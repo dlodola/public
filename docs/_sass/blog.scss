@@ -51,7 +51,8 @@ img.logo {
 
 figure {
     display: block;
-    width: 550px;
+    /*width: 550px;*/
+    width: 100%;
     border-radius:5px;
     text-align: center;
     font-style: italic;
@@ -59,9 +60,11 @@ figure {
     text-indent: 0;
     border: 1px #e0e0e0 solid;
     margin: 25px auto 25px auto;
-    padding: 25px 25px 0 25px;
+    /*padding: 25px 25px 0 25px;*/
+    padding-bottom: 25px;
   }
 img.scaled {
     width: 100%;
+    padding: 25px;
   }
   
