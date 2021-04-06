@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "How to draw rocks in python"
+title:  "How to draw rocks in Python"
 tags: python matplotlib lithologies hatch
 image: limestone-crop.jpg
 notebook: 1-limestone-hatch
@@ -28,7 +28,7 @@ The `path_vertices` array contains the coordinates of the vertices that make up 
 
 In our example, the path is made up of 5 segments, with the pen moving at the start of each segment. The `LimestoneHatch` class automatically handles the codes for this (as well as for an arbitrary number or segments). Ultimately, any path can be used to create a hatch pattern, though the class that creates the required path vertice and code arrays would need to be updated accordingly.
 
-The `__init__()` instantiation method counts the number of flags for our limestone pattern (which we have chosen as "L") in the hatch argument
+The `__init__()` instantiation method counts the number of flags for our limestone pattern (which we have chosen as "L") in the hatch argument. The `density` argument is handled by Matplotlib, though you can modify it here to decrease (or increase) the minimum density of our limestone hatch.
 
 ```python
 import numpy as np
@@ -140,7 +140,7 @@ plt.show()
 alt="custom hatches" number="2"
 caption="Customized limestone hatch in action." %}
 
-In fact, our custom limestone hatch is now ready to be used with Matplotlib object that accepts `hatch` as an argument: most polygons including `bar`, `fill_between`, `fill_betweenx`, `contourf`, and children of `Polygon`. This means it can be used in a wide variety of charts made with Matplotlib like lithology logs, wire-line & petrophyscial logs, chronostratigraphic charts, maps, _etc._
+In fact, our custom limestone hatch is now ready to be used with any Matplotlib object that accepts `hatch` as an argument: most polygons including `bar`, `fill_between`, `fill_betweenx`, `contourf`, and children of `Polygon`. This means it can be used in a wide variety of charts made with Matplotlib like lithology logs, wire-line & petrophyscial logs, chronostratigraphic charts, maps, _etc._
 
 ## Where next?
 
