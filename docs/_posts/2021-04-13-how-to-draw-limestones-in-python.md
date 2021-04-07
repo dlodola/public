@@ -65,12 +65,15 @@ class LimestoneHatch(HatchPatternBase):
 
     def set_vertices_and_codes(self, vertices, codes):
         
+        # build array of translation vectors so path can be
+        # repeated as required within the unit square
         steps = np.linspace(0, 1, self.num_lines, endpoint=False)
         offsets = np.array(np.meshgrid(steps,steps)).transpose([1,2,0]) \
                         .reshape((self.num_lines**2, 2)) \
                         .repeat(len(path_vertices), axis=0)
-        
-        # update values in slice of vertices array
+
+        # scale, tile, translate and update vertices values 
+        # in slice of vertices array
         vertices[:] = np.tile(path_vertices / self.num_lines, 
                               (self.num_lines**2, 1)) + offsets
         
@@ -145,7 +148,7 @@ In fact, our custom limestone hatch is now ready to be used with any Matplotlib 
 
 ## Where next?
 
-The next step is to create a custom dictionary of patterns to account for a wider variety of lithological options. Ultimately, any path can be used to create a hatch pattern, though the class that creates the required path vertice and code arrays needs to be updated accordingly.
+The next step is to create a custom dictionary of patterns to account for a wider variety of lithological options. Ultimately, any path can be used to create a hatch pattern, though the class that creates the required path vertices and code arrays needs to be updated accordingly.
 
 Figure 3 shows some examples of the variety of patterns that can be created. Though a little more complex than the limestone example above, they all follow the same methodology of repeating a base pattern (defined by its `vertices` and `codes` arrays) over a unit square. Care must however be taken when choosing a flag for each pattern as you don't to be calling additional patterns by mistake. Had we used "limestone" as the flag for our example, circles would have appeared every time we used it: "o" is indeed a flag for the small circle hatch!
 
