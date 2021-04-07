@@ -20,9 +20,9 @@ For contact details, please connect with me on [LinkedIn](https://www.linkedin.c
 
 ## Copyright and licences
 
-Unless otherwise stated, copyrights for material on this website is retained by the author.
+Unless otherwise stated, copyright for material on this website is retained by the author.
 
-Any software or code made available on this website is provisionally done so under the [GPLv3](https://www.gnu.org/licenses/gpl-3.0.html) licence. Attention is drawn to the Disclaimer of Warranty,  Limitation of Liability, and Automatic Licensing of Downstream Recipients clauses of this licence.
+Any software or code made available on this website is provisionally done so under the [GPLv3](https://www.gnu.org/licenses/gpl-3.0.html) licence. Attention is drawn to the *Disclaimer of Warranty*,  *Limitation of Liability*, and *Automatic Licensing of Downstream Recipients* clauses of this licence.
 
 ## Logo
 
