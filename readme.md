@@ -6,7 +6,7 @@ This GitHub repository contains some of my python tricks and tools that may be o
 
 A good place to start is by visiting the [project page](https://dlodola.github.io/public/).
 
-## Some useful jupyter notebooks 📔
+## Some useful Jupyter notebooks 📔
 
 Below is a list of jupyter notebooks that demonstrate solutions to various day-to-day tasks. You can launch an interactive jupyter notebook session in [Binder](https://mybinder.org) by clicking on the logo at the top of this page. All the notebooks are to be found in the `jupyter` folder.
 
@@ -19,3 +19,9 @@ Below is a list of jupyter notebooks that demonstrate solutions to various day-t
 | # | Title | Description |
 |:-:|:------|:------------|
 | 1 | [How to draw limetsones in python](https://nbviewer.jupyter.org/github/dlodola/public/blob/main/jupyter/1-limestone-hatch.ipynb) | Matplotlib offers tentalising hatching options that will sadly leave most geologists a little frustrated _[read more](https://dlodola.github.io/public//blog/2021/03/17/how-to-draw-limestones-in-python.html)..._ |
+
+## Copyright and licences
+
+Unless otherwise stated, copyright for material on this website is retained by the author.
+
+Any software or code made available on this website is provisionally done so under the [GPLv3](https://www.gnu.org/licenses/gpl-3.0.html) licence. Attention is drawn to the *Disclaimer of Warranty*,  *Limitation of Liability*, and *Automatic Licensing of Downstream Recipients* clauses of this licence.
