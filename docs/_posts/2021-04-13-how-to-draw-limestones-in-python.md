@@ -6,7 +6,7 @@ image: limestone-crop.jpg
 notebook: 1-limestone-hatch
 ---
 
-Matplotlib offers tantalizing [hatching](https://matplotlib.org/stable/gallery/shapes_and_collections/hatch_demo.html) options that will sadly leave most geologists asking for more. It's a bit like pattern fills in Excel - so much potential until you actually try and use it to make satisfying lithology logs. 
+Matplotlib offers tantalizing [hatching](https://matplotlib.org/stable/gallery/shapes_and_collections/hatch_demo.html) options that will sadly leave most geologists wanting more. It's a bit like pattern fills in Excel - so much potential until you actually try and use it to make satisfying lithology logs. 
 
 Unlike Excel however, you can customize Matplotlib's hatch function to your heart's content. I show an example here of how to create a standard limestone pattern, but the methodology can be generalized to created pretty much any lithology pattern you want.
 
@@ -14,7 +14,7 @@ Unlike Excel however, you can customize Matplotlib's hatch function to your hear
 
 ## Built-in pattern options
 
-Figure 1 shows some of the lithology patterns you can create using Matplotlib's built-in hatch types. Convincing patterns can be made for basic clastic lithologies, but there is no way to make an adequate pattern for carbonates (or indeed other more advanced lithology options). See [here](https://matplotlib.org/stable/gallery/shapes_and_collections/hatch_style_reference.html) for a reference of the built-in hatch styles.
+Figure 1 shows some of the lithology patterns you can create using Matplotlib's built-in hatch styles. Convincing patterns can be made for basic clastic lithologies, but there is no way to make an adequate pattern for carbonates (or indeed other more advanced lithology options). See [here](https://matplotlib.org/stable/gallery/shapes_and_collections/hatch_style_reference.html) for a reference of the built-in hatch styles.
 
 {% include image.html file="posts/article-1/hatches.png"
 alt="custom hatches" number="1"
@@ -22,11 +22,11 @@ caption="Some lithology patterns using Matplotlib's built-in hatches." %}
 
 ## Customized limestone pattern
 
-Below is some code that implements a customized limestone hatch pattern. A hatch pattern is nothing more than a [Path](https://matplotlib.org/stable/api/path_api.html#matplotlib.path.Path) object. It must however fit within a unit square and will be repeated in the `x` and `y` directions to fill the entire hatched area. Care should therefore be taken to ensure the sides of the pattern match up as needed. 
+Below is some code that implements a customized limestone hatch pattern. A hatch pattern is little more than a [Path](https://matplotlib.org/stable/api/path_api.html#matplotlib.path.Path) object. It must however fit within a unit square and will be repeated in the `x` and `y` directions to fill the entire hatched area. Care should therefore be taken to ensure the sides of the pattern match up as needed. 
 
 The `path_vertices` array contains the coordinates of the vertices that make up the path of our desired pattern. This path will ultimately be used by Matplotlib to create a Path object that it will use as the hatch pattern. A Path object requires an array of vertices and an array of codes, the codes telling the renderer what to do with the "pen" between vertices. In our example, the path is made up of 5 segments, with the pen moving at the start of each segment. 
 
-The `LimestoneHatch` class automatically handles the codes for our path (as well as for an arbitrary number or segments). It also handles the identification of the flag "L" we will need to use our custom limestone hatch along with any repetitions of the path within the unit square needed for higher hatch densities. The associated Jupyter notebook (links to the left in the navigation pane) goes in to more detail on how the `LimestoneHatch` class works.
+The `LimestoneHatch` class automatically handles the codes for our path (as well as an arbitrary number of segments). It also handles the identification of the flag "L" we will need to use our custom limestone hatch, along with any repetitions of the path within the unit square needed for higher hatch densities. *The associated Jupyter notebook (links to the left in the navigation pane) goes in to more detail on how the `LimestoneHatch` class works.*
 
 ```python
 import numpy as np
