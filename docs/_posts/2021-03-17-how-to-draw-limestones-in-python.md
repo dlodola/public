@@ -6,7 +6,7 @@ image: limestone-crop.jpg
 notebook: 1-limestone-hatch
 ---
 
-Matplotlib offers tantalizing [hatching](https://matplotlib.org/stable/gallery/shapes_and_collections/hatch_demo.html) options that will sadly leave most geologists a little frustrated. It's a bit like pattern fills in Excel - so much potential until you actually try and use it to make satisfying lithology logs. 
+Matplotlib offers tantalizing [hatching](https://matplotlib.org/stable/gallery/shapes_and_collections/hatch_demo.html) options that will sadly leave most geologists asking for more. It's a bit like pattern fills in Excel - so much potential until you actually try and use it to make satisfying lithology logs. 
 
 Unlike Excel however, you can customize Matplotlib's hatch function to your heart's content. I show an example here of how to create a standard limestone pattern, but the methodology can be generalized to created pretty much any lithology pattern you want.
 
@@ -14,7 +14,7 @@ Unlike Excel however, you can customize Matplotlib's hatch function to your hear
 
 ## Built-in pattern options
 
-Figure 1 shows some of the lithology patterns you can create using Matplotlib's built-in hatch types. Convincing patterns can be made for basic clastic lithologies, but there is no way to make an adequate pattern for carbonates (or indeed other more advanced lithology options).
+Figure 1 shows some of the lithology patterns you can create using Matplotlib's built-in hatch types. Convincing patterns can be made for basic clastic lithologies, but there is no way to make an adequate pattern for carbonates (or indeed other more advanced lithology options). See [here](https://matplotlib.org/stable/gallery/shapes_and_collections/hatch_style_reference.html) for a reference of the built-in hatch styles.
 
 {% include image.html file="posts/article-1/hatches.png"
 alt="custom hatches" number="1"
