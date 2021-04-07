@@ -8,7 +8,7 @@ notebook: 1-limestone-hatch
 
 Matplotlib offers tantalizing hatching options that will sadly leave most geologists a little frustrated. It's a bit like pattern fills in Excel - so much potential until you actually try and use it to make satisfying lithology logs. 
 
-Unlike Excel however, you can customize Matplotlib's hatch function to your heart's content. I show an example here of how to create a standard limestone hatch, but the methodology can be generalized to created pretty much any lithology pattern you want.
+Unlike Excel however, you can customize Matplotlib's hatch function to your heart's content. I show an example here of how to create a standard limestone pattern, but the methodology can be generalized to created pretty much any lithology pattern you want.
 
 <!--more-->
 
@@ -22,13 +22,13 @@ caption="Some lithology patterns using Matplotlib's built-in hatches." %}
 
 ## Customized limestone pattern
 
-A hatch pattern is nothing more than a path. It must however fit within a unit square and will be repeated in the `x` and `y` directions to fill the entire hatched area. Care should therefore be taken to ensure the sides of the pattern match up as needed. Below is some code that creates such a path for a typical limestone pattern. It also contains the `LimestoneHatch` class that Matplotlib's backends will use to repeat the path as needed to fill areas to be hatched with the limestone pattern; it follows Matplolib's buit-in hatch pattern classes.
+Below is some code that implements a customized limestone hatch pattern. A hatch pattern is nothing more than a path. It must however fit within a unit square and will be repeated in the `x` and `y` directions to fill the entire hatched area. Care should therefore be taken to ensure the sides of the pattern match up as needed. 
 
-The `path_vertices` array contains the coordinates of the vertices that make up the path of our desired pattern. None of the lines fall along the edge of the unit square as this can lead to unsatisfactory looking patterns. This path will ultimately be used by Matplotlib to create a Path object that it will use as the hatch pattern. A Path object requires a `[n x 2]` array of vertices and a `[n x 1]` array of codes. The array of codes tells the renderer what to do with the "pen" between vertices and can take the values `MOVETO`, `LINETO`, `CURVE3`, or `CURVE4` (the latter 2 being used to define quadratic and cubic Bézier curves respectively). A final value `CLOSEPOLY` exists to close a polygon.
+The `path_vertices` array contains the coordinates of the vertices that make up the path of our desired pattern. This path will ultimately be used by Matplotlib to create a Path object that it will use as the hatch pattern. A Path object requires an array of vertices and an array of codes, the codes telling the renderer what to do with the "pen" between vertices. In our example, the path is made up of 5 segments, with the pen moving at the start of each segment. 
 
-In our example, the path is made up of 5 segments, with the pen moving at the start of each segment. The `LimestoneHatch` class automatically handles the codes for this (as well as for an arbitrary number or segments). Ultimately, any path can be used to create a hatch pattern, though the class that creates the required path vertice and code arrays would need to be updated accordingly.
+The `LimestoneHatch` class automatically handles the codes for our path (as well as for an arbitrary number or segments). It also handles the identification of the flag "L" we will need to use our custom limestone hatch and any repetitions of the path within the unit square needed for higher hatch densities.
 
-The `__init__()` instantiation method counts the number of flags for our limestone pattern (which we have chosen as "L") in the hatch argument. The `density` argument is handled by Matplotlib, though you can modify it here to decrease (or increase) the minimum density of our limestone hatch.
+The associated Jupyter notebook (links to the left in the navigation pane) goes in to more detail on how the `LimestoneHatch` class works.
 
 ```python
 import numpy as np
@@ -144,7 +144,7 @@ In fact, our custom limestone hatch is now ready to be used with any Matplotlib 
 
 ## Where next?
 
-The next step is to create a custom dictionary of patterns to account for a wider variety of lithological options.
+The next step is to create a custom dictionary of patterns to account for a wider variety of lithological options. Ultimately, any path can be used to create a hatch pattern, though the class that creates the required path vertice and code arrays would need to be updated accordingly.
 
 Figure 3 shows some examples of the variety of patterns that can be created. Though a little more complex than `Limestone` example above, they all follow the same methodology of repeating a base pattern (defined by its `vertices` and `codes` arrays) over a unit square. Care must however be taken when choosing a flag for each pattern as you don't to be calling additional patterns by mistake. Had we used "limestone" as the flag for our example, circles would have appeared every time we used it: "o" is indeed a flag for the circle hatch!
 
