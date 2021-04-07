@@ -22,7 +22,7 @@ caption="Some lithology patterns using Matplotlib's built-in hatches." %}
 
 ## Customized limestone pattern
 
-Below is some code that implements a customized limestone hatch pattern. A hatch pattern is nothing more than a path. It must however fit within a unit square and will be repeated in the `x` and `y` directions to fill the entire hatched area. Care should therefore be taken to ensure the sides of the pattern match up as needed. 
+Below is some code that implements a customized limestone hatch pattern. A hatch pattern is nothing more than a [Path](https://matplotlib.org/stable/api/path_api.html#matplotlib.path.Path) object. It must however fit within a unit square and will be repeated in the `x` and `y` directions to fill the entire hatched area. Care should therefore be taken to ensure the sides of the pattern match up as needed. 
 
 The `path_vertices` array contains the coordinates of the vertices that make up the path of our desired pattern. This path will ultimately be used by Matplotlib to create a Path object that it will use as the hatch pattern. A Path object requires an array of vertices and an array of codes, the codes telling the renderer what to do with the "pen" between vertices. In our example, the path is made up of 5 segments, with the pen moving at the start of each segment. 
 
