@@ -6,7 +6,7 @@ image: limestone-crop.jpg
 notebook: 1-limestone-hatch
 ---
 
-Matplotlib offers tantalizing hatching options that will sadly leave most geologists a little frustrated. It's a bit like pattern fills in Excel - so much potential until you actually try and use it to make satisfying lithology logs. 
+Matplotlib offers tantalizing [hatching](https://matplotlib.org/stable/gallery/shapes_and_collections/hatch_demo.html) options that will sadly leave most geologists a little frustrated. It's a bit like pattern fills in Excel - so much potential until you actually try and use it to make satisfying lithology logs. 
 
 Unlike Excel however, you can customize Matplotlib's hatch function to your heart's content. I show an example here of how to create a standard limestone pattern, but the methodology can be generalized to created pretty much any lithology pattern you want.
 
@@ -14,7 +14,7 @@ Unlike Excel however, you can customize Matplotlib's hatch function to your hear
 
 ## Built-in pattern options
 
-Figure 1 shows some of the lithology patterns you can create using Matplotlib's built-in hatch types. Convincing patterns can be made for basic clastic lithologies, but there is no way to make an adequate pattern for carbonates (or indeed more advanced lithology options).
+Figure 1 shows some of the lithology patterns you can create using Matplotlib's built-in hatch types. Convincing patterns can be made for basic clastic lithologies, but there is no way to make an adequate pattern for carbonates (or indeed other more advanced lithology options).
 
 {% include image.html file="posts/article-1/hatches.png"
 alt="custom hatches" number="1"
@@ -88,7 +88,7 @@ _hatch_types.append(LimestoneHatch)
 
 ## Using the custom pattern
 
-Below is a short script that was used to create Figure 1 with the custom limestone hatch pattern used as appropriate. All that is needed is to provided the value `L` to the `hatch` argument; the built-in hatch patterns continue to work as expected. If you have saved the above code into a separate Python script, you will need to import it here; doing so will automatically add the `Limestone` hatch. The output is shown in Figure 2.
+Below is a short script that was used to create Figure 1 with the addition of the custom limestone hatch pattern. All that is needed is to provided the value `L` to the `hatch` argument; the built-in hatch patterns continue to work as expected. If you have saved the above code into a separate Python script, you will need to import it here; doing so will automatically add the `LimestoneHatch` hatch. The output is shown in Figure 2.
 
 ```python
 import matplotlib.pyplot as plt
@@ -103,16 +103,19 @@ hatches = ['oo',
            '...',
            '---',
            '...---',
-           'L']
+           'L',
+           'LL']
 labels = ['Conglomerate ' + u'\u2713',
           'Sandstone ' + u'\u2713',
           'Shale ' + u'\u2713',
           'Shaly sandstone ' + u'\u2713',
+          'Limestone ' + u'\u2713',
           'Limestone ' + u'\u2713']
 colors = ['orange',
           'yellow',
           'peru',
           'yellow',
+          'lightblue',
           'lightblue']
 
 fig, ax = plt.subplots(figsize=(8.3,2))
@@ -126,7 +129,7 @@ for i in range(len(hatches)):
                     ec='k',
                     label=labels[i])
     ax.annotate(labels[i], (i*2, .7), size=7.5)
-ax.set_xlim(-.5, 10)
+ax.set_xlim(-.5, 12)
 ax.set_ylim(0.9, -.25)
 ax.set_xticks([])
 ax.set_yticks([])
@@ -144,9 +147,9 @@ In fact, our custom limestone hatch is now ready to be used with any Matplotlib 
 
 ## Where next?
 
-The next step is to create a custom dictionary of patterns to account for a wider variety of lithological options. Ultimately, any path can be used to create a hatch pattern, though the class that creates the required path vertice and code arrays would need to be updated accordingly.
+The next step is to create a custom dictionary of patterns to account for a wider variety of lithological options. Ultimately, any path can be used to create a hatch pattern, though the class that creates the required path vertice and code arrays needs to be updated accordingly.
 
-Figure 3 shows some examples of the variety of patterns that can be created. Though a little more complex than `Limestone` example above, they all follow the same methodology of repeating a base pattern (defined by its `vertices` and `codes` arrays) over a unit square. Care must however be taken when choosing a flag for each pattern as you don't to be calling additional patterns by mistake. Had we used "limestone" as the flag for our example, circles would have appeared every time we used it: "o" is indeed a flag for the circle hatch!
+Figure 3 shows some examples of the variety of patterns that can be created. Though a little more complex than the limestone example above, they all follow the same methodology of repeating a base pattern (defined by its `vertices` and `codes` arrays) over a unit square. Care must however be taken when choosing a flag for each pattern as you don't to be calling additional patterns by mistake. Had we used "limestone" as the flag for our example, circles would have appeared every time we used it: "o" is indeed a flag for the small circle hatch!
 
 {% include image.html file="posts/article-1/hatch_dictionary.png"
 alt="hatches dictionary" number="3"
