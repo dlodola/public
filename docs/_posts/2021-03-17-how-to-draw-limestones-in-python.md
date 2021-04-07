@@ -26,7 +26,7 @@ Below is some code that implements a customized limestone hatch pattern. A hatch
 
 The `path_vertices` array contains the coordinates of the vertices that make up the path of our desired pattern. This path will ultimately be used by Matplotlib to create a Path object that it will use as the hatch pattern. A Path object requires an array of vertices and an array of codes, the codes telling the renderer what to do with the "pen" between vertices. In our example, the path is made up of 5 segments, with the pen moving at the start of each segment. 
 
-The `LimestoneHatch` class automatically handles the codes for our path (as well as for an arbitrary number or segments). It also handles the identification of the flag "L" we will need to use our custom limestone hatch and any repetitions of the path within the unit square needed for higher hatch densities.
+The `LimestoneHatch` class automatically handles the codes for our path (as well as for an arbitrary number or segments). It also handles the identification of the flag "L" we will need to use our custom limestone hatch along with any repetitions of the path within the unit square needed for higher hatch densities.
 
 The associated Jupyter notebook (links to the left in the navigation pane) goes in to more detail on how the `LimestoneHatch` class works.
 
