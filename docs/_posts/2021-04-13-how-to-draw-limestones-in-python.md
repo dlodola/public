@@ -89,7 +89,7 @@ _hatch_types.append(LimestoneHatch)
 
 ## Using the custom pattern
 
-Below is a short script that was used to create Figure 1 with the addition of the custom limestone hatch pattern. All that is needed is to provided the value `L` to the `hatch` argument; the built-in hatch patterns continue to work as expected. If you have saved the above code into a separate Python script, you will need to import it here; doing so will automatically add the `LimestoneHatch` hatch. The output is shown in Figure 2.
+Below is a short script that was used to create Figure 1 with the addition of the custom limestone hatch pattern. All that is needed is to provide the value `L` to the `hatch` argument; the built-in hatch patterns continue to work as expected. If you have saved the above code into a separate Python script, you will need to import it here; doing so will automatically add the `LimestoneHatch` hatch style. The output is shown in Figure 2.
 
 ```python
 import matplotlib.pyplot as plt
