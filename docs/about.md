@@ -18,6 +18,12 @@ Python may not be right for you, but for me it's the perfect symbiosis of form a
 
 For contact details, please connect with me on [LinkedIn](https://www.linkedin.com/in/domenico-lodola).
 
+## Copyright and licences
+
+Unless otherwise stated, copyrights for material on this website is retained by the author.
+
+Any software or code made available on this website is provisionally done so under the [GPLv3](https://www.gnu.org/licenses/gpl-3.0.html) licence. Attention is drawn to the Disclaimer of Warranty,  Limitation of Liability, and Automatic Licensing of Downstream Recipients clauses of this licence.
+
 ## Logo
 
 The logo is a stylized image of a Eurasian Skylark. Bonus points if you can figure out why I chose it.
