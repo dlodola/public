@@ -4,7 +4,7 @@ description: A collection of Python tricks & tools for geologists, with a focus 
 url: https://dlodola.github.io/public/
 repository: public
 logo: logo.png
-equation_height: "40px"
+equation_height: 40px
 defaults:
   -
     scope:
