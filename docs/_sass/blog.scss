@@ -88,3 +88,15 @@ header h1 {
 header h1 a {
   color:#727272;
 }
+
+.equation {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.equation_dots {
+  border-bottom: 1px dotted rgba(0, 0, 0, 0.3);
+  flex: 1;
+  margin: 0px 4px;
+}
