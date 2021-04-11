@@ -18,10 +18,10 @@ Below is a list of jupyter notebooks that demonstrate solutions to various day-t
 
 | # | Title | Description |
 |:-:|:------|:------------|
-| 1 | [How to draw limetsones in python](https://nbviewer.jupyter.org/github/dlodola/public/blob/main/jupyter/1-limestone-hatch.ipynb) | Matplotlib offers tentalising hatching options that will sadly leave most geologists a little frustrated _[read more](https://dlodola.github.io/public//blog/2021/03/17/how-to-draw-limestones-in-python.html)..._ |
+| 1 | [How to draw rocks in Python](https://nbviewer.jupyter.org/github/dlodola/public/blob/main/jupyter/1-limestone-hatch.ipynb) | Matplotlib offers tentalising hatching options that will sadly leave most geologists wanting more _[read more](https://dlodola.github.io/public//blog/2021/03/17/how-to-draw-limestones-in-python.html)..._ |
 
 ## Copyright and licence
 
 Unless otherwise stated, copyright for material in this repository is retained by the author.
 
-Any software or code made available on this website is provisionally done so under the [GPLv3](https://www.gnu.org/licenses/gpl-3.0.html) licence. Attention is drawn to the *Disclaimer of Warranty*,  *Limitation of Liability*, and *Automatic Licensing of Downstream Recipients* clauses of this licence.
+Any software or code made available on this website is provisionally done so under the [GPLv3](https://www.gnu.org/licenses/gpl-3.0.html) licence.
