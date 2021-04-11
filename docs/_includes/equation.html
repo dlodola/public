@@ -1,5 +1,5 @@
 <div class="equation">
-        <div><img src="{{ site.url }}assets/{{ include.file }}" height="{{ include.height | default: 40px }}" alt="{{ include.alt }}"/></div>
+        <div><img src="{{ site.url }}assets/{{ include.file }}" height="{{ include.height | default: site.equation_height }}" alt="{{ include.alt }}"/></div>
         <div class="equation_dots"></div>
         <div>({{ include.number }})</div>
 </div>
