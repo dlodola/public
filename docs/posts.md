@@ -8,6 +8,7 @@ layout: default
 
 <div>
 {% for post in site.posts %}
+    {% unless post.draft %}
     <div class="blog-header">
         <a href="{{ site.url }}{{ post.url }}">
             <img alt="lst" class="blog-header" src="{{ site.url }}assets/images/{{ post.image }}" width="100%"/>
@@ -19,6 +20,7 @@ layout: default
         <small>tags: <em>{{ post.tags | join: "</em> - <em>" }}</em></small>
     {% endif %}</div>
     <div class="blog-footer"><small>by: {{ post.author | "author" }}</small> | <small>posted on {{ post.date | date: "%-d %B %Y" }}</small></div>
+    {% endunless %}
 {% endfor %}
 </div>
 
