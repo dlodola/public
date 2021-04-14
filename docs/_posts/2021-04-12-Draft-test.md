@@ -58,3 +58,55 @@ where *&#7824;* is an *M*-element vector of estimated values, *Z* is an *I*-elem
 
 {% include equation.html file="images/posts/article-2/Equation_7.png"
 alt="equation 7" number="7" height="30" %}
+
+## Import necessary libraries and set things up
+
+```python
+from math import pi, cos, sin
+
+import matplotlib.pyplot as plt
+from matplotlib.ticker import FormatStrFormatter, FuncFormatter
+import numpy as np
+
+from lib.semivariograms import spherical_semivariogram
+```
+
+The `spherical_semivariogram` function is an implementation of a 2D anisotropic spherical semivariogram taking as arguments the coordinates of 2 sets of points and the semivariogram's semi-major & semi-minor ranges, azimuth, sill and nugget. It returns the corresponding semivariance for the lags between the points in both sets of inputs. For now, you can get a copy of the library [here](), but I will cover it in more detail in a future article.
+
+### Grid
+
+First lets create a (*i*, *j*, *k*) array `grid` such that each [*i*,*j*] node holds
+the (*x<sub>i</sub>*, *y<sub>j</sub>*) Cartesian coordinates of that node. It is set up using the (*x<sub>0</sub>*, *y<sub>0</sub>*) corrdinates of the lower left corner, the cell size
+and the number of rows and columns.
+
+{% include equation.html file="images/posts/article-2/Equation_8.png"
+alt="equation 8" number="8" height="79" %}
+
+
+Going forward, we will mostly work with a part flattened copy of `grid` with dimensions (*M*, *2*), where the first dimension holds all the nodes and the second holds the nodes (*x*, *y*) coordinates. By convention:
+
+1. M is the number of nodes in the grid where property is estimated (*i.i*, rows * columns).
+2. m: a node with in grid with coordinates (*x*, *y*).
+3. I: the number of known points for the property.
+4. i: a known point with coordinates (*x<sub>i</sub>*,*y<sub>i</sub>*).
+
+```python
+LL_CORNER = (1_000_000, 500_000)
+CELL_SIZE = 50
+ROWS, COLS = 300, 400
+
+nodes = ROWS * COLS
+
+# list of all column (x) coordinates
+xx = np.arange(LL_CORNER[0], 
+               LL_CORNER[0] + COLS * CELL_SIZE, 
+               CELL_SIZE)
+
+# list of all row (y) coordinates
+yy = np.arange(LL_CORNER[1], 
+               LL_CORNER[1] + ROWS * CELL_SIZE, 
+               CELL_SIZE)
+
+# (i,j,k) array where each (i,j) node is its (x,y) coordinates
+grid = np.array(np.meshgrid(xx, yy)).transpose([1,2,0])
+```
