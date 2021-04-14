@@ -28,6 +28,12 @@ alt="equation 1" number="1" height="75" %}
 where *&lambda;<sub>i</sub>* is the kriging weight for known point *z<sub>i</sub>*. The kriging weights for an observation point *o* can be determined by minimizing the Simple Kriging (SK) variance defined as:
 
 {% include equation.html file="images/posts/article-2/Equation_2.png"
+alt="equation 2" number="2" height="40" %}
+
+{% include equation.html file="images/posts/article-2/Equation_2.png"
+alt="equation 2" number="2" height="45" %}
+
+{% include equation.html file="images/posts/article-2/Equation_2.png"
 alt="equation 2" number="2" height="39" %}
 
 where *z* is the true, but unknown, value of our property at point *o* and *E* is the expected value. From an analytical perspective, this is achieved by seeking appropriate kriging weights such that the first derivative of the Simple Kriging variance is equal to zero. This has the advantage of removing the actual value *z* from the equation &mdash; pun intended, and allows us to find the weights without this knowledge. *The reader is referred to an appropriate text (e.g., Jensen et al., 2003) for the full workings out and the assumptions made.* To cut things short, the kriging weights can be found by solving the matrix equation:
