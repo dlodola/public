@@ -29,9 +29,9 @@ The `path_vertices` array contains the coordinates of the vertices that make up 
 The `LimestoneHatch` class automatically handles the codes for our path (as well as an arbitrary number of segments). It also handles the identification of the flag "L" we will need to use our custom limestone hatch, along with any repetitions of the path within the unit square needed for higher hatch densities. *The associated Jupyter notebook (links to the left in the navigation pane) goes in to more detail on how the `LimestoneHatch` class works.*
 
 ```python
-import numpy as np
 from matplotlib.path import Path
 from matplotlib.hatch import HatchPatternBase, _hatch_types
+import numpy as np
 
 
 path_vertices = np.array([[0.25,0.25],
