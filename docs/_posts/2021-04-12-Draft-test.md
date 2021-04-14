@@ -33,7 +33,7 @@ alt="equation 2" number="2" height="10%" %}
 where *z* is the true, but unknown, value of our property at point *o* and *E* is the expected value. From an analytical perspective, this is achieved by seeking appropriate kriging weights such that the first derivative of the Simple Kriging variance is equal to zero. This has the advantage of removing the actual value *z* from the equation &mdash; pun intended, and allows us to find the weights without this knowledge. *The reader is refered to an appropriate text (e.g., Jensen et al., 2003) for the full workings out and the assumptions made.* To cut things short, the kriging weights can be found by solving the matrix equation:
 
 {% include equation.html file="images/posts/article-2/Equation_3.png"
-alt="equation 3" number="3" height="10%" %}
+alt="equation 3" number="3" height="0.1" %}
 
 where *&sigma;<sub>ij</sub><sup>2</sup>* is the covariance between known points *z<sub>i</sub>* and 
 *z<sub>j</sub>*, and *&sigma;<sub>oi</sub><sup>2</sup>* is the covariance between unknown point *z<sub>o</sub>* and known point *z<sub>i</sub>*. Given the simplifications resulting from the stationarity assumptions *not* discussed aboved, the covariance between points can be determined using their semivariance as:
