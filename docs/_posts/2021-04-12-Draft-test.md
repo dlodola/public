@@ -22,7 +22,7 @@ Before we get started, a little refresher of how Simple Kriging works is in orde
 
 Kriging is a basic statistical linear estimator. A property's value *&#7825;* in location *o*, can be estimated  based on known values *z<sub>i</sub>*, *i=1,...I* as:
 
-{% include equation.html file="images/article-2/Equation_1.png"
+{% include equation.html file="posts/images/article-2/Equation_1.png"
 alt="equation 1" number="1" height="50%" %}
 
 where *&lambda;<sub>i</sub>* is the kriging weight for known point *z<sub>i</sub>*. The kriging weights for an obersvation point *o* can be determined by minimizing the Simple Kriging (SK) variance defined as:
