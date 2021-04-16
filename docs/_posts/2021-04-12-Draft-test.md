@@ -31,7 +31,7 @@ where *&lambda;<sub>i</sub>* is the kriging weight for known point *z<sub>i</sub
 {% include equation.html file="images/posts/article-2/Equation_2.png"
 alt="equation 2" number="2" height="30" %}
 
-where *z* is the true, but unknown, value of our property at point *o* and *E* is the expected value. From an analytical perspective, this is achieved by seeking appropriate kriging weights such that the first derivative of the Simple Kriging variance is equal to zero. This has the advantage of removing the actual value *z* from the equation &mdash; pun intended, and allows us to find the weights without this knowledge. *The reader is referred to an appropriate text (e.g., Jensen et al., 2003) for the full workings out and the assumptions made.* To cut things short, the kriging weights can be found by solving the matrix equation:
+where *z* is the true, but unknown, value of our property at point *o* and *E* is the expectation. From an analytical perspective, this is achieved by seeking appropriate kriging weights such that the first derivative of the Simple Kriging variance is equal to zero. This has the advantage of removing the actual value *z* from the equation &mdash; pun intended, and allows us to find the weights without this knowledge. *The reader is referred to an appropriate text (e.g., Jensen et al., 2003) for the full workings out and the assumptions made.* To cut things short, the kriging weights can be found by solving the matrix equation:
 
 {% include equation.html file="images/posts/article-2/Equation_3.png"
 alt="equation 3" number="3" height="79" %}
@@ -76,7 +76,7 @@ The `spherical_semivariogram` function is an implementation of a 2D anisotropic 
 ### Grid
 
 First lets create a (*i*, *j*, *k*) array `grid` such that each [*i*,*j*] node holds
-the (*x<sub>i</sub>*, *y<sub>j</sub>*) Cartesian coordinates of that node. It is set up using the (*x<sub>0</sub>*, *y<sub>0</sub>*) corrdinates of the lower left corner, the cell size
+the (*x<sub>i</sub>*, *y<sub>j</sub>*) Cartesian coordinates of that node. It is set up using the (*x<sub>0</sub>*, *y<sub>0</sub>*) coordinates of the lower left corner, the cell size
 and the number of rows and columns.
 
 {% include equation.html file="images/posts/article-2/Equation_8.png"
