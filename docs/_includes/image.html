@@ -1,6 +1,16 @@
 <figure>
     <p>
+        {% if include.link %}
+            <a href="{{ site.url }}assets/images/{{ include.file }}">
+        {% endif %}
         <img src="{{ site.url }}assets/images/{{ include.file }}" alt="{{ include.alt }}" class="scaled"/>
-        <figcaption><b>Figure&nbsp;{{ include.number }}:</b>&nbsp;{{ include.caption }}</figcaption>
+        {% if include.link %}
+            </a>
+        {% endif %}
+        <figcaption><b>Figure&nbsp;{{ include.number }}:</b>&nbsp;{{ include.caption }}
+        {% if include.link %}
+        <i>&nbsp;(click to enlarge)</i>
+        {% endif %}
+        </figcaption>
     </p>
 </figure>
