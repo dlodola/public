@@ -1,6 +1,6 @@
 ---
 layout: post
-draft: true
+draft: false
 title:  "Simple Kriging 5 lines of Python or less..."
 tags: python matplotlib lithologies hatch
 image: net.jpg
