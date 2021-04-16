@@ -16,7 +16,7 @@ layout: default
     </div>
     <div class="blog-body"><h1><a href="{{ site.url }}{{ post.url }}">{{ post.title }}</a></h1>
     {{ post.excerpt }}
-    <a href="{{ site.url }}{{ post.url }}"><i>read more...</i></a>
+    <p><a href="{{ site.url }}{{ post.url }}"><i>read more...</i></a></p>
     {% if post.tags != empty %}
         <small>tags: <em>{{ post.tags | join: "</em> - <em>" }}</em></small>
     {% endif %}</div>
