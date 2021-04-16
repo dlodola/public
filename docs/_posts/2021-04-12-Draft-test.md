@@ -1,7 +1,7 @@
 ---
 layout: post
 draft: false
-title:  "Simple Kriging 5 lines of Python or less..."
+title:  "Simple Kriging in 5 lines of Python or less..."
 tags: python matplotlib lithologies hatch
 image: net.jpg
 notebook: 1-limestone-hatch
@@ -11,6 +11,8 @@ notebook: 1-limestone-hatch
 ...or "look ma', no for loops!"
 
 I like this example as it demonstrates the brutal efficiency of Python coding without compromising on performance thanks to NumPy's vectorized functions. While there are a few extra lines to set things up, the actually kriging algorithm itself is only 4-5 lines of code.
+
+<!--more-->
 
 This article is not an in-depth explanation of the kriging estimator, its pros and cons, or how it might be relevant to this or that geological application. The goal here is to provide insight in to creating an efficient kriging algorithm in Python. It does not cover the topics of spatial correlation or semivariance either; we assume here that the experimental semivariogram is known and that an appropriate model semivariogram has been selected. Finally, we assume the reader has some familiarity with NumPy's [broadcasting principles](https://numpy.org/doc/stable/user/basics.broadcasting.html).
 
