@@ -1,5 +1,6 @@
 ---
 layout: default
+linkedin: 6783001940251951104
 ---
 
 <small>{{ page.date | date: "%-d %B %Y" }}</small>
@@ -11,4 +12,9 @@ layout: default
 
 {% if page.tags %}
   <small>tags: <em>{{ page.tags | join: "</em> - <em>" }}</em></small>
+{% endif %}
+
+{% if page.linkedin %}
+<iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:{{ page.linkedin }}" height="352" width="504" frameborder="0" allowfullscreen="" title="Embedded post">
+</iframe>
 {% endif %}
