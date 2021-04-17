@@ -4,6 +4,7 @@ title:  "How to draw rocks in Python"
 tags: python matplotlib lithologies hatch
 image: limestone-crop.jpg
 notebook: 1-limestone-hatch
+linkedin: 6783001940251951104
 ---
 
 Matplotlib offers tantalizing [hatching](https://matplotlib.org/stable/gallery/shapes_and_collections/hatch_demo.html) options that will sadly leave most geologists wanting more. It's a bit like pattern fills in Excel - so much potential until you actually try and use it to make satisfying lithology logs. 
