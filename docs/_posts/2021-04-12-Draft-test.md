@@ -2,7 +2,7 @@
 layout: post
 draft: false
 title:  "Simple Kriging in 5 lines of Python or less..."
-tags: python matplotlib lithologies hatch
+tags: python geostatistics kriging variogram
 image: net.jpg
 notebook: 1-limestone-hatch
 ---
@@ -10,7 +10,7 @@ notebook: 1-limestone-hatch
 
 ...or "look ma', no for loops!"
 
-I like this example as it demonstrates the brutal efficiency of Python coding without compromising on performance thanks to NumPy's vectorized functions. While there are a few extra lines to set things up, the actually kriging algorithm itself is only 4-5 lines of code.
+I like this example as it demonstrates the brutal efficiency of Python coding without compromising on performance thanks to NumPy's vectorized functions. While there are a few extra lines to set things up, the actually kriging algorithm itself really is only 4-5 lines of code.
 
 <!--more-->
 
