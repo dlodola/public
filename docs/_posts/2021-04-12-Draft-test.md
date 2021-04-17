@@ -112,3 +112,8 @@ yy = np.arange(LL_CORNER[1],
 # (i,j,k) array where each (i,j) node is its (x,y) coordinates
 grid = np.array(np.meshgrid(xx, yy)).transpose([1,2,0])
 ```
+
+
+[geostatspy](https://pypi.org/project/geostatspy/)
+
+[scikit-gstat](https://pypi.org/project/scikit-gstat/)
