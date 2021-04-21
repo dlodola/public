@@ -113,7 +113,7 @@ yy = np.arange(LL_CORNER[1],
 grid = np.array(np.meshgrid(xx, yy)).transpose([1,2,0])
 ```
 
-{% include image.html file="images/posts/article-2/figure-1.png"
+{% include image.html file="posts/article-2/figure-1.png"
 alt="Figure 1" number="1" link="true" caption="Schematic representation of kriging algorithm." %}
 
 
