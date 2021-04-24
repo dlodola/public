@@ -1,3 +1,1 @@
-This is a placeholder.
-
-[lib](/jupyter/lib/)
+This is a placeholder. Libraries are to be found [here](/jupyter/lib/).
