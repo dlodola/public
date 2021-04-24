@@ -134,19 +134,6 @@ gamma = lambda x: spherical_semivariogram(x, AZ, RANGE, s2, NUGGET)
 
 Now that we are all set up, we can implement our 4 lines for the Simple Kriging algorithm:
 
-1. Equation (4) to determine *&Sigma;<sub>o</sub><sup>2</sup>* of equation (5). grid is repeated number of obs times and reshaped to (*M* x *I* x 2) where each element of the first dimension is an array of *I* vectors which are all the *(x,y)* coordinates of the point *m*. These are fed to the semivariogram function along with the (*I* x *2*) array of known point coordinates.
-Owing to NumPy's broadcasting rules, it will return an (*M*, *I*) array where each element of the first dimension is an array of *I* values, the semivariences between observation points *m* and known points *i*. This is subtracted from sample variance (Equation (5) ) to give a (*M*, *I*) matrix of covariances between all grid nodes and all known points.
-
-2. Similarly, Equation (4) is used to determine *&Sigma;<sup>2</sup>*. This time we provide a (*I* x *I*) array of x,y coordinates for all known points to the semivariogram function.
-We end up with a (*I* x *I*) array of covariances between all known points.
-
-3. We now use NumPy's [linalg.solve](https://numpy.org/doc/stable/reference/generated/numpy.linalg.solve.html?highlight=solve#numpy.linalg.solve) routine to solve Equation (6) for *&Lambda;*. This returns a (*I* x *M*) array which we transpose to a (*M* x *I*) array where each element in the first dimension is a *I*-element vector of Simple Kriging weights for point *m*.
-
-4. We can now estimate the property value at each grid node using Equation (1) by summing the values of our known points multiplied by the Simple Kriging weights.
-We don't forget to reshape the output to the shape of our original grid so we end up with a (*rows* x *cols*) array where each [*i*, *j*] node is the estimated value for the coordinates (*x<sub>i</sub>*, *y<sub>j</sub>*).
-
-5. Similarly, we can use Equation (7) to determine the Simple Kriging variance:
-
 ```python
 # line 1
 s_oi = s2 - gamma(grid[...,None,:].repeat(num_obs, axis=-2) - obs[:,:2])
@@ -160,8 +147,21 @@ S_sk = s2 - (L * s_oi).sum(axis=2)
 # line 5
 ```
 
+1. We apply Equation (4) to determine *&Sigma;<sub>o</sub><sup>2</sup>* used in equation (5). `grid` is repeated *K* times along a new penultimate axis &mdash; where *K* is the number of known points, from which we subtract the coordinates of the known points. This yields an (*I*, *J*, *K*, *2*) array where each element of the penultimate axis is an array of *K* vectors between grid node (*i*, *j*) and known points *k=1,...,K*. 
+These are then fed to the semivariogram function `gamma`, returning an (*I*, *J*, *K*) array where each [*i*, *j*, *k*] element is the semivariance between grid node (*i*, *j*) and known point *k*. This is then subtracted from the sample variance to give the (*I*, *J*, *K*) array of covariances between all grid nodes and all known points.
+
+2. Similarly, Equation (4) is used to determine *&Sigma;<sup>2</sup>*. This time we provide a (*K* x *K*) array of (*x<sub>k</sub>*, *y<sub>k</sub>*) coordinates for all known points to the semivariogram function.
+We end up with a (*K*, *K*) array of covariances between all known points.
+
+3. We now use NumPy's [linalg.solve](https://numpy.org/doc/stable/reference/generated/numpy.linalg.solve.html?highlight=solve#numpy.linalg.solve) routine to solve Equation (6) for *&Lambda;*. The last two axes of *&Sigma;<sub>o</sub><sup>2</sup>* are swapped to allow the arrays to broadcast properly and the output is swapped back to maintain the correct shape .This returns an (*I*, *J*, *K*) array where each element in the last dimension is a *K*-element vector of Simple Kriging weights *&lambda;<sub>k</sub>* for point (*x<sub>i</sub>*, *y<sub>j</sub>*).
+
+4. We can now estimate the property value at each grid node using Equation (1) by summing the values of our known points multiplied by the Simple Kriging weights.
+We end up with a (*rows* x *cols*) array where each [*i*, *j*] node is the estimated value for the coordinates (*x<sub>i</sub>*, *y<sub>j</sub>*).
+
+5. Similarly, we can use Equation (7) to determine the Simple Kriging variance:
+
 {% include image.html file="posts/article-2/figure-1.png"
-alt="Figure 1" number="1" link="true" caption="Schematic representation of kriging algorithm." %}
+alt="Figure 1" number="1" link="true" caption="Schematic representation of kriging algorithm. Bold outlines illustrate how broadcasting is applied." %}
 
 ### Display results
 
