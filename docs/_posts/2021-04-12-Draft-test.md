@@ -111,7 +111,7 @@ yy = np.arange(LL_CORNER[1],
                LL_CORNER[1] + ROWS * CELL_SIZE, 
                CELL_SIZE)
 
-# (i,j,2) array where each (i,j) node is its (x,y) coordinates
+# (I,J,2) array where each (i,j) node is its (x,y) coordinates
 grid = np.array(np.meshgrid(xx, yy)).transpose([1,2,0])
 ```
 
@@ -119,8 +119,8 @@ grid = np.array(np.meshgrid(xx, yy)).transpose([1,2,0])
 
 ```python
 NUGGET = 0                # variogram nugget
-RANGE = [4_500, 3_000]    # [major, minor] axis length in grid units
-AZ = -45                  # variogram azimuth in degrees (North = 0)
+RANGE = [3_500, 2_500]    # [major, minor] axis length in grid units
+AZ = 45                  # variogram azimuth in degrees (North = 0)
 
 # sample variance
 s2 = obs[:, -1].var()
@@ -155,10 +155,10 @@ We end up with a (*K*, *K*) array of covariances between all known points.
 
 3. We now use NumPy's [linalg.solve](https://numpy.org/doc/stable/reference/generated/numpy.linalg.solve.html?highlight=solve#numpy.linalg.solve) routine to solve Equation (6) for *&Lambda;*. The last two axes of *&Sigma;<sub>o</sub><sup>2</sup>* are swapped to allow the arrays to broadcast properly and the output is swapped back to maintain the correct shape .This returns an (*I*, *J*, *K*) array where each element in the last dimension is a *K*-element vector of Simple Kriging weights *&lambda;<sub>k</sub>* for point (*x<sub>i</sub>*, *y<sub>j</sub>*).
 
-4. We can now estimate the property value at each grid node using Equation (1) by summing the values of our known points multiplied by the Simple Kriging weights.
-We end up with a (*rows* x *cols*) array where each [*i*, *j*] node is the estimated value for the coordinates (*x<sub>i</sub>*, *y<sub>j</sub>*).
+4. We can now estimate the property value at each grid node using Equation (6) by summing the values of our known points multiplied by the Simple Kriging weights.
+We end up with a (*I*, *J*) array where each [*i*, *j*] node is the estimated value for the coordinates (*x<sub>i</sub>*, *y<sub>j</sub>*).
 
-5. Similarly, we can use Equation (7) to determine the Simple Kriging variance:
+5. Similarly, we can use Equation (7) to determine the Simple Kriging variance.
 
 {% include image.html file="posts/article-2/figure-1.png"
 alt="Figure 1" number="1" link="true" caption="Schematic representation of kriging algorithm. Bold outlines illustrate how broadcasting is applied." %}
@@ -188,7 +188,13 @@ ax.set_aspect(1)
 plt.show()
 ```
 
+### Serialize
+
+to ESRI ascii or [Rasterio](https://rasterio.readthedocs.io/en/latest/)
+
 ## Where next?
+
+
 
 
 [geostatspy](https://pypi.org/project/geostatspy/)
