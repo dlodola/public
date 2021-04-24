@@ -73,7 +73,7 @@ import numpy as np
 from lib.semivariograms import spherical_semivariogram
 ```
 
-The `spherical_semivariogram` function is an implementation of a 2D anisotropic spherical semivariogram taking as arguments the coordinates of 2 sets of points and the semivariogram's semi-major & semi-minor ranges, azimuth, sill and nugget. It returns the corresponding semivariance for the lags between the points in both sets of inputs. For now, you can get a copy of the library [here](), but I will cover it in more detail in a future article.
+The `spherical_semivariogram` function is an implementation of a 2D anisotropic spherical semivariogram taking as arguments the coordinates of lag vectors and the semivariogram's semi-major & semi-minor ranges, azimuth, sill and nugget. It returns the corresponding semivariance for the lags between the points in both sets of inputs. For now, you can get a copy of the library [here](), but I will cover it in more detail in a future article.
 
 ### Grid
 
@@ -109,7 +109,7 @@ yy = np.arange(LL_CORNER[1],
                LL_CORNER[1] + ROWS * CELL_SIZE, 
                CELL_SIZE)
 
-# (i,j,k) array where each (i,j) node is its (x,y) coordinates
+# (i,j,2) array where each (i,j) node is its (x,y) coordinates
 grid = np.array(np.meshgrid(xx, yy)).transpose([1,2,0])
 ```
 
@@ -123,7 +123,7 @@ s2 = obs[:, -1].var()
 
 # lambda function for semivariance taking just 2 arguments:
 # source and destination coordinates of lag vectors
-gamma = lambda x1, x2: spherical_semivariogram(x1, x2, AZ, RANGE, s2, NUGGET)
+gamma = lambda x: spherical_semivariogram(x, AZ, RANGE, s2, NUGGET)
 ```
 
 ## Simple Kriging
@@ -145,9 +145,9 @@ We don't forget to reshape the output to the shape of our original grid so we en
 
 ```python
 # line 1
-s_oi = s2 - gamma(grid[...,None,:].repeat(num_obs, axis=-2), obs[:,:2])
+s_oi = s2 - gamma(grid[...,None,:].repeat(num_obs, axis=-2) - obs[:,:2])
 # line 2
-s_ij = s2 - gamma(obs[...,None,:2].repeat(num_obs, axis=-2), obs[:,:2])
+s_ij = s2 - gamma(obs[...,None,:2].repeat(num_obs, axis=-2) - obs[:,:2])
 L = np.linalg.solve(s_ij, s_oi.swapaxes(-1,-2)).swapaxes(-1,-2)
 # line 3
 Z_sk = (L * obs[:,2]).sum(axis=2)
