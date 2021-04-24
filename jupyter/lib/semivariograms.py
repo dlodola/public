@@ -4,11 +4,8 @@ import numpy as np
 
 
 def spherical_semivariogram(x, az, rng, sill, nugget=0):
-    """Returns the semivariance for the lag vectors defined by the 
-    difference of 2 arrays using a 2D ellitical anisotropic spherical 
-    semivariogram.
-
-    
+    """Returns the semivariance for the lag vectors x using 
+    a 2D ellitical anisotropic spherical semivariogram.
     
     Arguments:
     ----------
@@ -36,11 +33,11 @@ def spherical_semivariogram(x, az, rng, sill, nugget=0):
     Notes:
     ------
     Lag vector length is calculated in a Euclidean space.
-    
     """
     
     # get lag vector coordinates
     h = np.asarray(x)
+    r = rng[0]
     
     # affine rotation of lag vectors 
     # convert azimuth to radians with origin along x axis first!
@@ -56,13 +53,9 @@ def spherical_semivariogram(x, az, rng, sill, nugget=0):
     h = np.matmul(h, D)
     
     # get Euclidean length of lag vectors
-#     h = (h[..., 0] ** 2 + h[..., 1] ** 2) ** 0.5
     h = (h ** 2).sum(axis=-1) ** 0.5
-    
-    r = rng[0]
     
     # return semivariances
     return np.where(h < r, 
-                    (sill - nugget) * \
-                     (3 * h / 2 / r - 0.5 * np.power(h / r, 3)) + nugget,
+                    (sill - nugget) * (3 * h / 2 / r - 0.5 * np.power(h / r, 3)) + nugget,
                     sill)
