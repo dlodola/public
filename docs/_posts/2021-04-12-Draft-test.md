@@ -79,7 +79,7 @@ The `spherical_semivariogram` function is an implementation of a 2D anisotropic 
 
 ### Set up grid
 
-First lets create a (*i*, *j*, *2*) array `grid` such that each [*i*, *j*] node holds
+First lets create a (*I*, *J*, *2*) array `grid` such that each [*i*, *j*] node holds
 the (*x<sub>i</sub>*, *y<sub>j</sub>*) Cartesian coordinates of that node. It is set up using the (*x<sub>0</sub>*, *y<sub>0</sub>*) coordinates of the lower left corner, the cell size and the number of rows and columns.
 
 <!--
