@@ -75,7 +75,7 @@ import numpy as np
 from lib.semivariograms import spherical_semivariogram
 ```
 
-The `spherical_semivariogram` function is an implementation of a 2D anisotropic spherical semivariogram taking as arguments the coordinates of lag vectors and the semivariogram's semi-major & semi-minor ranges, azimuth, sill and nugget. It returns the corresponding semivariance for the lags defined by the lag vectors and taking in to account the lag vectors' orientations. For now, you can get a copy of the library [here](), but I will cover it in more detail in a future article.
+The `spherical_semivariogram` function is an implementation of a 2D anisotropic spherical semivariogram taking as arguments the coordinates of lag vectors and the semivariogram's semi-major & semi-minor ranges, azimuth, sill and nugget. It returns the corresponding semivariance for the lags defined by the lag vectors and taking in to account the lag vectors' orientations. For now, you can get a copy of the library [here](https://github.com/dlodola/public/tree/main/jupyter/lib), but I will cover it in more detail in a future article.
 
 ### Set up grid
 
