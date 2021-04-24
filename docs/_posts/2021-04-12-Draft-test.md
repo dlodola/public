@@ -77,10 +77,10 @@ The `spherical_semivariogram` function is an implementation of a 2D anisotropic 
 
 ### Grid
 
-First lets create a (*i*, *j*, *k*) array `grid` such that each [*i*,*j*] node holds
-the (*x<sub>i</sub>*, *y<sub>j</sub>*) Cartesian coordinates of that node. It is set up using the (*x<sub>0</sub>*, *y<sub>0</sub>*) coordinates of the lower left corner, the cell size
-and the number of rows and columns.
+First lets create a (*i*, *j*, *2*) array `grid` such that each [*i*, *j*] node holds
+the (*x<sub>i</sub>*, *y<sub>j</sub>*) Cartesian coordinates of that node. It is set up using the (*x<sub>0</sub>*, *y<sub>0</sub>*) coordinates of the lower left corner, the cell size and the number of rows and columns.
 
+<!-->
 {% include equation.html file="images/posts/article-2/Equation_8.png"
 alt="equation 8" number="8" height="79" %}
 
@@ -90,7 +90,7 @@ Going forward, we will mostly work with a part flattened copy of `grid` with dim
 1. M is the number of nodes in the grid where property is estimated (*i.i*, rows * columns).
 2. m: a node with in grid with coordinates (*x*, *y*).
 3. I: the number of known points for the property.
-4. i: a known point with coordinates (*x<sub>i</sub>*,*y<sub>i</sub>*).
+4. i: a known point with coordinates (*x<sub>i</sub>*,*y<sub>i</sub>*). -->
 
 ```python
 LL_CORNER = (1_000_000, 500_000)
@@ -141,7 +141,7 @@ We end up with a (*I* x *I*) array of covariances between all known points.
 4. We can now estimate the property value at each grid node using Equation (1) by summing the values of our known points multiplied by the Simple Kriging weights.
 We don't forget to reshape the output to the shape of our original grid so we end up with a (*rows* x *cols*) array where each [*i*, *j*] node is the estimated value for the coordinates (*x<sub>i</sub>*, *y<sub>j</sub>*).
 
-5. Similarly, we can use Equation (7)to determine the Simple Kriging variance:
+5. Similarly, we can use Equation (7) to determine the Simple Kriging variance:
 
 ```python
 # line 1
@@ -158,6 +158,27 @@ S_sk = s2 - (L * s_oi).sum(axis=2)
 
 {% include image.html file="posts/article-2/figure-1.png"
 alt="Figure 1" number="1" link="true" caption="Schematic representation of kriging algorithm." %}
+
+```python
+fig, ax = plt.subplots(figsize=(12,10))
+
+disp = ax.contourf(grid[...,0], grid[...,1], Z_sk, 
+                   levels=10, cmap='seismic')
+fig.colorbar(disp, fraction=0.025)
+CS = ax.contour(grid[...,0], grid[...,1], Z_sk, 
+                levels=10, colors='k', linewidths=0.5)
+ax.clabel(CS, inline=True, fmt='%.2f')
+ax.scatter(obs[:,0], obs[:,1], fc='w', ec='w')
+for ob in obs:
+    ax.annotate("{:.2f}".format(ob[2]), (ob[0]+75, ob[1]+75), c='w')
+
+ax.xaxis.set_major_formatter(FuncFormatter(lambda x, p: format(int(x), ',')))
+ax.yaxis.set_major_formatter(FuncFormatter(lambda x, p: format(int(x), ',')))
+ax.tick_params(top=True, right=True)
+ax.set_aspect(1)
+
+plt.show()
+```
 
 
 [geostatspy](https://pypi.org/project/geostatspy/)
