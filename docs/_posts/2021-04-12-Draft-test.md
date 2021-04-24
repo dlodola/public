@@ -61,7 +61,9 @@ where *&#7824;* is an *M*-element vector of estimated values, *Z* is an *I*-elem
 {% include equation.html file="images/posts/article-2/Equation_7.png"
 alt="equation 7" number="7" height="30" %}
 
-## Import necessary libraries and set things up
+## Simple Kriging
+
+### Import necessary libraries
 
 ```python
 from math import pi, cos, sin
@@ -73,9 +75,9 @@ import numpy as np
 from lib.semivariograms import spherical_semivariogram
 ```
 
-The `spherical_semivariogram` function is an implementation of a 2D anisotropic spherical semivariogram taking as arguments the coordinates of lag vectors and the semivariogram's semi-major & semi-minor ranges, azimuth, sill and nugget. It returns the corresponding semivariance for the lags between the points in both sets of inputs. For now, you can get a copy of the library [here](), but I will cover it in more detail in a future article.
+The `spherical_semivariogram` function is an implementation of a 2D anisotropic spherical semivariogram taking as arguments the coordinates of lag vectors and the semivariogram's semi-major & semi-minor ranges, azimuth, sill and nugget. It returns the corresponding semivariance for the lags defined by the lag vectors and taking in to account the lag vectors' orientations. For now, you can get a copy of the library [here](), but I will cover it in more detail in a future article.
 
-### Grid
+### Set up grid
 
 First lets create a (*i*, *j*, *2*) array `grid` such that each [*i*, *j*] node holds
 the (*x<sub>i</sub>*, *y<sub>j</sub>*) Cartesian coordinates of that node. It is set up using the (*x<sub>0</sub>*, *y<sub>0</sub>*) coordinates of the lower left corner, the cell size and the number of rows and columns.
@@ -113,6 +115,8 @@ yy = np.arange(LL_CORNER[1],
 grid = np.array(np.meshgrid(xx, yy)).transpose([1,2,0])
 ```
 
+### Load data and create semivariogram
+
 ```python
 NUGGET = 0                # variogram nugget
 RANGE = [4_500, 3_000]    # [major, minor] axis length in grid units
@@ -121,12 +125,12 @@ AZ = -45                  # variogram azimuth in degrees (North = 0)
 # sample variance
 s2 = obs[:, -1].var()
 
-# lambda function for semivariance taking just 2 arguments:
-# source and destination coordinates of lag vectors
+# create lambda function for semivariance taking just lag
+# vectors as arguments arguments:
 gamma = lambda x: spherical_semivariogram(x, AZ, RANGE, s2, NUGGET)
 ```
 
-## Simple Kriging
+### Perform Simple Kriging
 
 Now that we are all set up, we can implement our 4 lines for the Simple Kriging algorithm:
 
@@ -159,6 +163,8 @@ S_sk = s2 - (L * s_oi).sum(axis=2)
 {% include image.html file="posts/article-2/figure-1.png"
 alt="Figure 1" number="1" link="true" caption="Schematic representation of kriging algorithm." %}
 
+### Display results
+
 ```python
 fig, ax = plt.subplots(figsize=(12,10))
 
@@ -181,6 +187,8 @@ ax.set_aspect(1)
 
 plt.show()
 ```
+
+## Where next?
 
 
 [geostatspy](https://pypi.org/project/geostatspy/)
