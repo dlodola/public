@@ -113,6 +113,32 @@ yy = np.arange(LL_CORNER[1],
 grid = np.array(np.meshgrid(xx, yy)).transpose([1,2,0])
 ```
 
+```python
+NUGGET = 0                # variogram nugget
+RANGE = [4_500, 3_000]    # [major, minor] axis length in grid units
+AZ = -45                  # variogram azimuth in degrees (North = 0)
+
+# sample variance
+s2 = obs[:, -1].var()
+
+# lambda function for semivariance taking just 2 arguments:
+# source and destination coordinates of lag vectors
+gamma = lambda x1, x2: spherical_semivariogram(x1, x2, AZ, RANGE, s2, NUGGET)
+```
+
+```python
+# line 1
+s_oi = s2 - gamma(grid[...,None,:].repeat(num_obs, axis=-2), obs[:,:2])
+# line 2
+s_ij = s2 - gamma(obs[...,None,:2].repeat(num_obs, axis=-2), obs[:,:2])
+L = np.linalg.solve(s_ij, s_oi.swapaxes(-1,-2)).swapaxes(-1,-2)
+# line 3
+Z_sk = (L * obs[:,2]).sum(axis=2)
+# line 4
+S_sk = s2 - (L * s_oi).sum(axis=2)
+# line 5
+```
+
 {% include image.html file="posts/article-2/figure-1.png"
 alt="Figure 1" number="1" link="true" caption="Schematic representation of kriging algorithm." %}
 
