@@ -141,7 +141,7 @@ s_oi = s2 - gamma(grid[...,None,:].repeat(num_obs, axis=-2) - obs[:,:2])
 s_ij = s2 - gamma(obs[...,None,:2].repeat(num_obs, axis=-2) - obs[:,:2])
 L = np.linalg.solve(s_ij, s_oi.swapaxes(-1,-2)).swapaxes(-1,-2)
 # line 3
-Z_sk = (L * obs[:,2]).sum(axis=2)
+Z_sk = np.matmul(L, obs[:,2])
 # line 4
 S_sk = s2 - (L * s_oi).sum(axis=2)
 # line 5
@@ -169,15 +169,20 @@ alt="Figure 1" number="1" link="true" caption="Schematic representation of krigi
 fig, ax = plt.subplots(figsize=(12,10))
 
 # display grid as filled contour plot and add/annotate observation data
-disp = ax.contourf(grid[...,0], grid[...,1], Z_sk, 
+disp = ax.contourf(grid[...,0], grid[...,1], Z_sk2, 
                    levels=10, cmap='seismic')
 fig.colorbar(disp, fraction=0.025)
-cs = ax.contour(grid[...,0], grid[...,1], Z_sk, 
+CS = ax.contour(grid[...,0], grid[...,1], Z_sk2, 
                 levels=10, colors='k', linewidths=0.5)
-ax.clabel(cs, inline=True, fmt='%.2f')
-ax.scatter(obs[:,0], obs[:,1], fc='w', ec='w')
+ax.clabel(CS, inline=True, fmt='%.2f', zorder=2)
+ax.scatter(obs[:,0], obs[:,1], fc='w', ec='k', zorder=2)
+bbox = {'boxstyle':  'round4',
+        'pad':       0.15,
+        'facecolor': 'w',
+        'edgecolor': 'k'}
 for ob in obs:
-    ax.annotate("{:.2f}".format(ob[2]), (ob[0]+75, ob[1]+75), c='w')
+    ax.annotate("{:.2f}".format(ob[2]), (ob[0]+100, ob[1]+100), 
+                c='k', bbox=bbox, zorder=3)
 
 # format ticks and set aspect ratio to 1
 ax.xaxis.set_major_formatter(FuncFormatter(lambda x, p: format(int(x), ',')))
