@@ -75,7 +75,7 @@ import numpy as np
 from lib.semivariograms import spherical_semivariogram
 ```
 
-The `spherical_semivariogram` function is an implementation of a 2D anisotropic spherical semivariogram taking as arguments the coordinates of lag vectors and the semivariogram's semi-major & semi-minor ranges, azimuth, sill and nugget. It returns the corresponding semivariance for the lags defined by the lag vectors and taking in to account the lag vectors' orientations. For now, you can get a copy of the library [here](https://github.com/dlodola/public/tree/main/jupyter/lib), but I will cover it in more detail in a future article.
+The `spherical_semivariogram` function is an implementation of a 2D anisotropic spherical semivariogram taking as arguments the coordinates of lag vectors and the semivariogram's semi-major & semi-minor ranges, azimuth, sill and nugget. It returns the corresponding semivariance for the lags defined by the lag vectors, including their orientations. For now, you can get a copy of the library [here](https://github.com/dlodola/public/tree/main/jupyter/lib), but I will cover it in more detail in a future article.
 
 ### Set up grid
 
@@ -150,7 +150,7 @@ S_sk = s2 - (L * s_oi).sum(axis=2)
 1. We apply Equation (4) to determine *&Sigma;<sub>o</sub><sup>2</sup>* used in equation (5). `grid` is repeated *K* times along a new penultimate axis &mdash; where *K* is the number of known points, from which we subtract the coordinates of the known points. This yields an (*I*, *J*, *K*, *2*) array where each element of the penultimate axis is an array of *K* vectors between grid node (*i*, *j*) and known points *k=1,...,K*. 
 These are then fed to the semivariogram function `gamma`, returning an (*I*, *J*, *K*) array where each [*i*, *j*, *k*] element is the semivariance between grid node (*i*, *j*) and known point *k*. This is then subtracted from the sample variance to give the (*I*, *J*, *K*) array of covariances between all grid nodes and all known points.
 
-2. Similarly, Equation (4) is used to determine *&Sigma;<sup>2</sup>*. This time we provide a (*K* x *K*) array of (*x<sub>k</sub>*, *y<sub>k</sub>*) coordinates for all known points to the semivariogram function.
+2. Similarly, Equation (4) is used to determine *&Sigma;<sup>2</sup>*. This time we provide a (*K*, *K*) array of (*x<sub>k</sub>*, *y<sub>k</sub>*) coordinates for all known points to the semivariogram function.
 We end up with a (*K*, *K*) array of covariances between all known points.
 
 3. We now use NumPy's [linalg.solve](https://numpy.org/doc/stable/reference/generated/numpy.linalg.solve.html?highlight=solve#numpy.linalg.solve) routine to solve Equation (6) for *&Lambda;*. The last two axes of *&Sigma;<sub>o</sub><sup>2</sup>* are swapped to allow the arrays to broadcast properly and the output is swapped back to maintain the correct shape .This returns an (*I*, *J*, *K*) array where each element in the last dimension is a *K*-element vector of Simple Kriging weights *&lambda;<sub>k</sub>* for point (*x<sub>i</sub>*, *y<sub>j</sub>*).
@@ -195,6 +195,8 @@ to ESRI ascii or [Rasterio](https://rasterio.readthedocs.io/en/latest/)
 ## Where next?
 
 
+{% include image.html file="posts/article-2/figure-2.png"
+alt="Figure 2" number="2" link="true" caption="Alternative kriging types." %}
 
 
 [geostatspy](https://pypi.org/project/geostatspy/)
