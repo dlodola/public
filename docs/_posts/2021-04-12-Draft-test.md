@@ -188,6 +188,13 @@ ax.set_aspect(1)
 plt.show()
 ```
 
+{% include image.html file="posts/article-2/figure-2.png"
+alt="Figure 2" number="2" link="true" caption="Simple Kriging output." %}
+
+
+{% include image.html file="posts/article-2/figure-3.png"
+alt="Figure 3" number="3" link="true" caption="Simple Kriging variance." %}
+
 ### Serialize
 
 to ESRI ascii or [Rasterio](https://rasterio.readthedocs.io/en/latest/)
@@ -195,8 +202,8 @@ to ESRI ascii or [Rasterio](https://rasterio.readthedocs.io/en/latest/)
 ## Where next?
 
 
-{% include image.html file="posts/article-2/figure-2.png"
-alt="Figure 2" number="2" link="true" caption="Alternative kriging types." %}
+{% include image.html file="posts/article-2/figure-4.png"
+alt="Figure 4" number="4" link="true" caption="Alternative kriging types." %}
 
 
 [geostatspy](https://pypi.org/project/geostatspy/)
