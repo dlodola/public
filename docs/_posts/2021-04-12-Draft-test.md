@@ -118,15 +118,16 @@ grid = np.array(np.meshgrid(xx, yy)).transpose([1,2,0])
 ### Load data and create semivariogram
 
 ```python
-NUGGET = 0                # variogram nugget
-RANGE = [3_500, 2_500]    # [major, minor] axis length in grid units
-AZ = 45                  # variogram azimuth in degrees (North = 0)
+# semi variogram parameters
+NUGGET = 0                # nugget
+RANGE = (3_500, 2_500)    # [major, minor] axis length in grid units
+AZ = 45                   # azimuth in degrees (North = 0)
 
 # sample variance
 s2 = obs[:, -1].var()
 
 # create lambda function for semivariance taking just lag
-# vectors as arguments arguments:
+# vectors as arguments:
 gamma = lambda x: spherical_semivariogram(x, AZ, RANGE, s2, NUGGET)
 ```
 
@@ -139,12 +140,12 @@ Now that we are all set up, we can implement our 4 lines for the Simple Kriging 
 s_oi = s2 - gamma(grid[...,None,:].repeat(num_obs, axis=-2) - obs[:,:2])
 # line 2
 s_ij = s2 - gamma(obs[...,None,:2].repeat(num_obs, axis=-2) - obs[:,:2])
-L = np.linalg.solve(s_ij, s_oi.swapaxes(-1,-2)).swapaxes(-1,-2)
 # line 3
-Z_sk = np.matmul(L, obs[:,2])
+L = np.linalg.solve(s_ij, s_oi.swapaxes(-1,-2)).swapaxes(-1,-2)
 # line 4
-S_sk = s2 - (L * s_oi).sum(axis=2)
+Z_sk = np.matmul(L, obs[:,2])
 # line 5
+S_sk = s2 - (L * s_oi).sum(axis=2)
 ```
 
 1. We apply Equation (4) to determine *&Sigma;<sub>o</sub><sup>2</sup>* used in equation (5). `grid` is repeated *K* times along a new penultimate axis &mdash; where *K* is the number of known points, from which we subtract the coordinates of the known points. This yields an (*I*, *J*, *K*, *2*) array where each element of the penultimate axis is an array of *K* vectors between grid node (*i*, *j*) and known points *k=1,...,K*. 
