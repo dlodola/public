@@ -3,7 +3,7 @@ layout: post
 draft: false
 title:  "Simple Kriging in 5 lines of Python or less..."
 tags: python geostatistics kriging variogram
-image: net.jpg
+image: net.png
 notebook: 1-limestone-hatch
 ---
 
@@ -75,7 +75,7 @@ import numpy as np
 from lib.semivariograms import spherical_semivariogram
 ```
 
-The `spherical_semivariogram` function is an implementation of a 2D anisotropic spherical semivariogram taking as arguments the coordinates of lag vectors and the semivariogram's semi-major & semi-minor ranges, azimuth, sill and nugget. It returns the corresponding semivariance for the lags defined by the lag vectors and taking in to account the lag vectors' orientations. For now, you can get a copy of the library [here](https://github.com/dlodola/public/tree/main/jupyter/lib), but I will cover it in more detail in a future article.
+The `spherical_semivariogram` function is an implementation of a 2D anisotropic spherical semivariogram taking as arguments the coordinates of lag vectors and the semivariogram's semi-major & semi-minor ranges, azimuth, sill and nugget. It returns the corresponding semivariance for the lags defined by the lag vectors, including their orientations. For now, you can get a copy of the library [here](https://github.com/dlodola/public/tree/main/jupyter/lib), but I will cover it in more detail in a future article.
 
 ### Set up grid
 
@@ -118,15 +118,16 @@ grid = np.array(np.meshgrid(xx, yy)).transpose([1,2,0])
 ### Load data and create semivariogram
 
 ```python
-NUGGET = 0                # variogram nugget
-RANGE = [3_500, 2_500]    # [major, minor] axis length in grid units
-AZ = 45                  # variogram azimuth in degrees (North = 0)
+# semi variogram parameters
+NUGGET = 0                # nugget
+RANGE = (3_500, 2_500)    # [major, minor] axis length in grid units
+AZ = 45                   # azimuth in degrees (North = 0)
 
 # sample variance
 s2 = obs[:, -1].var()
 
 # create lambda function for semivariance taking just lag
-# vectors as arguments arguments:
+# vectors as arguments:
 gamma = lambda x: spherical_semivariogram(x, AZ, RANGE, s2, NUGGET)
 ```
 
@@ -139,18 +140,18 @@ Now that we are all set up, we can implement our 4 lines for the Simple Kriging 
 s_oi = s2 - gamma(grid[...,None,:].repeat(num_obs, axis=-2) - obs[:,:2])
 # line 2
 s_ij = s2 - gamma(obs[...,None,:2].repeat(num_obs, axis=-2) - obs[:,:2])
-L = np.linalg.solve(s_ij, s_oi.swapaxes(-1,-2)).swapaxes(-1,-2)
 # line 3
-Z_sk = (L * obs[:,2]).sum(axis=2)
+L = np.linalg.solve(s_ij, s_oi.swapaxes(-1,-2)).swapaxes(-1,-2)
 # line 4
-S_sk = s2 - (L * s_oi).sum(axis=2)
+Z_sk = np.matmul(L, obs[:,2])
 # line 5
+S_sk = s2 - (L * s_oi).sum(axis=2)
 ```
 
 1. We apply Equation (4) to determine *&Sigma;<sub>o</sub><sup>2</sup>* used in equation (5). `grid` is repeated *K* times along a new penultimate axis &mdash; where *K* is the number of known points, from which we subtract the coordinates of the known points. This yields an (*I*, *J*, *K*, *2*) array where each element of the penultimate axis is an array of *K* vectors between grid node (*i*, *j*) and known points *k=1,...,K*. 
 These are then fed to the semivariogram function `gamma`, returning an (*I*, *J*, *K*) array where each [*i*, *j*, *k*] element is the semivariance between grid node (*i*, *j*) and known point *k*. This is then subtracted from the sample variance to give the (*I*, *J*, *K*) array of covariances between all grid nodes and all known points.
 
-2. Similarly, Equation (4) is used to determine *&Sigma;<sup>2</sup>*. This time we provide a (*K* x *K*) array of (*x<sub>k</sub>*, *y<sub>k</sub>*) coordinates for all known points to the semivariogram function.
+2. Similarly, Equation (4) is used to determine *&Sigma;<sup>2</sup>*. This time we provide a (*K*, *K*) array of (*x<sub>k</sub>*, *y<sub>k</sub>*) coordinates for all known points to the semivariogram function.
 We end up with a (*K*, *K*) array of covariances between all known points.
 
 3. We now use NumPy's [linalg.solve](https://numpy.org/doc/stable/reference/generated/numpy.linalg.solve.html?highlight=solve#numpy.linalg.solve) routine to solve Equation (6) for *&Lambda;*. The last two axes of *&Sigma;<sub>o</sub><sup>2</sup>* are swapped to allow the arrays to broadcast properly and the output is swapped back to maintain the correct shape .This returns an (*I*, *J*, *K*) array where each element in the last dimension is a *K*-element vector of Simple Kriging weights *&lambda;<sub>k</sub>* for point (*x<sub>i</sub>*, *y<sub>j</sub>*).
@@ -169,15 +170,20 @@ alt="Figure 1" number="1" link="true" caption="Schematic representation of krigi
 fig, ax = plt.subplots(figsize=(12,10))
 
 # display grid as filled contour plot and add/annotate observation data
-disp = ax.contourf(grid[...,0], grid[...,1], Z_sk, 
+disp = ax.contourf(grid[...,0], grid[...,1], Z_sk2, 
                    levels=10, cmap='seismic')
 fig.colorbar(disp, fraction=0.025)
-cs = ax.contour(grid[...,0], grid[...,1], Z_sk, 
+CS = ax.contour(grid[...,0], grid[...,1], Z_sk2, 
                 levels=10, colors='k', linewidths=0.5)
-ax.clabel(cs, inline=True, fmt='%.2f')
-ax.scatter(obs[:,0], obs[:,1], fc='w', ec='w')
+ax.clabel(CS, inline=True, fmt='%.2f', zorder=2)
+ax.scatter(obs[:,0], obs[:,1], fc='w', ec='k', zorder=2)
+bbox = {'boxstyle':  'round4',
+        'pad':       0.15,
+        'facecolor': 'w',
+        'edgecolor': 'k'}
 for ob in obs:
-    ax.annotate("{:.2f}".format(ob[2]), (ob[0]+75, ob[1]+75), c='w')
+    ax.annotate("{:.2f}".format(ob[2]), (ob[0]+100, ob[1]+100), 
+                c='k', bbox=bbox, zorder=3)
 
 # format ticks and set aspect ratio to 1
 ax.xaxis.set_major_formatter(FuncFormatter(lambda x, p: format(int(x), ',')))
@@ -188,6 +194,13 @@ ax.set_aspect(1)
 plt.show()
 ```
 
+{% include image.html file="posts/article-2/figure-2.png"
+alt="Figure 2" number="2" link="true" caption="Simple Kriging output." %}
+
+
+{% include image.html file="posts/article-2/figure-3.png"
+alt="Figure 3" number="3" link="true" caption="Simple Kriging variance." %}
+
 ### Serialize
 
 to ESRI ascii or [Rasterio](https://rasterio.readthedocs.io/en/latest/)
@@ -195,6 +208,8 @@ to ESRI ascii or [Rasterio](https://rasterio.readthedocs.io/en/latest/)
 ## Where next?
 
 
+{% include image.html file="posts/article-2/figure-4.png"
+alt="Figure 4" number="4" link="true" caption="Alternative kriging types." %}
 
 
 [geostatspy](https://pypi.org/project/geostatspy/)
