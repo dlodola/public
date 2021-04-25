@@ -7,7 +7,7 @@ def spherical_semivariogram(x, az, rng, sill, nugget=0):
     """Returns the semivariance for the lag vectors x using 
     a 2D ellitical anisotropic spherical semivariogram.
     
-    Arguments:
+    Parameters:
     ----------
     x:      array like, at least 2D
             array of lag vectors
