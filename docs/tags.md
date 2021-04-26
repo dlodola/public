@@ -22,15 +22,17 @@ layout: default
 
 
 {% for tag in tags %}
-### {{ tag }}
+
 ---
-<div>
+
+### {{ tag }}
+<ul>
     {% for post in site.posts %}
         {% if post.tags contains tag %}
-            <p><a href="{{ site.url }}{{ post.url }}">{{ post.title }}</a></p>
+            <li><a href="{{ site.url }}{{ post.url }}">{{ post.title }}</a></li>
         {% endif %}
     {% endfor %}
-</div>
+</ul>
 {% endfor %}
 
 ---
