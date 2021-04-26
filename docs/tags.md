@@ -21,5 +21,10 @@ layout: default
 
 
 {% for tag in tags %}
-## {{ tag }}
+### {{ tag }}
+    {% for post in site.posts %}
+        {% if post.tags contains tag %}
+            <p><a href="{{ site.url }}{{ post.url }}">{{ post.title }}</a></p>
+        {% endif %}
+    {% endfor %}
 {% endfor %}
