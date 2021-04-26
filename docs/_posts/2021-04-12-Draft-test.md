@@ -96,8 +96,7 @@ Going forward, we will mostly work with a part flattened copy of `grid` with dim
 
 ```python
 LL_CENTER = (1_000_000, 500_000)
-CELL_SIZE = 50
-ROWS, COLS = 300, 400
+CELL_SIZE, ROWS, COLS = 50, 300, 400
 
 nodes = ROWS * COLS
 
@@ -116,6 +115,8 @@ grid = np.array(np.meshgrid(xx, yy)).transpose([1,2,0])
 ```
 
 ### Load data and create semivariogram
+
+!!load the data!
 
 ```python
 # semi variogram parameters
@@ -203,7 +204,7 @@ alt="Figure 2" number="2" link="true" caption="Simple Kriging output." %}
 {% include image.html file="posts/article-2/figure-3.png"
 alt="Figure 3" number="3" link="true" caption="Simple Kriging variance." %}
 
-### Serialize
+### Serialization
 
 We can also export the data array for use in a GIS package. The [grid_utils](https://github.com/dlodola/public/blob/main/jupyter/lib/grid_utils.py) library provides a simple function to serialize an array to an ESRI ascii raster format file:
 
@@ -214,6 +215,8 @@ array_to_ESRIascii(Z_sk, cellsize=CELL_SIZE, llcenter=LL_CENTER)
 ```
 
 Alternatively you can use the excellent [Rasterio](https://rasterio.readthedocs.io/en/latest/) library and serialize to a wide array of grid types. Rasterio also handles spatial reference. Give it a go!
+
+All of the heavy lifting relies on NumPy which is packaged with ArcMap's python distribution. You should therefore be able touse this algorithm in your ArcMap toolboxes without difficulties, though you would need to define the semivariogram function with your ArcMap scripts and not as an import.
 
 ## Where next?
 
@@ -230,11 +233,11 @@ There are two main areas of limitations to the algorithm proposed above:
 
 1. Though this example is efficient from both a coding and performance perspectives, it is inefficient from a memory perspective as NumPy's vectorization is memory hungry. This should not be a problem for reasonably sized grids and number of known points, but it may not scale well to very large datasets. 
 
-2. There is no preprocessing of the input data. In particular there is no limit on search radius &mdash; beyond which covariances may be poorly defined, nor are any declustering or detrending processes included. As stated in the opening remarks however, this is beyond the scope of this article.
+2. There is no preprocessing of the input data. In particular there is no limit on search radius &mdash; beyond which covariances may be poorly defined, nor are any declustering or detrending processes included. As stated in the opening remarks, this is beyond the scope of this article. However the algorithm presented here provides a basis upon which to build a more complete solution.
 
 ### Existing geostatistic implementations
 
-There are a number of existing Python implementations of geostatistical methods already in existence, though most seem to be in their infancy or currently being heavily developed. Chief among these is [geostatspy](https://pypi.org/project/geostatspy/). This is a Python implementation of the seminal GSLIB: Geostatistical Library (Deutsch & Journel, 1998) Fortran library. Implementation in Python is ongoing and some functionalities will require some GSLIB *.exe* files to be present on your system.
+Alternatively,there are a number of existing Python implementations of geostatistical methods already in existence, though most seem to be in their infancy or are currently being heavily developed. Chief among these is [geostatspy](https://pypi.org/project/geostatspy/). This is a Python implementation of the seminal *GSLIB: Geostatistical Library* (Deutsch & Journel, 1998) Fortran library. Implementation in Python is ongoing and some functionalities will require some GSLIB *.exe* files to be present on your system.
 
 
 ## References
