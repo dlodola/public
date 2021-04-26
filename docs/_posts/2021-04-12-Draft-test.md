@@ -117,11 +117,11 @@ grid = np.array(np.meshgrid(xx, yy)).transpose([1,2,0])
 
 ### Load data and create semivariogram
 
-!!load the data!
+We should now load some data and create a semivariogram function. I have uploaded the dummy data I used to make the figures [here](https://github.com/dlodola/public/blob/main/jupyter/data/article-2-data.json).
 
 ```python
 # load example data
-with open("./article-2-data.json", 'r') as file:
+with open("./data/article-2-data.json", 'r') as file:
     obs = np.asarray(json.load(file))
 num_obs = len(obs)
 
@@ -151,7 +151,7 @@ s_ij = s2 - gamma(obs[...,None,:2].repeat(num_obs, axis=-2) - obs[:,:2])
 L = np.linalg.solve(s_ij, s_oi.swapaxes(-1,-2)).swapaxes(-1,-2)
 # line 4
 Z_sk = np.matmul(L, obs[:,2])
-# line 5
+# optional line 5
 S_sk = s2 - (L * s_oi).sum(axis=2)
 ```
 
