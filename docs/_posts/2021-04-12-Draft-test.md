@@ -20,7 +20,7 @@ This article is not an in-depth explanation of the kriging estimator, its pros a
 
 ## Theoretical background
 
-Before we get started, a little refresher of how Simple Kriging works is in order. 
+Before we get started, a little refresher of how Simple Kriging works is in order to provide some context for the algorithm. 
 
 Kriging is a basic statistical linear estimator. A property's value *&#7825;* in location *o*, can be estimated  based on known values *z<sub>i</sub>*, *i=1,...I* as:
 
@@ -33,13 +33,13 @@ where *&lambda;<sub>i</sub>* is the kriging weight for known point *z<sub>i</sub
 {% include equation.html file="images/posts/article-2/Equation_2.png"
 alt="equation 2" number="2" height="30" %}
 
-where *z* is the true, but unknown, value of our property at point *o* and *E* is the expectation. From an analytical perspective, this is achieved by seeking appropriate kriging weights such that the first derivative of the Simple Kriging variance is equal to zero. This has the advantage of removing the actual value *z* from the equation &mdash; pun intended, and allows us to find the weights without this knowledge. *The reader is referred to an appropriate text (e.g., Jensen et al., 2003) for the full workings out and the assumptions made.* To cut things short, the kriging weights can be found by solving the matrix equation:
+where *z* is the true, but unknown, value of our property at point *o* and *E* is the expectation. From an analytical perspective, this is achieved by seeking appropriate kriging weights such that the first derivative of the Simple Kriging variance is equal to zero. This has the advantage of removing the actual value *z* from the equation &mdash; pun intended, and allows us to find the weights without this knowledge. The reader is referred to an appropriate text (*e.g.*, Jensen *et al.*, 2003) for the full workings out and the assumptions made. To cut things short, the kriging weights can be found by solving the matrix equation:
 
 {% include equation.html file="images/posts/article-2/Equation_3.png"
 alt="equation 3" number="3" height="79" %}
 
 where *&sigma;<sub>ij</sub><sup>2</sup>* is the covariance between known points *z<sub>i</sub>* and 
-*z<sub>j</sub>*, and *&sigma;<sub>oi</sub><sup>2</sup>* is the covariance between unknown point *z<sub>o</sub>* and known point *z<sub>i</sub>*. Given the simplifications resulting from the stationarity assumptions *not* discussed above, the covariance between points can be determined using their semivariance as:
+*z<sub>j</sub>*, and *&sigma;<sub>oi</sub><sup>2</sup>* is the covariance between unknown point *z<sub>o</sub>* and known point *z<sub>i</sub>*. Given the simplifications resulting from the stationarity assumptions not discussed here, the covariance between points can be determined using their semivariance as:
 
 {% include equation.html file="images/posts/article-2/Equation_4.png"
 alt="equation 4" number="4" height="31" %}
@@ -66,6 +66,7 @@ alt="equation 7" number="7" height="30" %}
 ### Import necessary libraries
 
 ```python
+import json
 from math import pi, cos, sin
 
 import matplotlib.pyplot as plt
@@ -75,12 +76,12 @@ import numpy as np
 from lib.semivariograms import spherical_semivariogram
 ```
 
-The `spherical_semivariogram` function is an implementation of a 2D anisotropic spherical semivariogram taking as arguments the coordinates of lag vectors and the semivariogram's semi-major & semi-minor ranges, azimuth, sill and nugget. It returns the corresponding semivariance for the lags defined by the lag vectors, including their orientations. For now, you can get a copy of the library [here](https://github.com/dlodola/public/tree/main/jupyter/lib), but I will cover it in more detail in a future article.
+The `spherical_semivariogram` function is an implementation of a 2D anisotropic spherical semivariogram taking as arguments the coordinates of lag vectors and the semivariogram's semi-major & semi-minor ranges, azimuth, sill and nugget. It returns the corresponding semivariance for the lags defined by the lag vectors and their orientations. I will cover it in more detail in a future article, but for now you can get a copy of the library [here](https://github.com/dlodola/public/tree/main/jupyter/lib).
 
 ### Set up grid
 
 First lets create a (*I*, *J*, *2*) array `grid` such that each [*i*, *j*] node holds
-the (*x<sub>i</sub>*, *y<sub>j</sub>*) Cartesian coordinates of that node. It is set up using the (*x<sub>0</sub>*, *y<sub>0</sub>*) coordinates of the lower left corner, the cell size and the number of rows and columns.
+the (*x<sub>i</sub>*, *y<sub>j</sub>*) Cartesian coordinates of that node. It is set up using the (*x<sub>0</sub>*, *y<sub>0</sub>*) coordinates of the center of the lower left cell, the cell size and the number of rows and columns.
 
 <!--
 {% include equation.html file="images/posts/article-2/Equation_8.png"
@@ -95,8 +96,8 @@ Going forward, we will mostly work with a part flattened copy of `grid` with dim
 4. i: a known point with coordinates (*x<sub>i</sub>*,*y<sub>i</sub>*). -->
 
 ```python
-LL_CENTER = (1_000_000, 500_000)
-CELL_SIZE, ROWS, COLS = 50, 300, 400
+LL_CENTER = (1_157_000, 814_500)
+CELL_SIZE, ROWS, COLS = 50, 204, 296
 
 nodes = ROWS * COLS
 
@@ -119,6 +120,11 @@ grid = np.array(np.meshgrid(xx, yy)).transpose([1,2,0])
 !!load the data!
 
 ```python
+# load example data
+with open("./article-2-data.json", 'r') as file:
+    obs = np.asarray(json.load(file))
+num_obs = len(obs)
+
 # semi variogram parameters
 NUGGET = 0                # nugget
 RANGE = (3_500, 2_500)    # [major, minor] axis length in grid units
@@ -220,7 +226,7 @@ array_to_ESRIascii(Z_sk, cellsize=CELL_SIZE, llcenter=LL_CENTER)
 
 Alternatively you can use the excellent [Rasterio](https://rasterio.readthedocs.io/en/latest/) library and serialize to a wide array of grid types. Rasterio also handles spatial reference. Give it a go!
 
-All of the heavy lifting relies on NumPy which is packaged with ArcMap's Python distribution. You should therefore be able to use this algorithm in your ArcMap toolboxes without difficulties, though you would need to define the semivariogram function within your ArcMap scripts and not as an import.
+Finally, all of the heavy lifting relies on NumPy which is packaged with ArcMap's Python distribution. You should therefore be able to use this algorithm in your ArcMap toolboxes without difficulties, though you would need to define the semivariogram function within your ArcMap scripts and not as an import.
 
 ## Where next?
 
