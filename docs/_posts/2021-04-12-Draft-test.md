@@ -172,10 +172,10 @@ alt="Figure 1" number="1" link="true" caption="Schematic representation of krigi
 fig, ax = plt.subplots(figsize=(12,10))
 
 # display grid as filled contour plot and add/annotate observation data
-disp = ax.contourf(grid[...,0], grid[...,1], Z_sk2, 
+disp = ax.contourf(grid[...,0], grid[...,1], Z_sk, 
                    levels=10, cmap='seismic')
 fig.colorbar(disp, fraction=0.025)
-CS = ax.contour(grid[...,0], grid[...,1], Z_sk2, 
+CS = ax.contour(grid[...,0], grid[...,1], Z_sk, 
                 levels=10, colors='k', linewidths=0.5)
 ax.clabel(CS, inline=True, fmt='%.2f', zorder=2)
 ax.scatter(obs[:,0], obs[:,1], fc='w', ec='k', zorder=2)
@@ -205,7 +205,13 @@ alt="Figure 3" number="3" link="true" caption="Simple Kriging variance." %}
 
 ### Serialize
 
-to ESRI ascii or 
+We can also export the data array for use in a GIS package. The [grid_utils](https://github.com/dlodola/public/blob/main/jupyter/lib/grid_utils.py) library provides a simple function to serialize an array to an ESRI ascii raster format file:
+
+```python
+from lib.grid_utils import array_to_ESRIascii
+
+array_to_ESRIascii(Z_sk, cellsize=CELL_SIZE, llcenter=LL_CENTER)
+```
 
 Alternatively you can use the excellent [Rasterio](https://rasterio.readthedocs.io/en/latest/) library and serialize to a wide array of grid types. Rasterio also handles spatial reference. Give it a go!
 
