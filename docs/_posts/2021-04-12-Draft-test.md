@@ -1,6 +1,6 @@
 ---
 layout: post
-draft: false
+draft: true
 title:  "Simple Kriging in 5 lines of Python or less..."
 tags: python geostatistics kriging variogram
 image: net.png
@@ -224,15 +224,15 @@ There are two main areas of limitations to the algorithm proposed above:
 
 1. Though this example is efficient from both a coding and performance perspectives, it is inefficient from a memory perspective as NumPy's vectorization is memory hungry. This should not be a problem for reasonably sized grids and number of known points, but it may not scale well to very large datasets. 
 
-2. There is no preprocessing of the input data. In particular there is no limit on search radius &mdash; beyond which covariances may be poorly defined, nor are any declustering or detrending processes included. As stated in teh opening remarks however, this is beyond the scope of this article.
+2. There is no preprocessing of the input data. In particular there is no limit on search radius &mdash; beyond which covariances may be poorly defined, nor are any declustering or detrending processes included. As stated in the opening remarks however, this is beyond the scope of this article.
 
 ### Existing geostatistic implementations
 
-There are a number of existing Python implementations of geostatistical methods already in existence, though most seem to be in their infancy or currently being heavily developed. Chief among these is [geostatspy](https://pypi.org/project/geostatspy/). This is a Python implementation of the seminal GSLIB: Geostatistical Library (Deutsch & Journel, 1998) Fortran library. Implementation in Python is ongoing and some functionalities will require the GSLIB *.exe* to be present on your system.
+There are a number of existing Python implementations of geostatistical methods already in existence, though most seem to be in their infancy or currently being heavily developed. Chief among these is [geostatspy](https://pypi.org/project/geostatspy/). This is a Python implementation of the seminal GSLIB: Geostatistical Library (Deutsch & Journel, 1998) Fortran library. Implementation in Python is ongoing and some functionalities will require some GSLIB *.exe* files to be present on your system.
 
 
 ## References
 
-**Deutsch, C.V., &d Journel, A.G., 1997,** GSLIB Geostatistical Software Library and User’s Guide, Oxford University Press, New York, 2<sup>nd</sup> Edition, 369 pages.
+**Deutsch, C.V., & Journel, A.G., 1997,** GSLIB Geostatistical Software Library and User’s Guide, Oxford University Press, New York, 2<sup>nd</sup> Edition, 369 pages.
 
 **Jensen, J.L., L.W. Lake, P.W.M. Corbett, & D.J. Goggin, 2003,** Statistics for Petroleum Engineers and Geoscientists, 2<sup>nd</sup> Edition, Elsevier, 338 pages.
