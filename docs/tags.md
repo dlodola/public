@@ -11,4 +11,4 @@ layout: default
 
 {% assign tags = alltags | split: "," | uniq %}
 
-<p>{{ alltags }}</p>
+<p>{{ tags }}</p>
