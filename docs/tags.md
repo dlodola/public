@@ -21,5 +21,5 @@ layout: default
 
 
 {% for tag in tags %}
-    ##{{ tag }}
+## {{ tag }}
 {% endfor %}
