@@ -161,6 +161,8 @@ We end up with a (*I*, *J*) array where each [*i*, *j*] node is the estimated va
 
 5. Similarly, we can use Equation (7) to determine the Simple Kriging variance.
 
+Figure 1 attempts to give a visual representation of lines 1-4, with an emphasis on array manipulations and broadcasting.
+
 {% include image.html file="posts/article-2/figure-1.png"
 alt="Figure 1" number="1" link="true" caption="Schematic representation of kriging algorithm. Bold outlines illustrate how broadcasting is applied." %}
 
@@ -207,10 +209,16 @@ to ESRI ascii or [Rasterio](https://rasterio.readthedocs.io/en/latest/)
 
 ## Where next?
 
+### Other kriging methods
+
+Figure 4 shows the output of our Simple Kriging example, alongside the outputs from the same input parameters and data using Ordinary, and First & Second Order Universal Kriging. These other kriging methods impose more constraints on the kriging weights &mdash; *e.g.*, kriging weights must sum up to one in Ordinary Kriging, but can be easily implemented from the above with the appropriate modifications to the *&Sigma;<sup>2</sup>* and *&Sigma;<sub>o</sub><sup>2</sup>* arrays. 
 
 {% include image.html file="posts/article-2/figure-4.png"
-alt="Figure 4" number="4" link="true" caption="Alternative kriging types." %}
+alt="Figure 4" number="4" link="true" caption="Alternative kriging methods." %}
 
+### Limitations
+
+Though this example is both efficient from a coding and execution time perspectives, it is inefficient from a memory perspective as NumPy's vectorization is memory hungry. 
 
 [geostatspy](https://pypi.org/project/geostatspy/)
 
