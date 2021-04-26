@@ -95,20 +95,20 @@ Going forward, we will mostly work with a part flattened copy of `grid` with dim
 4. i: a known point with coordinates (*x<sub>i</sub>*,*y<sub>i</sub>*). -->
 
 ```python
-LL_CORNER = (1_000_000, 500_000)
+LL_CENTER = (1_000_000, 500_000)
 CELL_SIZE = 50
 ROWS, COLS = 300, 400
 
 nodes = ROWS * COLS
 
 # list of all column (x) coordinates
-xx = np.arange(LL_CORNER[0], 
-               LL_CORNER[0] + COLS * CELL_SIZE, 
+xx = np.arange(LL_CENTER[0], 
+               LL_CENTER[0] + COLS * CELL_SIZE, 
                CELL_SIZE)
 
 # list of all row (y) coordinates
-yy = np.arange(LL_CORNER[1], 
-               LL_CORNER[1] + ROWS * CELL_SIZE, 
+yy = np.arange(LL_CENTER[1], 
+               LL_CENTER[1] + ROWS * CELL_SIZE, 
                CELL_SIZE)
 
 # (I,J,2) array where each (i,j) node is its (x,y) coordinates
@@ -211,14 +211,20 @@ to ESRI ascii or [Rasterio](https://rasterio.readthedocs.io/en/latest/)
 
 ### Other kriging methods
 
-Figure 4 shows the output of our Simple Kriging example, alongside the outputs from the same input parameters and data using Ordinary, and First & Second Order Universal Kriging. These other kriging methods impose more constraints on the kriging weights &mdash; *e.g.*, kriging weights must sum up to one in Ordinary Kriging, but can be easily implemented from the above with the appropriate modifications to the *&Sigma;<sup>2</sup>* and *&Sigma;<sub>o</sub><sup>2</sup>* arrays. 
+Figure 4 shows the output of our Simple Kriging example alongside the outputs from the same input parameters and data using Ordinary, and First & Second Order Universal Kriging. These other kriging methods impose more constraints on the kriging weights &mdash; they must sum up to one in Ordinary Kriging for example, but can be easily implemented from the above with the appropriate modifications to the *&Sigma;<sup>2</sup>* and *&Sigma;<sub>o</sub><sup>2</sup>* arrays. 
 
 {% include image.html file="posts/article-2/figure-4.png"
 alt="Figure 4" number="4" link="true" caption="Alternative kriging methods." %}
 
 ### Limitations
 
-Though this example is both efficient from a coding and execution time perspectives, it is inefficient from a memory perspective as NumPy's vectorization is memory hungry. 
+Two main areas of limitation
+
+1. Though this example is both efficient from a coding and execution time perspectives, it is inefficient from a memory perspective as NumPy's vectorization is memory hungry. 
+
+2. No search radius limitation where covariances are poorly defined. Easily implemented? No preprocessing (declustering etc)
+
+### Existing geostatistic implementations
 
 [geostatspy](https://pypi.org/project/geostatspy/)
 
@@ -227,4 +233,6 @@ Though this example is both efficient from a coding and execution time perspecti
 
 ## References
 
-**Jensen, J.L., L.W. Lake, P.W.M. Corbett, & D.J. Goggin, 2003**, Statistics for Petroleum Engineers and Geoscientists, 2<sup>nd</sup> Edition, Elsevier, 338 pages.
+**Deutsch, C.V., &d Journel, A.G., 1997,** GSLIB Geostatistical Software Library and User’s Guide, Oxford University Press, New York, 2<sup>nd</sup> Edition, 369 pages.
+
+**Jensen, J.L., L.W. Lake, P.W.M. Corbett, & D.J. Goggin, 2003,** Statistics for Petroleum Engineers and Geoscientists, 2<sup>nd</sup> Edition, Elsevier, 338 pages.
