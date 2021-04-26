@@ -25,7 +25,7 @@ layout: default
 
 ---
 
-### {{ tag }}
+#### {{ tag }}
 <ul>
     {% for post in site.posts %}
         {% if post.tags contains tag %}
