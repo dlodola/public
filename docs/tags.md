@@ -11,4 +11,9 @@ layout: default
 
 {% assign tags = alltags | split: "," | uniq %}
 
-<p>{{ tags }}</p>
+<p>
+{% assign taglist = "" %}
+{% for tag in tags %}
+    <a href="#{{ tag }}">{{ tag }}</a> &ndash; 
+{% endfor %}
+</p>
