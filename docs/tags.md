@@ -12,6 +12,7 @@ layout: default
 {% assign tags = alltags | split: "," | uniq %}
 
 ## Tags
+---
 <p>
 {% assign taglist = "" %}
 {% for tag in tags %}
@@ -22,6 +23,7 @@ layout: default
 
 {% for tag in tags %}
 ### {{ tag }}
+---
 <div>
     {% for post in site.posts %}
         {% if post.tags contains tag %}
@@ -30,3 +32,5 @@ layout: default
     {% endfor %}
 </div>
 {% endfor %}
+
+---
