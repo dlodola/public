@@ -76,7 +76,7 @@ import numpy as np
 from lib.semivariograms import spherical_semivariogram
 ```
 
-The `spherical_semivariogram` function is an implementation of a 2D anisotropic spherical semivariogram taking as arguments the coordinates of lag vectors and the semivariogram's semi-major & semi-minor ranges, azimuth, sill and nugget. It returns the corresponding semivariance for the lags defined by the lag vectors and their orientations. I will cover it in more detail in a future article, but for now you can get a copy of the library [here](https://github.com/dlodola/public/tree/main/jupyter/lib).
+The `spherical_semivariogram` function is an implementation of a 2D anisotropic spherical semivariogram taking as arguments the coordinates of the lag vectors and the semivariogram's semi-major & semi-minor ranges, azimuth, sill and nugget. It returns the corresponding semivariance for lag vector lengths and orientations. I will cover it in more detail in a future article, but for now you can get a copy of the library [here](https://github.com/dlodola/public/tree/main/jupyter/lib).
 
 ### Set up grid
 
@@ -161,7 +161,7 @@ These are then fed to the semivariogram function `gamma`, returning an (*I*, *J*
 2. Similarly, Equation (4) is used to determine *&Sigma;<sup>2</sup>*. This time we provide a (*K*, *K*) array of (*x<sub>k</sub>*, *y<sub>k</sub>*) coordinates for all known points to the semivariogram function.
 We end up with a (*K*, *K*) array of covariances between all known points.
 
-3. We now use NumPy's [linalg.solve](https://numpy.org/doc/stable/reference/generated/numpy.linalg.solve.html?highlight=solve#numpy.linalg.solve) routine to solve Equation (6) for *&Lambda;*. The last two axes of *&Sigma;<sub>o</sub><sup>2</sup>* are swapped to allow the arrays to broadcast properly and the output is swapped back to maintain the correct shape .This returns an (*I*, *J*, *K*) array where each element in the last dimension is a *K*-element vector of Simple Kriging weights *&lambda;<sub>k</sub>* for point (*x<sub>i</sub>*, *y<sub>j</sub>*).
+3. We now use NumPy's [linalg.solve](https://numpy.org/doc/stable/reference/generated/numpy.linalg.solve.html?highlight=solve#numpy.linalg.solve) routine to solve Equation (6) for *&Lambda;*. The last two axes of *&Sigma;<sub>o</sub><sup>2</sup>* are swapped to allow the arrays to broadcast properly and the output is swapped back to maintain the correct shape. This returns an (*I*, *J*, *K*) array where each [*i*, *j*] element is a *K*-element vector of Simple Kriging weights *&lambda;<sub>k</sub>* for point (*x<sub>i</sub>*, *y<sub>j</sub>*).
 
 4. We can now estimate the property value at each grid node using Equation (6) by summing the values of our known points multiplied by the Simple Kriging weights.
 We end up with a (*I*, *J*) array where each [*i*, *j*] node is the estimated value for the coordinates (*x<sub>i</sub>*, *y<sub>j</sub>*).
@@ -224,7 +224,7 @@ from lib.grid_utils import array_to_ESRIascii
 array_to_ESRIascii(Z_sk, cellsize=CELL_SIZE, llcenter=LL_CENTER)
 ```
 
-Alternatively you can use the excellent [Rasterio](https://rasterio.readthedocs.io/en/latest/) library and serialize to a wide array of grid types. Rasterio also handles spatial reference. Give it a go!
+Alternatively you can use the excellent [Rasterio](https://rasterio.readthedocs.io/en/latest/) library and serialize to a wide array of grid types. It also handles spatial reference &ndash; give it a go!
 
 Finally, all of the heavy lifting relies on NumPy which is packaged with ArcMap's Python distribution. You should therefore be able to use this algorithm in your ArcMap toolboxes without difficulties, though you would need to define the semivariogram function within your ArcMap scripts and not as an import.
 
@@ -232,22 +232,24 @@ Finally, all of the heavy lifting relies on NumPy which is packaged with ArcMap'
 
 ### Other kriging methods
 
-Figure 4 shows the output of our Simple Kriging example alongside the outputs from the same input parameters and data using Ordinary, and First & Second Order Universal Kriging. These other kriging methods impose more constraints on the kriging weights &mdash; they must sum up to one in Ordinary Kriging for example, but can be easily implemented from the above with the appropriate modifications to the *&Sigma;<sup>2</sup>* and *&Sigma;<sub>o</sub><sup>2</sup>* arrays. 
+Figure 4 shows the output of our Simple Kriging example alongside the outputs from the same data and input parameters using Ordinary Kriging, and First & Second Order Universal Kriging. These other kriging methods impose more constraints on the kriging weights &mdash; they must sum up to one in Ordinary Kriging for example, but can be easily implemented from the above with the appropriate modifications to the *&Sigma;<sup>2</sup>* and *&Sigma;<sub>o</sub><sup>2</sup>* arrays. 
 
 {% include image.html file="posts/article-2/figure-4.png"
 alt="Figure 4" number="4" link="true" caption="Alternative kriging methods." %}
 
 ### Limitations
 
-There are two main areas of limitations to the algorithm proposed above:
+There are three main areas of limitations to the algorithm proposed above:
 
-1. Though this example is efficient from both a coding and performance perspectives, it is inefficient from a memory perspective as NumPy's vectorization is memory hungry. This should not be a problem for reasonably sized grids and number of known points, but it may not scale well to very large datasets. 
+1. Though this example is efficient from both a coding and performance perspectives, it is inefficient from a memory perspective as NumPy's vectorization is memory hungry. This should not be a problem for reasonably sized grids and number of known points, but it may not scale well to very large datasets.
 
-2. There is no preprocessing of the input data. In particular there is no limit on search radius &mdash; beyond which covariances may be poorly defined, nor are any declustering or detrending processes included. As stated in the opening remarks, this is beyond the scope of this article. However the algorithm presented here provides a basis upon which to build a more complete solution.
+2. It cannot form the basis of stochastic simulation techniques like Sequential Gaussian Simulations as these require a random walk through the (*x<sub>i</sub>*, *y<sub>j</sub>*) points where *Z* is to be estimated. It can however be adapted to run within the loop(s) required to implement the random walk.
+
+3. There is no preprocessing of the input data. In particular there is no limit on search radius &mdash; beyond which covariances may be poorly defined, nor are any declustering or detrending processes included. As stated in the opening remarks, this is beyond the scope of this article. However the algorithm presented here provides a basis upon which to build a more complete solution.
 
 ### Existing geostatistic implementations
 
-Alternatively,there are a number of existing Python implementations of geostatistical methods already in existence, though most seem to be in their infancy or are currently being heavily developed. Chief among these is [geostatspy](https://pypi.org/project/geostatspy/). This is a Python implementation of the seminal *GSLIB: Geostatistical Library* (Deutsch & Journel, 1998) Fortran library. Implementation in Python is ongoing and some functionalities will require some GSLIB *.exe* files to be present on your system.
+Alternatively, there are a number of existing Python implementations of geostatistical methods already in existence, though most seem to be in their infancy or are currently being heavily developed. Chief among these is [geostatspy](https://pypi.org/project/geostatspy/). This is a Python implementation of the seminal *GSLIB: Geostatistical Library* (Deutsch & Journel, 1998) Fortran library. Implementation in Python is ongoing and some functionalities will require some GSLIB *.exe* files to be present on your system.
 
 
 ## References
