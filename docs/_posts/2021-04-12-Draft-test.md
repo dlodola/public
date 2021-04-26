@@ -205,7 +205,9 @@ alt="Figure 3" number="3" link="true" caption="Simple Kriging variance." %}
 
 ### Serialize
 
-to ESRI ascii or [Rasterio](https://rasterio.readthedocs.io/en/latest/)
+to ESRI ascii or 
+
+Alternatively you can use the excellent [Rasterio](https://rasterio.readthedocs.io/en/latest/) library and serialize to a wide array of grid types. Rasterio also handles spatial reference. Give it a go!
 
 ## Where next?
 
@@ -218,17 +220,15 @@ alt="Figure 4" number="4" link="true" caption="Alternative kriging methods." %}
 
 ### Limitations
 
-Two main areas of limitation
+There are two main areas of limitations to the algorithm proposed above:
 
-1. Though this example is both efficient from a coding and execution time perspectives, it is inefficient from a memory perspective as NumPy's vectorization is memory hungry. 
+1. Though this example is efficient from both a coding and performance perspectives, it is inefficient from a memory perspective as NumPy's vectorization is memory hungry. This should not be a problem for reasonably sized grids and number of known points, but it may not scale well to very large datasets. 
 
-2. No search radius limitation where covariances are poorly defined. Easily implemented? No preprocessing (declustering etc)
+2. There is no preprocessing of the input data. In particular there is no limit on search radius &mdash; beyond which covariances may be poorly defined, nor are any declustering or detrending processes included. As stated in teh opening remarks however, this is beyond the scope of this article.
 
 ### Existing geostatistic implementations
 
-[geostatspy](https://pypi.org/project/geostatspy/)
-
-[scikit-gstat](https://pypi.org/project/scikit-gstat/)
+There are a number of existing Python implementations of geostatistical methods already in existence, though most seem to be in their infancy or currently being heavily developed. Chief among these is [geostatspy](https://pypi.org/project/geostatspy/). This is a Python implementation of the seminal GSLIB: Geostatistical Library (Deutsch & Journel, 1998) Fortran library. Implementation in Python is ongoing and some functionalities will require the GSLIB *.exe* to be present on your system.
 
 
 ## References
