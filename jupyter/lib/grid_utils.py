@@ -11,17 +11,23 @@ def array_to_ESRIascii(data,
     Parameters:
     -----------
     data:           2-D array-like of grid data
+    
     file:           filename name where grid will be saved
+    
     cellsize:       cell size
+    
     llcenter:       (x, y) coordinates of center of lower left cell
+    
     nodatavalue:    value used to represent no data, will be 
                     substituted for any Null/np.nan values in data
+                    
     reverse_array:  if True, reverse sort data rows - see Note 2 below
     
     Notes:
     ------
     1. There is no boiler plating for file name. Caution is needed to 
     avoid overwriting existig files etc.
+    
     2. ESRI ascii files take data with top row first. It is likely
     the array supplied to 'data' parameter is top row last. Use the
     'reverse_array' parameter to reverse input data as needed.
@@ -47,6 +53,3 @@ def array_to_ESRIascii(data,
         data = (data.replace('[','').replace(']','')
                 .replace('\n ', '\n'))
         outfile.write(data)
-            
-        
-    return file
