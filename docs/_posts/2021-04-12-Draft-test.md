@@ -169,6 +169,8 @@ alt="Figure 1" number="1" link="true" caption="Schematic representation of krigi
 
 ### Display results
 
+We can now display the results using Matplotlib:
+
 ```python
 fig, ax = plt.subplots(figsize=(12,10))
 
@@ -197,6 +199,8 @@ ax.set_aspect(1)
 plt.show()
 ```
 
+Figure 2 shows the result of the Simple Kriging estimation; Figure 3 shows the corresponding Simple Kriging variance.
+
 {% include image.html file="posts/article-2/figure-2.png"
 alt="Figure 2" number="2" link="true" caption="Simple Kriging output." %}
 
@@ -206,7 +210,7 @@ alt="Figure 3" number="3" link="true" caption="Simple Kriging variance." %}
 
 ### Serialization
 
-We can also export the data array for use in a GIS package. The [grid_utils](https://github.com/dlodola/public/blob/main/jupyter/lib/grid_utils.py) library provides a simple function to serialize an array to an ESRI ascii raster format file:
+We can also export the data array for use in a GIS package. The `grid_utils` library available [here](https://github.com/dlodola/public/blob/main/jupyter/lib/grid_utils.py) provides a simple function to serialize an array to an ESRI ascii raster format file:
 
 ```python
 from lib.grid_utils import array_to_ESRIascii
@@ -216,7 +220,7 @@ array_to_ESRIascii(Z_sk, cellsize=CELL_SIZE, llcenter=LL_CENTER)
 
 Alternatively you can use the excellent [Rasterio](https://rasterio.readthedocs.io/en/latest/) library and serialize to a wide array of grid types. Rasterio also handles spatial reference. Give it a go!
 
-All of the heavy lifting relies on NumPy which is packaged with ArcMap's python distribution. You should therefore be able touse this algorithm in your ArcMap toolboxes without difficulties, though you would need to define the semivariogram function with your ArcMap scripts and not as an import.
+All of the heavy lifting relies on NumPy which is packaged with ArcMap's Python distribution. You should therefore be able to use this algorithm in your ArcMap toolboxes without difficulties, though you would need to define the semivariogram function within your ArcMap scripts and not as an import.
 
 ## Where next?
 
