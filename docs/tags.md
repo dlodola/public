@@ -21,5 +21,5 @@ layout: default
 
 
 {% for tag in tags %}
-    <h2 id="{{ tag }}">{{ tag }}</h2>
+    ##{{ tag }}
 {% endfor %}
