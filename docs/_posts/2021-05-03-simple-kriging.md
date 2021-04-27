@@ -224,7 +224,7 @@ from lib.grid_utils import array_to_ESRIascii
 array_to_ESRIascii(Z_sk, cellsize=CELL_SIZE, llcenter=LL_CENTER)
 ```
 
-Alternatively you can use the excellent [Rasterio](https://rasterio.readthedocs.io/en/latest/) library and serialize to a wide array of grid types. It also handles spatial reference &ndash; give it a go!
+Alternatively you can use the excellent [Rasterio](https://rasterio.readthedocs.io/en/latest/) library and serialize to a wide array of grid types. It also handles spatial references &ndash; give it a go!
 
 Finally, all of the heavy lifting relies on NumPy which is packaged with ArcMap's Python distribution. You should therefore be able to use this algorithm in your ArcMap toolboxes without difficulties, though you would need to define the semivariogram function within your ArcMap scripts and not as an import.
 
@@ -237,19 +237,19 @@ Figure 4 shows the output of our Simple Kriging example alongside the outputs fr
 {% include image.html file="posts/article-2/figure-4.png"
 alt="Figure 4" number="4" link="true" caption="Alternative kriging methods." %}
 
+### Existing geostatistic implementations
+
+Alternatively, there are a number of existing Python implementations of geostatistical methods already in existence, though most seem to be in their infancy or are currently being heavily developed. Chief among these is [geostatspy](https://pypi.org/project/geostatspy/). This is a Python implementation of the seminal *GSLIB: Geostatistical Library* (Deutsch & Journel, 1998) Fortran library. Implementation in Python is ongoing and some functionalities will require some GSLIB *.exe* files to be present on your system.
+
 ### Limitations
 
 There are three main areas of limitations to the algorithm proposed above:
 
-1. Though this example is efficient from both a coding and performance perspectives, it is inefficient from a memory perspective as NumPy's vectorization is memory hungry. This should not be a problem for reasonably sized grids and number of known points, but it may not scale well to very large datasets.
+1. Though this example is efficient from both a coding and performance perspective, it is inefficient from a memory perspective as NumPy's vectorization is memory hungry. This should not be a problem for reasonably sized grids and number of known points, but it may not scale well to larger datasets.
 
 2. It cannot form the basis of stochastic simulation techniques like Sequential Gaussian Simulations as these require a random walk through the (*x<sub>i</sub>*, *y<sub>j</sub>*) points where *Z* is to be estimated. It can however be adapted to run within the loop(s) required to implement the random walk.
 
 3. There is no preprocessing of the input data. In particular there is no limit on search radius &mdash; beyond which covariances may be poorly defined, nor are any declustering or detrending processes included. As stated in the opening remarks, this is beyond the scope of this article. However the algorithm presented here provides a basis upon which to build a more complete solution.
-
-### Existing geostatistic implementations
-
-Alternatively, there are a number of existing Python implementations of geostatistical methods already in existence, though most seem to be in their infancy or are currently being heavily developed. Chief among these is [geostatspy](https://pypi.org/project/geostatspy/). This is a Python implementation of the seminal *GSLIB: Geostatistical Library* (Deutsch & Journel, 1998) Fortran library. Implementation in Python is ongoing and some functionalities will require some GSLIB *.exe* files to be present on your system.
 
 
 ## References

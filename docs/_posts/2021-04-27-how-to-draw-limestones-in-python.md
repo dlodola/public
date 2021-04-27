@@ -7,7 +7,7 @@ notebook: 1-limestone-hatch
 linkedin: 6783001940251951104
 ---
 
-Matplotlib offers tantalizing [hatching](https://matplotlib.org/stable/gallery/shapes_and_collections/hatch_demo.html) options that will sadly leave most geologists wanting more. It's a bit like pattern fills in Excel - so much potential until you actually try and use it to make satisfying lithology logs. 
+[Matplotlib](https://matplotlib.org) offers tantalizing [hatching](https://matplotlib.org/stable/gallery/shapes_and_collections/hatch_demo.html) options that will sadly leave most geologists wanting more. It's a bit like pattern fills in Excel - so much potential until you actually try and use it to make satisfying lithology logs. 
 
 Unlike Excel however, you can customize Matplotlib's hatch function to your heart's content. I show an example here of how to create a standard limestone pattern, but the methodology can be generalized to created pretty much any lithology pattern you want.
 
@@ -151,7 +151,7 @@ In fact, our custom limestone hatch is now ready to be used with any Matplotlib 
 
 The next step is to create a custom dictionary of patterns to account for a wider variety of lithological options. Ultimately, any path can be used to create a hatch pattern, though the class that creates the required path vertices and code arrays needs to be updated accordingly.
 
-Figure 3 shows some examples of the variety of patterns that can be created. Though a little more complex than the limestone example above, they all follow the same methodology of repeating a base pattern (defined by its `vertices` and `codes` arrays) over a unit square. Care must however be taken when choosing a flag for each pattern as you don't to be calling additional patterns by mistake. Had we used "limestone" as the flag for our example, circles would have appeared every time we used it: "o" is indeed a flag for the small circle hatch!
+Figure 3 shows some examples of the variety of patterns that can be created. Though a little more complex than the limestone example above, they all follow the same methodology of repeating a base pattern (defined by its `vertices` and `codes` arrays) over a unit square. Care must however be taken when choosing a flag for each pattern as you don't want to be calling additional patterns by mistake. Had we used "limestone" as the flag for our example, circles would have appeared every time we used it: "o" is indeed a flag for the small circle hatch!
 
 {% include image.html file="posts/article-1/hatch_dictionary.png"
 alt="hatches dictionary" number="3"  link="true"
