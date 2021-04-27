@@ -1,6 +1,6 @@
 ---
 layout: post
-draft: true
+draft: false
 title:  "Simple Kriging in 5 lines of Python or less..."
 tags: python geostatistics kriging variogram
 image: net.png
