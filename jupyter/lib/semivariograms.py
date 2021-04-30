@@ -37,7 +37,6 @@ def spherical_semivariogram(x, az, rng, sill, nugget=0):
     
     # get lag vector coordinates
     h = np.asarray(x)
-    r = rng[0]
     
     # affine rotation of lag vectors 
     # convert azimuth to radians with origin along x axis first!
@@ -56,6 +55,8 @@ def spherical_semivariogram(x, az, rng, sill, nugget=0):
     h = (h ** 2).sum(axis=-1) ** 0.5
     
     # return semivariances
-    return np.where(h < r, 
-                    (sill - nugget) * (3 * h / 2 / r - 0.5 * np.power(h / r, 3)) + nugget,
+    return np.where(h < rng[0], 
+                    ((sill - nugget) * 
+                     (3 * h / 2 / rng[0] - 0.5 * np.power(h / rng[0], 3)) + 
+                     nugget),
                     sill)
