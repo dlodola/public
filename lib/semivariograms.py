@@ -1,1 +1,1 @@
-../jupyter//lib/semivariograms.py
+../jupyter/lib/semivariograms.py
