@@ -16,6 +16,7 @@ layout: default
 <p>
 {% assign taglist = "" %}
 {% for tag in tags %}
+    <!-- <a href="#{{ tag }}" onclick="myFunction();return false;">{{ tag }}</a>  -->
     <a href="#{{ tag }}" onclick="myFunction();return false;">{{ tag }}</a> 
 {% endfor %}
 </p>
@@ -23,7 +24,9 @@ layout: default
 
 {% for tag in tags %}
 <div id="tag_{{ tag }}" class="tag">
+
 #### {{ tag }}
+
 <ul>
     {% for post in site.posts %}
         {% if post.tags contains tag %}

@@ -9,10 +9,10 @@ function myFunction() {
     var tags = document.getElementsByClassName('tag');
     for (var i = 0; i < tags.length; i ++) {
         // tags[i].style.display = 'none';
-        if (tags.style.display === "none") {
-          tags.style.display = "block";
+        if (tags[i].style.display === "none") {
+          tags[i].style.display = "block";
         } else {
-          tags.style.display = "none";
+          tags[i].style.display = "none";
         }
     }
 
