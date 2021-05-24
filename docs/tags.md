@@ -16,7 +16,7 @@ layout: default
 <p>
 {% assign taglist = "" %}
 {% for tag in tags %}
-    <a href="#{{ tag }}" onclick="MyFunction();return false;">{{ tag }}</a> 
+    <a href="#{{ tag }}" onclick="myFunction();return false;">{{ tag }}</a> 
 {% endfor %}
 </p>
 
