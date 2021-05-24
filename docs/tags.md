@@ -28,7 +28,7 @@ layout: default
     {% for post in site.posts %}
         {% if post.tags contains tag %}
             <li><a href="{{ site.url }}{{ post.url }}">
-                {{ post.date | date: "%-d %B %Y" }} &em;
+                {{ post.date | date: "%-d %B %Y" }} &mdash;
                 {{ post.title }}</a></li>
         {% endif %}
     {% endfor %}
