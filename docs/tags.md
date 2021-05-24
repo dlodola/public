@@ -21,11 +21,12 @@ layout: default
 {% endfor %}
 </p>
 
+---
 
 {% for tag in tags %}
 <div id="tag_{{ tag }}" class="tag">
 
-#### {{ tag }}
+<h4>{{ tag }}</h4>
 
 <ul>
     {% for post in site.posts %}
