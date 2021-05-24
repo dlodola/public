@@ -16,15 +16,14 @@ layout: default
 <p>
 {% assign taglist = "" %}
 {% for tag in tags %}
-    <a href="#{{ tag }}">{{ tag }}</a> 
+    <a href="#{{ tag }}" onclick="MyFunction();return false;">{{ tag }}</a> 
 {% endfor %}
 </p>
 
 
 {% for tag in tags %}
-
-#### {{ tag }}
 <div id="tag_{{ tag }}" class="tag">
+#### {{ tag }}
 <ul>
     {% for post in site.posts %}
         {% if post.tags contains tag %}
