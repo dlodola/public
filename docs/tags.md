@@ -24,6 +24,7 @@ layout: default
 {% for tag in tags %}
 
 #### {{ tag }}
+<div id="tag_{{ tag }}" class="tag">
 <ul>
     {% for post in site.posts %}
         {% if post.tags contains tag %}
@@ -33,6 +34,7 @@ layout: default
         {% endif %}
     {% endfor %}
 </ul>
+</div>
 {% endfor %}
 
 ---
