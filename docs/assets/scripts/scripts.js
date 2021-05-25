@@ -9,12 +9,14 @@ function myFunction(id) {
 
   }
 
-$(document).ready(function () {
-    getContent();
-});
-$(window).bind('hashchange', function (e) {
-    getContent();
-});
+// $(document).ready(function () {
+//     getContent();
+// });
+// $(window).bind('hashchange', function (e) {
+//     getContent();
+// });
+document.ready(function () {getContent();});
+window.bind('hashchange', function (e) {getContent();});
 
 function getContent() {
     var url = window.location.toString();
