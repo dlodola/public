@@ -24,7 +24,8 @@ function getContent() {
     var url = window.location.toString();
     var hash = url.substring(url.indexOf('#'));
 
-
+  alert(url);
+  alert(hash);
 
   var tags = document.getElementsByClassName('tag');
   for (var i = 0; i < tags.length; i ++) {
