@@ -15,8 +15,10 @@ function myFunction(id) {
 // $(window).bind('hashchange', function (e) {
 //     getContent();
 // });
-document.ready(function () {getContent();});
-window.bind('hashchange', function (e) {getContent();});
+// document.ready(function () {getContent();});
+// window.bind('hashchange', function (e) {getContent();});
+
+window.onload = getContent();
 
 function getContent() {
     var url = window.location.toString();
