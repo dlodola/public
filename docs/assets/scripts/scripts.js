@@ -9,16 +9,6 @@ function myFunction(id) {
 
   }
 
-// $(document).ready(function () {
-//     getContent();
-// });
-// $(window).bind('hashchange', function (e) {
-//     getContent();
-// });
-// document.ready(function () {getContent();});
-// window.bind('hashchange', function (e) {getContent();});
-
-// window.onload = getContent();
 window.addEventListener('load', function () {
   getContent()
 })
@@ -26,9 +16,6 @@ window.addEventListener('load', function () {
 function getContent() {
     var url = window.location.toString();
     var hash = url.substring(url.indexOf('#')+1);
-
-  // alert(url);
-  alert('tag_' + hash);
 
   var tags = document.getElementsByClassName('tag');
   for (var i = 0; i < tags.length; i ++) {
