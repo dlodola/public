@@ -1,21 +1,35 @@
 function myFunction(id) {
-    // var x = document.getElementById(id);
-    // if (x.style.display === "none") {
-    //   x.style.display = "block";
-    // } else {
-    //   x.style.display = "none";
-    // }
 
     var tags = document.getElementsByClassName('tag');
     for (var i = 0; i < tags.length; i ++) {
         tags[i].style.display = 'none';
-        // if (tags[i].style.display === "none") {
-        //   tags[i].style.display = "block";
-        // } else {
-        //   tags[i].style.display = "none";
-        // }
     }
 
     document.getElementById(id).style.display = "block";
 
   }
+
+$(document).ready(function () {
+    getContent();
+});
+$(window).bind('hashchange', function (e) {
+    getContent();
+});
+
+function getContent() {
+    var url = window.location.toString();
+    var hash = url.substring(url.indexOf('#'));
+    $('html, body').animate({
+        scrollTop: $(hash).offset().top
+    }, 2000);
+    $(hash).fadeIn();
+    $(hash).siblings("div").fadeOut();
+
+
+
+  var tags = document.getElementsByClassName('tag');
+  for (var i = 0; i < tags.length; i ++) {
+      tags[i].style.display = 'none';
+
+  document.getElementById(hash).style.display = "block";
+}
