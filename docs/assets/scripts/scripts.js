@@ -31,5 +31,5 @@ function getContent() {
   for (var i = 0; i < tags.length; i ++) {
       tags[i].style.display = 'none';
   }
-  document.getElementById(hash).style.display = "block";
+  document.getElementById('tag_' + hash).style.display = "block";
 }
