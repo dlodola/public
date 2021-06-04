@@ -13,10 +13,7 @@ layout: default
 {% if page.tags %}
 {% assign prefix = "" %}
 <small>tags: <em>
-  {% for tag in page.tags %}
-    {{ prefix }}<a href="{{ site.url }}/tags#{{ tag }}">{{ tag }}</a>
-    {% assign prefix = "&nbsp;|&nbsp;" %}
-  {% endfor %}
+  {% for tag in page.tags %}{{ prefix }}<a href="{{ site.url }}/tags#{{ tag }}">{{ tag }}</a>{% assign prefix = "&nbsp;|&nbsp;" %}{% endfor %}
 </em></small>
 {% endif %}
 
