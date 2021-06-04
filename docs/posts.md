@@ -21,9 +21,7 @@ layout: default
     {% if post.tags != empty %}
         <small>tags: <em>
         {% for tag in post.tags %}
-            {{ prefix }}<a href="{{ site.url }}/tags#{{ tag }}">{{ tag }}</a>
-            {% assign prefix = "&nbsp;|&nbsp;" %}
-        {% endfor %}
+            {{ prefix }}<a href="{{ site.url }}/tags#{{ tag }}">{{ tag }}</a>{% assign prefix = "&nbsp;|&nbsp;" %}{% endfor %}
         </em></small>
     {% endif %}</div>
     <div class="blog-footer"><small>by: {{ post.author | "author" }}</small> | <small>posted on {{ post.date | date: "%-d %B %Y" }}</small></div>
