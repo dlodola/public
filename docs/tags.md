@@ -15,9 +15,11 @@ layout: default
 ---
 <p>
 {% assign taglist = "" %}
+{% assign prefix = "" %}
 {% for tag in tags %}
     <!-- <a href="#{{ tag }}" onclick="myFunction();return false;">{{ tag }}</a>  -->
-    <a href="#" onclick="myFunction('tag_{{ tag }}');return false;">{{ tag }}</a> 
+    {{ prefix }}<a href="#" onclick="myFunction('tag_{{ tag }}');return false;">{{ tag }}</a> 
+    {% assign prefix = "&nbsp;|&nbsp;" %}
 {% endfor %}
 </p>
 
