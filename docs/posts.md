@@ -21,7 +21,7 @@ layout: default
     {% if post.tags != empty %}
         <small>tags: <em>
         {% for tag in post.tags %}
-            {{ prefix }}<a href="{{ site.url }}/tags#{{ tag }}">{{ tag }}</a> 
+            {{ prefix }}<a href="{{ site.url }}/tags#{{ tag }}">{{ tag }}</a>
             {% assign prefix = "&nbsp;|&nbsp;" %}
         {% endfor %}
         </em></small>
