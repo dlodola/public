@@ -37,4 +37,4 @@ layout: default
     {{ prefix }}<a href="#" onclick="myFunction('tag_{{ tag }}');return false;">{{ tag }}</a>
     {% assign prefix = "&nbsp;|&nbsp;" %}
 {% endfor %}
-</small></em></div>
+</em></small></div>
