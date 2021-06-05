@@ -16,7 +16,7 @@ layout: default
 
 {% for tag in tags %}
 <div id="tag_{{ tag }}" class="tag">
-<!-- <h4>{{ tag }}</h4> -->
+<h4>{{ tag }}</h4>
 <ul>
     {% for post in site.posts %}
         {% if post.tags contains tag %}
@@ -28,14 +28,13 @@ layout: default
 </ul>
 </div>
 {% endfor %}
-
 ---
-<p><em>
+<div><small><em>
 {% assign taglist = "" %}
 {% assign prefix = "" %}
 {% for tag in tags %}
     <!-- <a href="#{{ tag }}" onclick="myFunction();return false;">{{ tag }}</a>  -->
-    {{ prefix }}<a href="#" onclick="myFunction('tag_{{ tag }}');return false;">{{ tag }}</a> 
+    {{ prefix }}<a href="#" onclick="myFunction('tag_{{ tag }}');return false;">{{ tag }}</a>
     {% assign prefix = "&nbsp;|&nbsp;" %}
 {% endfor %}
-</em></p>
+</small></em></div>
