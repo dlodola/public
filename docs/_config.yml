@@ -1,6 +1,6 @@
 theme: jekyll-theme-minimal
 title: Domenico Lodola
-description: A collection of Python tricks & tools for geologists, with a focus on oil & gas.
+description: A collection of Python tricks &amp; tools for geologists, with a focus on oil &amp; gas.
 url: https://dlodola.github.io/public/
 repository: public
 logo: logo.png

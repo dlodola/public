@@ -11,7 +11,10 @@ layout: default
 {{content}}
 
 {% if page.tags %}
-  <small>tags: <em>{{ page.tags | join: "</em> - <em>" }}</em></small>
+{% assign prefix = "" %}
+<small>tags: <em>
+  {% for tag in page.tags %}{{ prefix }}<a href="{{ site.url }}/tags#{{ tag }}">{{ tag }}</a>{% assign prefix = "&nbsp;|&nbsp;" %}{% endfor %}
+</em></small>
 {% endif %}
 
 <hr />
