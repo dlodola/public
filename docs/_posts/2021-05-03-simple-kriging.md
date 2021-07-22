@@ -29,7 +29,7 @@ Kriging is a basic statistical linear estimator. A property's value *&#7825;* in
 alt="equation 1" number="1" height="60" %}
 
 <div class="equation">
-        <div>\( \hat{z} = \sum_{i=1}^I \lambda_iz_i \)</div>
+        <div>\[ \hat{z} = \sum_{i=1}^I \lambda_iz_i \]</div>
         <div class="equation_dots"></div>
         <div>(1)</div>
 </div>
