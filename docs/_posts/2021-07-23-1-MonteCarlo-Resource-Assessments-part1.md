@@ -1,3 +1,11 @@
+---
+layout: post
+draft: false
+title:  "Simple Kriging in 5 lines of Python or less..."
+tags: python geostatistics kriging variogram
+image: casino.png
+---
+
 # Introduction
 
 We explore in this article how to easily generate your own Monte Carlo simulations in Python using a resource assessment as an example. The methodologies detailed here can however be adapted to any problem where a Monte Carlo simulation is desired.
@@ -6,6 +14,8 @@ There are many advantages to using Python for this:
 - It's not a black box - you know what is happening under the hood;
 - It's fully customizable - you can finally tailor the solution to your problem, including the outputs;
 - It is easy to export your results to a wide variety of destinations, including raster and vector images, Excel spreadsheets, or even LaTeX documents.
+
+<!--more-->
 
 Though some familiarity with Python is desirable, advanced knowledge of the language isn't needed and the code provided below should relatively easy to adapt to your own needs. We will mostly be using [SciPy's](https://www.scipy.org) [*statistical submodule*](https://docs.scipy.org/doc/scipy/reference/stats.html) for calculations, [Pandas](https://pandas.pydata.org) for generating and summarizing results, and a combination of [Matplotlib](https://matplotlib.org)/[seaborn](https://seaborn.pydata.org) for plotting.
 
@@ -77,7 +87,7 @@ plt.show()
 
 
     
-![png](output_5_0.png)
+<!-- ![png](output_5_0.png) -->
     
 
 
@@ -311,7 +321,7 @@ sns.ecdfplot(realisations.STOOIP, ax=ax[1])
 
 
     
-![png](output_16_1.png)
+<!-- ![png](output_16_1.png) -->
     
 
 
@@ -547,7 +557,7 @@ plt.savefig('sensitivity.png')
 
 
     
-![png](output_27_0.png)
+<!-- ![png](output_27_0.png) -->
     
 
 
