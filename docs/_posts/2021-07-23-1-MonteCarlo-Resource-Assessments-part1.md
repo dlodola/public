@@ -6,7 +6,7 @@ tags: python montecarlo
 image: roulette.png
 ---
 
-# Introduction
+## Introduction
 
 We explore in this article how to easily generate your own Monte Carlo simulations in Python using a resource assessment as an example. The methodologies detailed here can however be adapted to any problem where a Monte Carlo simulation is desired.
 There are many advantages to using Python for this: 
@@ -22,11 +22,11 @@ Though some familiarity with Python is desirable, advanced knowledge of the lang
 First, we will see how we can generate random variates from a known distribution. We will then apply this knowledge and generate random variates for all the input parameters for a resource calculation before calculating the corresponding resource distribution and creating some reporting elements. Finally we will discuss potential next steps to take things a little further.
 
 
-# Generating random variates from a distribution with SciPy
+## Generating random variates from a distribution with SciPy
 
 Let's generate $n$ random variates for a normal distribution with a mean of 3 and a standard deviation of 2. For this, we can use SciPy's [*norm*](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.norm.html) continuous distribution class to instantiate a normal distribution object with the desired paramaters: `distribution = norm(loc=3, scale=2)`. We can then use its [*rvs( )*](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.rv_continuous.rvs.html) method to generate \(n\) random variates.
 
-## Import necessary libraries
+### Import necessary libraries
 
 
 ```python
@@ -42,7 +42,7 @@ from scipy.stats import (norm, lognorm,
 import seaborn as sns
 ```
 
-## Generate random variates and ideal distribution
+### Generate random variates and ideal distribution
 
 
 ```python
@@ -58,7 +58,7 @@ x = np.linspace(-6.5, 8.5)
 probability = distribution.pdf(x)
 ```
 
-## Display results
+### Display results
 
 
 ```python
@@ -91,7 +91,7 @@ plt.show()
     
 
 
-## A note on distributions and their parameters in SciPy
+### A note on distributions and their parameters in SciPy
 
 In addition to the normal distribution used above, there are many others available in SciPy all featuring similar functionalities. The average geoscientist should easily find what they need:
 
@@ -122,7 +122,7 @@ def lognorm_dist(p90, p10):
     return lognorm(s=std, scale=exp(mean))
 ```
 
-# Generating random variates for volumetric parameters
+## Generating random variates for volumetric parameters
 
 Strong with this knowledge, we can now define distributions for the input parameters of our resource assessment and generate random variates for each parameter. 
 
@@ -159,7 +159,7 @@ for param, dist in params.items():
 
 > Note: defining the `random_state` argument in `rvs` is not a requirement. I have opted to do this here so the outputs are always the same (still 'random', just the same 'random' every time). I have been cautious to change the random state for each parameter to avoid unwanted correlation between parameters.
 
-## Generating a summary of the random variates
+### Generating a summary of the random variates
 
 Using Pandas' [*describe( )*](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html?highlight=describe) method and specifying a list of `percentiles`, we can easily generate a summary table of statistics for the imput parameters. Along with our chosen percentiles, this will also provide mean, standard deviation, and min & max for each parameter. This is useful to check we have experimental distributions that matches our desired ones.
 
@@ -285,7 +285,7 @@ realisations['Sw'] = realisations['Sw'].clip(lower=0.15, upper=0.70)
 realisations['NTG'] = realisations['NTG'].clip(upper=1)
 ```
 
-# Volumetric calculations and reporting
+## Volumetric calculations and reporting
 
 
 
@@ -497,7 +497,7 @@ export to Excel
 summary.to_excel('./summary.xlsx')
 ```
 
-# Where next?
+## Where next?
 
 - [ ] correlated variables
 - [ ] area depth from grid
