@@ -4,6 +4,7 @@ draft: false
 title:  "Monte Carlo resource assessments in Python"
 tags: python montecarlo
 image: roulette.png
+notebook: 1-MonteCarlo-Resource-Assessments-part1
 ---
 
 ## Introduction
