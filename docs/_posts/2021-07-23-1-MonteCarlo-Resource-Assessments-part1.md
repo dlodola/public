@@ -24,7 +24,7 @@ First, we will see how we can generate random variates from a known distribution
 
 ## Generating random variates from a distribution with SciPy
 
-Let's generate $n$ random variates for a normal distribution with a mean of 3 and a standard deviation of 2. For this, we can use SciPy's [*norm*](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.norm.html) continuous distribution class to instantiate a normal distribution object with the desired paramaters: `distribution = norm(loc=3, scale=2)`. We can then use its [*rvs( )*](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.rv_continuous.rvs.html) method to generate <span>\\( n \\)</span> random variates.
+Let's generate $n$ random variates for a normal distribution with a mean of 3 and a standard deviation of 2. For this, we can use SciPy's [*norm*](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.norm.html) continuous distribution class to instantiate a normal distribution object with the desired paramaters: `distribution = norm(loc=3, scale=2)`. We can then use its [*rvs( )*](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.rv_continuous.rvs.html) method to generate \\( n \\) random variates.
 
 ### Import necessary libraries
 
@@ -101,7 +101,7 @@ In addition to the normal distribution used above, there are many others availab
 - Truncated normal ([*truncnorm*](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.truncnorm.html))
 - And many more (full list [here](https://docs.scipy.org/doc/scipy/reference/stats.html#continuous-distributions))
 
-The parameters used to define these distributions are not always as user friendly as one might hope, and depending on the distribution some calculations may be needed to get to them. To make things a little simpler going forward, we will therefor create some functions to instantiate SciPy distribution objects using more user friendly parameters, especially for the log-normal distribution which we will also be using. The two functions below do this taking the \(P_{90}\) and \(P_{10}\) as input parameters.
+The parameters used to define these distributions are not always as user friendly as one might hope, and depending on the distribution some calculations may be needed to get to them. To make things a little simpler going forward, we will therefor create some functions to instantiate SciPy distribution objects using more user friendly parameters, especially for the log-normal distribution which we will also be using. The two functions below do this taking the \\(P_{90}\\) and \\(P_{10}\\) as input parameters.
 
 
 ```python
@@ -276,7 +276,7 @@ realisations.describe(percentiles=[0.1, 0.5, 0.9],)
 
 
 
-Close inspection reveals values for \(NTG\), \(Porosity\) and \(S_w\) that fall outside of desired bounds. We can address this with Pandas' [*clip( )*](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.clip.html) method and clip these outlier values to more reasonable one.
+Close inspection reveals values for \\(NTG\\), \\(Porosity\\) and \\(S_w\\) that fall outside of desired bounds. We can address this with Pandas' [*clip( )*](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.clip.html) method and clip these outlier values to more reasonable one.
 
 
 ```python
