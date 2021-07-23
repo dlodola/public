@@ -24,7 +24,7 @@ First, we will see how we can generate random variates from a known distribution
 
 ## Generating random variates from a distribution with SciPy
 
-Let's generate $n$ random variates for a normal distribution with a mean of 3 and a standard deviation of 2. For this, we can use SciPy's [*norm*](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.norm.html) continuous distribution class to instantiate a normal distribution object with the desired paramaters: `distribution = norm(loc=3, scale=2)`. We can then use its [*rvs( )*](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.rv_continuous.rvs.html) method to generate \(n\) random variates.
+Let's generate $n$ random variates for a normal distribution with a mean of 3 and a standard deviation of 2. For this, we can use SciPy's [*norm*](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.norm.html) continuous distribution class to instantiate a normal distribution object with the desired paramaters: `distribution = norm(loc=3, scale=2)`. We can then use its [*rvs( )*](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.rv_continuous.rvs.html) method to generate \( n \) $ n $ random variates.
 
 ### Import necessary libraries
 
