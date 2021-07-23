@@ -8,14 +8,12 @@ image: roulette.png
 
 ## Introduction
 
-We explore in this article how to easily generate your own Monte Carlo simulations in Python using a resource assessment as an example. The methodologies detailed here can however be adapted to any problem where a Monte Carlo simulation is desired.
+We explore in this article how to easily generate your own Monte Carlo simulations in Python using a resource assessment as an example. The methodologies detailed here can however be adapted to any problem where a Monte Carlo simulation is desired.<!--more-->
 There are many advantages to using Python for this: 
 - It's totally free - no need for any extensions to Excel (or for Excel for that matter...);
 - It's not a black box - you know what is happening under the hood;
 - It's fully customizable - you can finally tailor the solution to your problem, including the outputs;
 - It is easy to export your results to a wide variety of destinations, including raster and vector images, Excel spreadsheets, or even LaTeX documents.
-
-<!--more-->
 
 Though some familiarity with Python is desirable, advanced knowledge of the language isn't needed and the code provided below should relatively easy to adapt to your own needs. We will mostly be using [SciPy's](https://www.scipy.org) [*statistical submodule*](https://docs.scipy.org/doc/scipy/reference/stats.html) for calculations, [Pandas](https://pandas.pydata.org) for generating and summarizing results, and a combination of [Matplotlib](https://matplotlib.org)/[seaborn](https://seaborn.pydata.org) for plotting.
 
@@ -24,7 +22,7 @@ First, we will see how we can generate random variates from a known distribution
 
 ## Generating random variates from a distribution with SciPy
 
-Let's generate $n$ random variates for a normal distribution with a mean of 3 and a standard deviation of 2. For this, we can use SciPy's [*norm*](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.norm.html) continuous distribution class to instantiate a normal distribution object with the desired paramaters: `distribution = norm(loc=3, scale=2)`. We can then use its [*rvs( )*](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.rv_continuous.rvs.html) method to generate \\( n \\) random variates.
+Let's generate \\(n\\) random variates for a normal distribution with a mean of 3 and a standard deviation of 2. For this, we can use SciPy's [*norm*](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.norm.html) continuous distribution class to instantiate a normal distribution object with the desired paramaters: `distribution = norm(loc=3, scale=2)`. We can then use its [*rvs( )*](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.rv_continuous.rvs.html) method to generate \\(n\\) random variates.
 
 ### Import necessary libraries
 
@@ -58,7 +56,7 @@ x = np.linspace(-6.5, 8.5)
 probability = distribution.pdf(x)
 ```
 
-### Display results
+### Plot histogram of results
 
 
 ```python
@@ -75,7 +73,7 @@ sns.histplot(
 )
     
 # plot the ideal distribution
-ax.plot(x, y, c='k', ls=':', 
+ax.plot(x, probability, c='k', ls=':', 
         label='Ideal distribution')
     
 # format title and add legend to plot
@@ -90,6 +88,8 @@ plt.show()
 <!-- ![png](output_5_0.png) -->
     
 
+
+> We set the `stat` argument to `density` for the histogram to normalize its total area to 1.
 
 ### A note on distributions and their parameters in SciPy
 
@@ -124,7 +124,7 @@ def lognorm_dist(p90, p10):
 
 ## Generating random variates for volumetric parameters
 
-Strong with this knowledge, we can now define distributions for the input parameters of our resource assessment and generate random variates for each parameter. 
+We can now define distributions for the input parameters of our resource assessment and generate random variates for each parameter. We will store these in a Python `dict` so we can use the dictionary keys to create corresponding columns in a Pandas DataFrame, and then loop through these keys to populate these columns with appropriate random variates.
 
 
 ```python
@@ -140,7 +140,7 @@ params = {
 
 # number of samples in our simulation
 num_samples = 100_000
-#---------#---------#---------#---------#---------#---------#--------
+
 # create an empty DataFrame with a column for each input parameter
 realisations = pd.DataFrame([], columns=params)
 
@@ -159,12 +159,131 @@ for param, dist in params.items():
 
 > Note: defining the `random_state` argument in `rvs` is not a requirement. I have opted to do this here so the outputs are always the same (still 'random', just the same 'random' every time). I have been cautious to change the random state for each parameter to avoid unwanted correlation between parameters.
 
-### Generating a summary of the random variates
+### Random variates summary
 
 Using Pandas' [*describe( )*](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html?highlight=describe) method and specifying a list of `percentiles`, we can easily generate a summary table of statistics for the imput parameters. Along with our chosen percentiles, this will also provide mean, standard deviation, and min & max for each parameter. This is useful to check we have experimental distributions that matches our desired ones.
 
 
 ```python
+realisations.describe(percentiles=[0.1, 0.5, 0.9],)
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>GRV</th>
+      <th>NTG</th>
+      <th>Porosity</th>
+      <th>Sw</th>
+      <th>FVF</th>
+      <th>RF</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>1.000000e+05</td>
+      <td>100000.000000</td>
+      <td>100000.000000</td>
+      <td>100000.000000</td>
+      <td>100000.000000</td>
+      <td>100000.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>1.684093e+08</td>
+      <td>0.699864</td>
+      <td>0.174904</td>
+      <td>0.299951</td>
+      <td>1.200344</td>
+      <td>0.199975</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>6.246200e+07</td>
+      <td>0.077804</td>
+      <td>0.039007</td>
+      <td>0.117216</td>
+      <td>0.078205</td>
+      <td>0.039172</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>3.837896e+07</td>
+      <td>0.339578</td>
+      <td>-0.001573</td>
+      <td>-0.189080</td>
+      <td>0.853751</td>
+      <td>0.036569</td>
+    </tr>
+    <tr>
+      <th>10%</th>
+      <td>9.992398e+07</td>
+      <td>0.600324</td>
+      <td>0.124994</td>
+      <td>0.149439</td>
+      <td>1.100215</td>
+      <td>0.149634</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>1.578452e+08</td>
+      <td>0.699836</td>
+      <td>0.174726</td>
+      <td>0.299628</td>
+      <td>1.200399</td>
+      <td>0.200028</td>
+    </tr>
+    <tr>
+      <th>90%</th>
+      <td>2.500421e+08</td>
+      <td>0.799543</td>
+      <td>0.225139</td>
+      <td>0.449945</td>
+      <td>1.300464</td>
+      <td>0.250159</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>7.547270e+08</td>
+      <td>1.029001</td>
+      <td>0.331260</td>
+      <td>0.781936</td>
+      <td>1.528683</td>
+      <td>0.363993</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+Close inspection reveals values for net-to-gross, porosity and \\(S_w\\) that fall outside of desired bounds. We can address this with Pandas' [*clip( )*](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.clip.html) method and clip these outlier values to more reasonable ones.
+
+
+```python
+realisations['Porosity'] = realisations['Porosity'].clip(lower=0.1)
+realisations['Sw'] = realisations['Sw'].clip(lower=0.15, upper=0.70)
+realisations['NTG'] = realisations['NTG'].clip(upper=1)
+
 realisations.describe(percentiles=[0.1, 0.5, 0.9],)
 ```
 
@@ -276,19 +395,10 @@ realisations.describe(percentiles=[0.1, 0.5, 0.9],)
 
 
 
-Close inspection reveals values for \\(NTG\\), \\(Porosity\\) and \\(S_w\\) that fall outside of desired bounds. We can address this with Pandas' [*clip( )*](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.clip.html) method and clip these outlier values to more reasonable one.
-
-
-```python
-realisations['Porosity'] = realisations['Porosity'].clip(lower=0.1)
-realisations['Sw'] = realisations['Sw'].clip(lower=0.15, upper=0.70)
-realisations['NTG'] = realisations['NTG'].clip(upper=1)
-```
-
 ## Volumetric calculations and reporting
 
 
-
+### Calculating resource distribution
 
 
 ```python
@@ -301,6 +411,10 @@ realisations['STOOIP'] = (realisations['GRV']
 realisations['Resource'] = realisations['STOOIP'] * realisations['RF']
 ```
 
+### Plotting the results
+
+Let's use seaborn to plot a summary histogram and an empirical cumulative distribution function of the STOOIP distribution:
+
 
 ```python
 fig, ax = plt.subplots(nrows=2, figsize=(8.3, 11.7))
@@ -310,24 +424,26 @@ sns.histplot(realisations.STOOIP, ax=ax[0], stat='probability', bins=40)
 
 # display empirical cumulative distribution function in second subplot
 sns.ecdfplot(realisations.STOOIP, ax=ax[1])
+
+plt.show()
 ```
 
 
-
-
-    <AxesSubplot:xlabel='STOOIP', ylabel='Proportion'>
-
-
-
-
     
-<!-- ![png](output_16_1.png) -->
+<!-- ![png](output_17_0.png) -->
     
 
+
+With a little bit of extra code, we can add some useful information on our plots for the \\(P_{90}\\), \\(P_{50}\\), \\(P_{10}\\) and mean values:
 
 
 ```python
-# display key percentiles and mean on cumulative plot
+# next 3 lines copied from above
+fig, ax = plt.subplots(nrows=2, figsize=(8.3, 11.7))
+sns.histplot(realisations.STOOIP, ax=ax[0], stat='probability', bins=40)
+sns.ecdfplot(realisations.STOOIP, ax=ax[1])
+
+# display key percentiles and mean on plots
 ax[0].set_xlim(left=0)
 ax[0].set_ylim(ax[0].get_ylim()) # freeze ylim
 ax[1].set_xlim(ax[0].get_xlim())
@@ -358,21 +474,17 @@ ax[1].annotate('$Mean={:.1f}$'.format(mean),
                xytext=(3, 3),
                textcoords='offset pixels',
                c='r')
-```
 
-
-
-
-    Text(3, 3, '$Mean=75.5$')
-
-
-
-
-```python
 plt.show()
 ```
 
-Save figure
+
+    
+<!-- ![png](output_19_0.png) -->
+    
+
+
+### Summary statistics
 
 
 ```python
@@ -427,8 +539,8 @@ summary
       <td>6.003238e-01</td>
       <td>6.998363e-01</td>
       <td>7.995425e-01</td>
-      <td>1.029001e+00</td>
-      <td>6.998636e-01</td>
+      <td>1.000000e+00</td>
+      <td>6.998628e-01</td>
     </tr>
     <tr>
       <th>Porosity</th>
@@ -471,9 +583,9 @@ summary
       <td>7.488700e+00</td>
       <td>3.692494e+01</td>
       <td>6.797166e+01</td>
-      <td>1.232714e+02</td>
+      <td>1.232692e+02</td>
       <td>4.868506e+02</td>
-      <td>7.546393e+01</td>
+      <td>7.546385e+01</td>
     </tr>
     <tr>
       <th>Resource</th>
@@ -482,7 +594,7 @@ summary
       <td>1.334368e+01</td>
       <td>2.550345e+01</td>
       <td>1.008095e+02</td>
-      <td>1.509399e+01</td>
+      <td>1.509398e+01</td>
     </tr>
   </tbody>
 </table>
@@ -490,14 +602,24 @@ summary
 
 
 
-export to Excel
+### Export results
+
+Matplotlib provides the option to save a figure as a file, with multiple file formats available, including PDF, SVG, PNG and JPEG. Likewise, Pandas allows direct exports to a number of formats, including CVS and Excel .xlsx spreadsheets.
 
 
 ```python
+# export STOOIP historgram to a PDF file
+fig.savefig('./STOOIP.pdf')
+
+# export summary statistcs to an Excel spreadsheet
 summary.to_excel('./summary.xlsx')
 ```
 
 ## Where next?
+
+### Different methods
+
+### Sampling
 
 - [ ] correlated variables
 - [ ] area depth from grid
@@ -505,62 +627,11 @@ summary.to_excel('./summary.xlsx')
 - [ ] risked distributions
 - [ ] multiple prospects / consolidation
 
+### Portfolio consolidations
 
-```python
-num_samples = 20_000_000
-
-
-realisations = pd.DataFrame([], columns=params)
-
-for k, v in params.items():
-    realisations[k] = v.rvs(num_samples)
-```
+pseudo-randomness, sampling, LHC etc. SciPY QMC...
 
 
 ```python
-realisations.Porosity = realisations.Porosity.clip(lower=0.1)
-realisations.Sw = realisations.Sw.clip(lower=0.15)
-realisations['STOOIP'] = (realisations['GRV']
-                     * realisations['NTG']
-                     * realisations['Porosity']
-                     * (1 - realisations['Sw'])
-                     / realisations['FVF']
-                     / 1_000 / 159)
-realisations['Resource'] = realisations['STOOIP'] * realisations['RF']
+
 ```
-
-
-```python
-summary_stats = realisations.Resource.groupby(by=np.arange(200). \
-                                repeat(100_000)). \
-                                quantile([0.1, 0.5, 0.9]). \
-                                unstack()
-summary_stats['Mean'] = realisations.Resource.groupby(by=np.arange(200). \
-                                repeat(100_000)). \
-                                mean()
-summary_stats = summary_stats / summary_stats.mean()
-```
-
-
-```python
-fig, ax = plt.subplots(figsize=(9,6))
-summary_stats.columns = ['P90', 'P50', 'P10', 'Mean']
-sns.boxplot(data=summary_stats.melt(value_name='Deviation from Mean'), 
-            x='variable', 
-            y='Deviation from Mean', 
-            ax=ax)
-ax.yaxis.set_major_formatter(StrMethodFormatter('{x:.1%}'))
-ax.set_xlabel(None)
-plt.show()
-plt.savefig('sensitivity.png')
-```
-
-
-    
-<!-- ![png](output_27_0.png) -->
-    
-
-
-
-    <Figure size 432x288 with 0 Axes>
-
