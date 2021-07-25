@@ -122,6 +122,7 @@ table.dataframe {
 
 body {
 	counter-reset: figures;
+	counter-reset: equations;
 }
 
 figure {
@@ -129,5 +130,6 @@ figure {
 }
 
 figure figcaption:before {
-  content: 'Figure&nbsp;' counter(figures) ':&nbsp;';
+  font-weight: bold;
+  content: 'Figure ' counter(figures) ': ';
 }
