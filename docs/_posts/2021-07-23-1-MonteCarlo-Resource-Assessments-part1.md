@@ -1,29 +1,20 @@
----
-layout: post
-draft: false
-title:  "Monte Carlo resource assessments in Python"
-tags: python montecarlo
-image: roulette.png
-notebook: 1-MonteCarlo-Resource-Assessments-part1
----
-
-## Introduction
+# Monte Carlo resource assessments in Python
 
 We explore in this article how to easily generate your own Monte Carlo simulations in Python using a resource assessment as an example. The methodologies detailed here can however be adapted to any problem where a Monte Carlo simulation is desired.<!--more-->
 There are many advantages to using Python for this: 
-- It's totally free - no need for any extensions to Excel (or for Excel for that matter...);
-- It's not a black box - you know what is happening under the hood;
-- It's fully customizable - you can finally tailor the solution to your problem, including the outputs;
-- It is easy to export your results to a wide variety of destinations, including raster and vector images, Excel spreadsheets, or even LaTeX documents.
+- It's totally free &mdash; no need for any extensions to Excel (or for Excel for that matter...);
+- It's not a black box &mdash; you know what is happening under the hood;
+- It's fully customizable &mdash; you can finally tailor the solution to your problem, including the outputs;
+- It is easy to export your results to a wide variety of destinations, including raster and vector images, Excel spreadsheets, or even \\(\LaTeX\\) documents.
 
-Though some familiarity with Python is desirable, advanced knowledge of the language isn't needed and the code provided below should relatively easy to adapt to your own needs. We will mostly be using [SciPy's](https://www.scipy.org) [*statistical submodule*](https://docs.scipy.org/doc/scipy/reference/stats.html) for calculations, [Pandas](https://pandas.pydata.org) for generating and summarizing results, and a combination of [Matplotlib](https://matplotlib.org)/[seaborn](https://seaborn.pydata.org) for plotting.
+Though some familiarity with Python is desirable, advanced knowledge of the language isn't needed and the code provided below should be relatively easy to adapt to your own needs. We will mostly be using [SciPy's](https://www.scipy.org) [*statistical submodule*](https://docs.scipy.org/doc/scipy/reference/stats.html) for calculations, [Pandas](https://pandas.pydata.org) for generating and summarizing results, and a combination of [Matplotlib](https://matplotlib.org)/[seaborn](https://seaborn.pydata.org) for plotting. Using seaborn for plotting automatically handles a lot of the plot formatting.
 
-First, we will see how we can generate random variates from a known distribution. We will then apply this knowledge and generate random variates for all the input parameters for a resource calculation before calculating the corresponding resource distribution and creating some reporting elements. Finally we will discuss potential next steps to take things a little further.
+First, we will see how we can generate random variates from a known distribution. We will then apply this knowledge and generate random variates for all the input parameters for a resource calculation, before calculating the corresponding resource distribution and creating some reporting elements. Finally, we will discuss potential next steps to take things a little further.
 
 
 ## Generating random variates from a distribution with SciPy
 
-Let's generate \\(n\\) random variates for a normal distribution with a mean of 3 and a standard deviation of 2. For this, we can use SciPy's [*norm*](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.norm.html) continuous distribution class to instantiate a normal distribution object with the desired paramaters: `distribution = norm(loc=3, scale=2)`. We can then use its [*rvs( )*](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.rv_continuous.rvs.html) method to generate \\(n\\) random variates.
+Let's generate \\(n\\) random variates for a normal distribution with a mean of 3 and a standard deviation of 2. For this, we can use SciPy's [*norm*](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.norm.html) continuous distribution class to instantiate a normal distribution object with the desired paramaters<!--: `distribution = norm(loc=3, scale=2)`-->. We can then use its [*rvs( )*](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.rv_continuous.rvs.html) method to generate \\(n\\) random variates.
 
 ### Import necessary libraries
 
@@ -32,7 +23,6 @@ Let's generate \\(n\\) random variates for a normal distribution with a mean of 
 from math import log, exp
 
 import matplotlib.pyplot as plt
-from matplotlib.ticker import StrMethodFormatter
 import numpy as np
 import pandas as pd
 from scipy.stats import (norm, lognorm, 
@@ -59,6 +49,8 @@ probability = distribution.pdf(x)
 
 ### Plot histogram of results
 
+Seaborn has a very handy function [*histplot*](https://seaborn.pydata.org/generated/seaborn.histplot.html) for plotting histograms we can use:
+
 
 ```python
 # create Pyplot axes for plotting results
@@ -66,11 +58,11 @@ fig, ax = plt.subplots()
 
 # plot a histogram of the random variates with seaborn
 sns.histplot(
-    rv,
-    bins=40,
-    stat='density',
-    ax=ax,
-    label='Sample data'
+    rv,                    # unbinned data to plot
+    bins=40,               # number of bins/bars
+    stat='density',        # method for normalising bar height
+    ax=ax,                 # axes on which to plot the histogram
+    label='Sample data'    
 )
     
 # plot the ideal distribution
@@ -86,15 +78,25 @@ plt.show()
 
 
     
-<!-- ![png](output_5_0.png) -->
+<figure>
+    <p>
+        <a href="{{ site.url }}assets/images/">
+        <img src="{{ site.url }}assets/images/1-MonteCarlo-Resource-Assessments-part1_files/1-MonteCarlo-Resource-Assessments-part1_5_0.png" alt="png" class="scaled"/>
+        </a>
+        <figcaption><b>Figure&nbsp;1:</b>&nbsp;
+        <i>&nbsp;(click to enlarge)</i>
+        </figcaption>
+    </p>
+</figure>
     
 
 
-> We set the `stat` argument to `density` for the histogram to normalize its total area to 1.
+
+> We set the `stat` argument to `density` for the histogram to normalize its total area to 1 so it can be compared to our ideal distribution.
 
 ### A note on distributions and their parameters in SciPy
 
-In addition to the normal distribution used above, there are many others available in SciPy all featuring similar functionalities. The average geoscientist should easily find what they need:
+In addition to the normal distribution used above, there are many others available in SciPy, all featuring similar functionalities. The average geoscientist should easily find what they need:
 
 - Log-normal ([*lognorm*](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.lognorm.html)) 
 - Beta ([*beta*](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.beta.html))
@@ -102,10 +104,11 @@ In addition to the normal distribution used above, there are many others availab
 - Truncated normal ([*truncnorm*](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.truncnorm.html))
 - And many more (full list [here](https://docs.scipy.org/doc/scipy/reference/stats.html#continuous-distributions))
 
-The parameters used to define these distributions are not always as user friendly as one might hope, and depending on the distribution some calculations may be needed to get to them. To make things a little simpler going forward, we will therefor create some functions to instantiate SciPy distribution objects using more user friendly parameters, especially for the log-normal distribution which we will also be using. The two functions below do this taking the \\(P_{90}\\) and \\(P_{10}\\) as input parameters.
+The parameters used to define these distributions are not always as user friendly as one might hope, and depending on the distribution some calculations may be needed to get to them. To make things a little simpler going forward, we will therefore create some functions to instantiate SciPy distribution objects using more user friendly parameters, especially for the log-normal distribution which we will also be using. The two functions below do this taking the \\(P_{90}\\) and \\(P_{10}\\) as input parameters; similar functions could be written other distributions if needed.
 
 
 ```python
+# define easy to call normal distribution
 def norm_dist(p90, p10):
     if p90 > p10:
         p90, p10 = p10, p90
@@ -113,7 +116,7 @@ def norm_dist(p90, p10):
     std = (p10 - p90) / (norm.ppf(0.9) - norm.ppf(0.1))
     return norm(loc=mean, scale=std)
     
-
+# define easy to call log-normal distribution
 def lognorm_dist(p90, p10):
     if p90 > p10:
         p90, p10 = p10, p90
@@ -125,18 +128,18 @@ def lognorm_dist(p90, p10):
 
 ## Generating random variates for volumetric parameters
 
-We can now define distributions for the input parameters of our resource assessment and generate random variates for each parameter. We will store these in a Python `dict` so we can use the dictionary keys to create corresponding columns in a Pandas DataFrame, and then loop through these keys to populate these columns with appropriate random variates.
+We can now define distributions for the input parameters of our resource assessment and generate random variates for each parameter. We will store these in a Python `dict` so we can use this dictionary's keys to create corresponding columns in a Pandas DataFrame, and then loop through these keys to populate each column with appropriate random variates.
 
 
 ```python
-# define volumetric parameters
+# define dictionary of volumetric parameters
 params = {
-    'GRV':      lognorm_dist(p90=100e6, p10=250e6),
-    'NTG':      norm_dist(p90=0.6, p10=0.8),
+    'GRV': lognorm_dist(p90=100e6, p10=250e6),
+    'NTG': norm_dist(p90=0.6, p10=0.8),
     'Porosity': norm_dist(p90=0.125, p10=0.225),
-    'Sw':       norm_dist(p90=0.15, p10=0.45),
-    'FVF':      norm_dist(p90=1.1, p10=1.3),
-    'RF':       norm_dist(p90=0.15, p10=0.25),
+    'Sw': norm_dist(p90=0.15, p10=0.45),
+    'FVF': norm_dist(p90=1.1, p10=1.3),
+    'RF': norm_dist(p90=0.15, p10=0.25),
 }
 
 # number of samples in our simulation
@@ -146,8 +149,9 @@ num_samples = 100_000
 realisations = pd.DataFrame([], columns=params)
 
 
-# loop through parameters generating their random variates
-# and storing the result in the right column of
+# loop through key, value pairs from the parameters
+# dictionary generating their random variates
+# and storing the result in the correct column of
 # the DataFrame
 seed = 2
 for param, dist in params.items():
@@ -162,11 +166,11 @@ for param, dist in params.items():
 
 ### Random variates summary
 
-Using Pandas' [*describe( )*](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html?highlight=describe) method and specifying a list of `percentiles`, we can easily generate a summary table of statistics for the imput parameters. Along with our chosen percentiles, this will also provide mean, standard deviation, and min & max for each parameter. This is useful to check we have experimental distributions that matches our desired ones.
+Using Pandas' [*describe( )*](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html?highlight=describe) method and specifying a list of `percentiles`, we can easily generate a table of summary statistics for the input parameters. Along with our chosen percentiles, this will also provide mean, standard deviation, and min & max for each parameter. This is useful to check we have experimental distributions that match our desired ones.
 
 
 ```python
-realisations.describe(percentiles=[0.1, 0.5, 0.9],)
+realisations.describe(percentiles=[0.1, 0.5, 0.9])
 ```
 
 
@@ -285,7 +289,7 @@ realisations['Porosity'] = realisations['Porosity'].clip(lower=0.1)
 realisations['Sw'] = realisations['Sw'].clip(lower=0.15, upper=0.70)
 realisations['NTG'] = realisations['NTG'].clip(upper=1)
 
-realisations.describe(percentiles=[0.1, 0.5, 0.9],)
+realisations.describe(percentiles=[0.1, 0.5, 0.9])
 ```
 
 
@@ -401,6 +405,8 @@ realisations.describe(percentiles=[0.1, 0.5, 0.9],)
 
 ### Calculating resource distribution
 
+The calculation below assumes that the gross rock volume is in \\(m^3\\) and returns a result in \\(mmbbl\\).
+
 
 ```python
 realisations['STOOIP'] = (realisations['GRV']
@@ -414,7 +420,7 @@ realisations['Resource'] = realisations['STOOIP'] * realisations['RF']
 
 ### Plotting the results
 
-Let's use seaborn to plot a summary histogram and an empirical cumulative distribution function of the STOOIP distribution:
+Let's use seaborn again to plot a summary histogram and an empirical cumulative distribution function of the STOOIP distribution:
 
 
 ```python
@@ -431,15 +437,25 @@ plt.show()
 
 
     
-<!-- ![png](output_17_0.png) -->
+<figure>
+    <p>
+        <a href="{{ site.url }}assets/images/">
+        <img src="{{ site.url }}assets/images/1-MonteCarlo-Resource-Assessments-part1_files/1-MonteCarlo-Resource-Assessments-part1_17_0.png" alt="png" class="scaled"/>
+        </a>
+        <figcaption><b>Figure&nbsp;1:</b>&nbsp;
+        <i>&nbsp;(click to enlarge)</i>
+        </figcaption>
+    </p>
+</figure>
     
 
 
-With a little bit of extra code, we can add some useful information on our plots for the \\(P_{90}\\), \\(P_{50}\\), \\(P_{10}\\) and mean values:
+
+With a little bit of extra code, we can add some useful information to our plots like the \\(P_{90}\\), \\(P_{50}\\), \\(P_{10}\\) and mean values:
 
 
 ```python
-# next 3 lines copied from above
+# first 3 lines are copied from above
 fig, ax = plt.subplots(nrows=2, figsize=(8.3, 11.7))
 sns.histplot(realisations.STOOIP, ax=ax[0], stat='probability', bins=40)
 sns.ecdfplot(realisations.STOOIP, ax=ax[1])
@@ -452,9 +468,9 @@ y_max = ax[0].get_ylim()[1]
 ls = {'c':'k', 'ls': '--', 'lw': '1'}
 for p in [0.1, 0.5, 0.9]:
     q = realisations.STOOIP.quantile(p)
-    ax[0].plot([q] * 2, [0, y_max], **ls)
-    ax[1].plot([0] + [q] * 2,
-               [p] * 2 + [0],
+    ax[0].plot([q]*2, [0, y_max], **ls)
+    ax[1].plot([0] + [q]*2,
+               [p]*2 + [0],
                **ls)
     ax[1].annotate('{:.1f}'.format(q), 
                    (q, p),
@@ -466,9 +482,9 @@ ls_mean = {'c':'r', 'ls': '--', 'lw': '1'}
 mean = realisations.STOOIP.mean()
 Pmean = percentileofscore(realisations.STOOIP,
                           mean, kind='weak') / 100
-ax[0].plot([mean] * 2, [0, y_max],
+ax[0].plot([mean]*2, [0, y_max],
            **ls_mean)
-ax[1].plot([0] + [mean] * 2, [Pmean] * 2 + [0],
+ax[1].plot([0] + [mean]*2, [Pmean]*2 + [0],
            **ls_mean)
 ax[1].annotate('$Mean={:.1f}$'.format(mean), 
                (mean, Pmean),
@@ -481,17 +497,37 @@ plt.show()
 
 
     
-<!-- ![png](output_19_0.png) -->
+<figure>
+    <p>
+        <a href="{{ site.url }}assets/images/">
+        <img src="{{ site.url }}assets/images/1-MonteCarlo-Resource-Assessments-part1_files/1-MonteCarlo-Resource-Assessments-part1_19_0.png" alt="png" class="scaled"/>
+        </a>
+        <figcaption><b>Figure&nbsp;1:</b>&nbsp;
+        <i>&nbsp;(click to enlarge)</i>
+        </figcaption>
+    </p>
+</figure>
     
+
 
 
 ### Summary statistics
 
+And we can reuse the `describe()` method to create a new DataFrame with summary statistics for both our input parameters and STOOIP/resource distributions. We take it one step further this time by transposing the DataFrame so the parameters/results are now rows, and only retaining some of the statistics that we reorder. We can also update the column names to something more useful.
+
 
 ```python
-summary = realisations.describe(percentiles=[0.1, 0.5, 0.9],).T \
-    .iloc[:,[3,4,5,6,7,1]]
+summary = realisations.describe(percentiles=[0.1, 0.5, 0.9])
+
+# transpose summary
+summary = summary.T
+
+# select columns in desired order
+summary = summary[['min', '10%', '50%', '90%', 'max', 'mean']]
+
+# update column names
 summary.columns = ['Min', 'P90', 'P50', 'P10', 'Max', 'Mean']
+
 summary
 ```
 
@@ -605,28 +641,54 @@ summary
 
 ### Export results
 
-Matplotlib provides the option to save a figure as a file, with multiple file formats available, including PDF, SVG, PNG and JPEG. Likewise, Pandas allows direct exports to a number of formats, including CVS and Excel .xlsx spreadsheets.
+Matplotlib provides the option to save a figure as a file, with multiple file formats available, including PDF, SVG, PNG and JPEG. Likewise, Pandas allows direct exports to a number of formats, including CSV and Excel *.xlsx* spreadsheets.
 
 
 ```python
 # export STOOIP historgram to a PDF file
-fig.savefig('./STOOIP.pdf')
+# fig.savefig('./STOOIP.pdf')
 
 # export summary statistcs to an Excel spreadsheet
-summary.to_excel('./summary.xlsx')
+# summary.to_excel('./summary.xlsx')
 ```
 
+## Summary
+
+We have seen in this article how to generate random variates from a known distribution and applied this to generate random variates for the input parameters of our resource calculation.
+using Pandas for STOOIP/resource calculations and exporting tables to Excel
+using Matplotlib/seaborn to plot results and export.
+
+
+
 ## Where next?
-
-### Different methods
-
-### Sampling
 
 - [ ] correlated variables
 - [ ] area depth from grid
 - [ ] GRV from 2 grids
 - [ ] risked distributions
 - [ ] multiple prospects / consolidation
+
+### Different workflows
+
+- area-depth
+- 1/2 grids
+
+### More advanced sampling
+
+The `rvs` method is already adding a layer of abstraction in that it is handling all the sampling effort. Under the hood, it is generating \\(n\\) pseudo-random numbers from a uniform distribution over \\( \left[0,1\right]\\) and using the inverse of an appropriate cumulative distribution function to convert these to random variates of the desired distribution. With increasing numbers of parameters, this could lead to undersampling of parts of the sample space. One solution to address this is by using brute force and increasing the number of samples.
+
+(sensitivity figure/discussion here - 100,000 samples/200 realisations).
+
+
+<center><img src="./assets/1-sensitivity.png" alt="" width="60%" /><i><b>Figure 1:</b> Figure title</i></center>
+
+    
+Another solution is to ditch `rvs` and take control of sampling. In this case we need to generate our own samples over \\( \left[0,1\right]\\) and transform them to random variates with the `ppf` method which provides an inverse cumulative probability function for a distribution. There are two main advantages to doing this:
+
+1. You can opt for more advanced sampling techniques like Latin hypercubes, orthogonal sampling, or low-discrepancy sequences; this is no longer pseudo-random though and enters the realm of Quasi Monte Carlo simulation. Given the low number of dimensions typical of resource calculations it is likely to offer only limited advantages. If you are using Scipy version 1.7 or later, it features a [*Quasi Monte Carlo*](https://docs.scipy.org/doc/scipy/reference/stats.qmc.html) module that provides algorithms for Latin hypercubes and low-discrepancy sequences as well as some functionalities handling covariances between dimensions.
+
+2. 
+
 
 ### Portfolio consolidations
 
