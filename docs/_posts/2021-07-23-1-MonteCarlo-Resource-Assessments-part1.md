@@ -1,8 +1,8 @@
 ---
 layout: post
-draft: true
-title:  "Untitled"
-tags: 
+draft: false
+title:  "Monte Carlo resource assessments in Python"
+tags: Monte Carlo resource assessments in Python
 image: empty.png
 notebook: 1-limestone-hatch
 ---
@@ -89,7 +89,7 @@ plt.show()
 <figure>
     <p>
         <a href="{{ site.url }}assets/images/">
-        <img src="{{ site.url }}assets/images/1-MonteCarlo-Resource-Assessments-part1_files/1-MonteCarlo-Resource-Assessments-part1_5_0.png" alt="png" class="scaled"/>
+        <img src="{{ site.url }}assets/images/posts/1-MonteCarlo-Resource-Assessments-part1_files/1-MonteCarlo-Resource-Assessments-part1_5_0.png" alt="png" class="scaled"/>
         </a>
         <figcaption>
         &nbsp;(click to enlarge)
@@ -447,7 +447,7 @@ plt.show()
 <figure>
     <p>
         <a href="{{ site.url }}assets/images/">
-        <img src="{{ site.url }}assets/images/1-MonteCarlo-Resource-Assessments-part1_files/1-MonteCarlo-Resource-Assessments-part1_17_0.png" alt="png" class="scaled"/>
+        <img src="{{ site.url }}assets/images/posts/1-MonteCarlo-Resource-Assessments-part1_files/1-MonteCarlo-Resource-Assessments-part1_17_0.png" alt="png" class="scaled"/>
         </a>
         <figcaption>
         &nbsp;(click to enlarge)
@@ -506,7 +506,7 @@ plt.show()
 <figure>
     <p>
         <a href="{{ site.url }}assets/images/">
-        <img src="{{ site.url }}assets/images/1-MonteCarlo-Resource-Assessments-part1_files/1-MonteCarlo-Resource-Assessments-part1_19_0.png" alt="png" class="scaled"/>
+        <img src="{{ site.url }}assets/images/posts/1-MonteCarlo-Resource-Assessments-part1_files/1-MonteCarlo-Resource-Assessments-part1_19_0.png" alt="png" class="scaled"/>
         </a>
         <figcaption>
         &nbsp;(click to enlarge)
