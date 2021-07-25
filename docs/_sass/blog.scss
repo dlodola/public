@@ -124,10 +124,10 @@ body {
 	counter-reset: figures;
 }
 
-.figure {
+figure {
 	counter-increment: figures;
 }
 
-.figure figcaption:before {
+figure figcaption:before {
   content: 'Figure&nbsp;' counter(figures) ':&nbsp;';
 }
