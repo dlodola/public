@@ -119,3 +119,15 @@ div.tag {
 table.dataframe {
   font-size: 10px
 }
+
+body {
+	counter-reset: figures;
+}
+
+.figure {
+	counter-increment: figures;
+}
+
+.figure figcaption:before {
+  content: 'Figure&nbsp;' counter(figures) ':&nbsp;';
+}
