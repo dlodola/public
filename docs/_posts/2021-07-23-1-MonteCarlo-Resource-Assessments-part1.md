@@ -88,10 +88,10 @@ plt.show()
     
 <figure>
     <p>
-        <a href="{{ site.url }}assets/images/">
+        <a href="{{ site.url }}assets/images/posts/1-MonteCarlo-Resource-Assessments-part1_files/1-MonteCarlo-Resource-Assessments-part1_5_0.png">
         <img src="{{ site.url }}assets/images/posts/1-MonteCarlo-Resource-Assessments-part1_files/1-MonteCarlo-Resource-Assessments-part1_5_0.png" alt="png" class="scaled"/>
         </a>
-        <figcaption>
+        <figcaption>Caption for this figure
         &nbsp;(click to enlarge)
         </figcaption>
     </p>
@@ -446,7 +446,7 @@ plt.show()
     
 <figure>
     <p>
-        <a href="{{ site.url }}assets/images/">
+        <a href="{{ site.url }}assets/images/posts/1-MonteCarlo-Resource-Assessments-part1_files/1-MonteCarlo-Resource-Assessments-part1_17_0.png">
         <img src="{{ site.url }}assets/images/posts/1-MonteCarlo-Resource-Assessments-part1_files/1-MonteCarlo-Resource-Assessments-part1_17_0.png" alt="png" class="scaled"/>
         </a>
         <figcaption>
@@ -505,7 +505,7 @@ plt.show()
     
 <figure>
     <p>
-        <a href="{{ site.url }}assets/images/">
+        <a href="{{ site.url }}assets/images/posts/1-MonteCarlo-Resource-Assessments-part1_files/1-MonteCarlo-Resource-Assessments-part1_19_0.png">
         <img src="{{ site.url }}assets/images/posts/1-MonteCarlo-Resource-Assessments-part1_files/1-MonteCarlo-Resource-Assessments-part1_19_0.png" alt="png" class="scaled"/>
         </a>
         <figcaption>
