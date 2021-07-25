@@ -83,8 +83,8 @@ plt.show()
         <a href="{{ site.url }}assets/images/">
         <img src="{{ site.url }}assets/images/1-MonteCarlo-Resource-Assessments-part1_files/1-MonteCarlo-Resource-Assessments-part1_5_0.png" alt="png" class="scaled"/>
         </a>
-        <figcaption><b>Figure&nbsp;1:</b>&nbsp;
-        <i>&nbsp;(click to enlarge)</i>
+        <figcaption>
+        &nbsp;(click to enlarge)
         </figcaption>
     </p>
 </figure>
