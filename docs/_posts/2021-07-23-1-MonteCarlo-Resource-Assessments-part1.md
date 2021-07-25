@@ -1,3 +1,11 @@
+---
+layout: post
+draft: true
+title:  "Untitled"
+tags: 
+image: empty.png
+notebook: 1-limestone-hatch
+---
 # Monte Carlo resource assessments in Python
 
 We explore in this article how to easily generate your own Monte Carlo simulations in Python using a resource assessment as an example. The methodologies detailed here can however be adapted to any problem where a Monte Carlo simulation is desired.<!--more-->
@@ -89,7 +97,6 @@ plt.show()
     </p>
 </figure>
     
-
 
 
 > We set the `stat` argument to `density` for the histogram to normalize its total area to 1 so it can be compared to our ideal distribution.
@@ -442,13 +449,12 @@ plt.show()
         <a href="{{ site.url }}assets/images/">
         <img src="{{ site.url }}assets/images/1-MonteCarlo-Resource-Assessments-part1_files/1-MonteCarlo-Resource-Assessments-part1_17_0.png" alt="png" class="scaled"/>
         </a>
-        <figcaption><b>Figure&nbsp;1:</b>&nbsp;
-        <i>&nbsp;(click to enlarge)</i>
+        <figcaption>
+        &nbsp;(click to enlarge)
         </figcaption>
     </p>
 </figure>
     
-
 
 
 With a little bit of extra code, we can add some useful information to our plots like the \\(P_{90}\\), \\(P_{50}\\), \\(P_{10}\\) and mean values:
@@ -502,13 +508,12 @@ plt.show()
         <a href="{{ site.url }}assets/images/">
         <img src="{{ site.url }}assets/images/1-MonteCarlo-Resource-Assessments-part1_files/1-MonteCarlo-Resource-Assessments-part1_19_0.png" alt="png" class="scaled"/>
         </a>
-        <figcaption><b>Figure&nbsp;1:</b>&nbsp;
-        <i>&nbsp;(click to enlarge)</i>
+        <figcaption>
+        &nbsp;(click to enlarge)
         </figcaption>
     </p>
 </figure>
     
-
 
 
 ### Summary statistics
