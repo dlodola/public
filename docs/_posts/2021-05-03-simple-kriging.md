@@ -50,7 +50,7 @@ where \\( \sigma_{ij}^2 \\) is the covariance between known points \\(z_i\\) and
 {% include equation.html file="images/posts/article-2/Equation_4.png"
 alt="equation 4" number="4" height="31" %}
 
-where *&sigma;<sup>2</sup>(x<sub>i</sub>, x<sub>j</sub>)* is the covariance between *x<sub>i</sub>* and *x<sub>j</sub>*, *h* is the lag distance or lag between these 2 points, *&gamma;* is the semivariance, and *&sigma;<sup>2</sup>* is the sample variance.
+where \\( \sigma^2 \left( x_i, x_j \right) = \sigma^2 - \gamma \left( h \right) \\) is the covariance between \\(x_i\\) \\(x_j\\), \\(h\\) is the lag distance or lag between these 2 points, \\(\gamma\\) is the semivariance, and \\(\sigma^2\\) is the sample variance.
 
 For simplicity, we can rewrite equation (3) in vector notation as:
 
