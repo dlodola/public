@@ -138,7 +138,7 @@ figure figcaption:before {
 
 section h2:before {
   content: counter(h2_heading) '. ';
-  counter-increment: h2_heading
+  counter-increment: h2_heading;
 }
 
 section h2 {
@@ -147,5 +147,5 @@ section h2 {
 
 section h3:before {
   content: counter(h2_heading) '.' counter(h3_heading) '. ';
-  counter-increment: h2_heading;
+  counter-increment: h3_heading;
 }
