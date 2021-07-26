@@ -110,7 +110,7 @@ div.equation {
   margin: 0px 4px;
 }
 
-div.equation_dost~div:after {
+div.equation_dots~div:after {
   content: '(' counter(equations) ')';
 }
 
