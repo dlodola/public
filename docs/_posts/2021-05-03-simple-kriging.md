@@ -161,16 +161,16 @@ Z_sk = np.matmul(L, obs[:,2])
 S_sk = s2 - (L * s_oi).sum(axis=2)
 ```
 
-1. We apply Equation (4) to determine \\(\Sigma_o^2 \\) used in equation (5). `grid` is repeated *K* times along a new penultimate axis &mdash; where *K* is the number of known points, from which we subtract the coordinates of the known points. This yields an (*I*, *J*, *K*, *2*) array where each element of the penultimate axis is an array of \\(k\\) vectors between grid node \\( \left( i, j \right) \\) and known points \\(k=1,\dots,K\\). 
+1. We apply Equation (4) to determine \\(\Sigma_o^2 \\) used in equation (5). `grid` is repeated \\(K\\) times along a new penultimate axis &mdash; where \\(K\\) is the number of known points, from which we subtract the coordinates of the known points. This yields an \\( \left( I, J, K, 2 \right) \\) array where each element of the penultimate axis is an array of \\(k\\) vectors between grid node \\( \left( i, j \right) \\) and known points \\(k=1,\dots,K\\). 
 These are then fed to the semivariogram function `gamma`, returning an \\( \left( I, J, K \right) \\) array where each \\( \left[ i, j, k \right] \\) element is the semivariance between grid node \\( \left( i, j \right) \\) and known point \\(k\\). This is then subtracted from the sample variance to give the \\( \left( I, J, K \right) \\) array of covariances between all grid nodes and all known points.
 
-2. Similarly, Equation (4) is used to determine *&Sigma;<sup>2</sup>*. This time we provide a (*K*, *K*) array of (*x<sub>k</sub>*, *y<sub>k</sub>*) coordinates for all known points to the semivariogram function.
-We end up with a (*K*, *K*) array of covariances between all known points.
+2. Similarly, Equation (4) is used to determine \\(\Sigma^2\\). This time we provide a \\( \left( K, K \right) \\ array of \\( \left( x_k, y_k \right) \\) coordinates for all known points to the semivariogram function.
+We end up with a \\( \left( K, K \right) \\) array of covariances between all known points.
 
-3. We now use NumPy's [linalg.solve](https://numpy.org/doc/stable/reference/generated/numpy.linalg.solve.html?highlight=solve#numpy.linalg.solve) routine to solve Equation (6) for *&Lambda;*. The last two axes of *&Sigma;<sub>o</sub><sup>2</sup>* are swapped to allow the arrays to broadcast properly and the output is swapped back to maintain the correct shape. This returns an (*I*, *J*, *K*) array where each [*i*, *j*] element is a *K*-element vector of Simple Kriging weights *&lambda;<sub>k</sub>* for point (*x<sub>i</sub>*, *y<sub>j</sub>*).
+3. We now use NumPy's [linalg.solve](https://numpy.org/doc/stable/reference/generated/numpy.linalg.solve.html?highlight=solve#numpy.linalg.solve) routine to solve Equation (6) for \\(\Lambda\\). The last two axes of \\(\Sigma_o^2\\)  are swapped to allow the arrays to broadcast properly and the output is swapped back to maintain the correct shape. This returns an \\( \left( I, J, K \right) \\) array where each \\( \left[ i, j \right] \\) element is a \\(K\\) element vector of Simple Kriging weights \\(\lambda_k\\) for point \\( \left( x_i, y_j \right) \\).
 
 4. We can now estimate the property value at each grid node using Equation (6) by summing the values of our known points multiplied by the Simple Kriging weights.
-We end up with a (*I*, *J*) array where each [*i*, *j*] node is the estimated value for the coordinates (*x<sub>i</sub>*, *y<sub>j</sub>*).
+We end up with a \\( \left( I, J \right) \\) array where each \\( \left[] i, j \right] \\) node is the estimated value for the coordinates \\( \left( x_i, y_j \right) \\).
 
 5. Similarly, we can use Equation (7) to determine the Simple Kriging variance.
 
