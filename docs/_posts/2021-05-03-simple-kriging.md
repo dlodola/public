@@ -50,19 +50,19 @@ where \\( \sigma_{ij}^2 \\) is the covariance between known points \\(z_i\\) and
 {% include equation.html file="images/posts/article-2/Equation_4.png"
 alt="equation 4" number="4" height="31" %}
 
-where \\( \sigma^2 \left( x_i, x_j \right) = \sigma^2 - \gamma \left( h \right) \\) is the covariance between \\(x_i\\) \\(x_j\\), \\(h\\) is the lag distance or lag between these 2 points, \\(\gamma\\) is the semivariance, and \\(\sigma^2\\) is the sample variance.
+where \\( \sigma^2 \left( x_i, x_j \right) = \sigma^2 - \gamma \left( h \right) \\) is the covariance between \\(x_i\\) and \\(x_j\\), \\(h\\) is the lag distance or lag between these 2 points, \\(\gamma\\) is the semivariance, and \\(\sigma^2\\) is the sample variance.
 
 For simplicity, we can rewrite equation (3) in vector notation as:
 
 {% include equation.html file="images/posts/article-2/Equation_5.png"
 alt="equation 5" number="5" height="30" %}
 
-Once we have solved Equation (5) for *&Lambda;*, we can estimate the value of *Z* at all points on a *(x, y)* grid of *M* points:
+Once we have solved Equation (5) for \\(\Lambda\\), we can estimate the value of \\(Z\\) at all points on a \\((x, y)\\)* grid of \\(M\\) points:
 
 {% include equation.html file="images/posts/article-2/Equation_6.png"
 alt="equation 6" number="6" height="26" %}
 
-where *&#7824;* is an *M*-element vector of estimated values, *Z* is an *I*-element of known values, and *&Lambda;<sup>T</sup>* is an *I* x *M* matrix of kriging weights. The corresponding Simple Kriging variance (or error in the estimation) is determined by:
+where \\(\hat{Z}\\) is an \\(M\\) element vector of estimated values, \\(Z\\) is an \\(I\\) element vector of known values, and \\(\Lambda^T\\) is an \\(I\text{x}M\\) matrix of kriging weights. The corresponding Simple Kriging variance (or error in the estimation) is determined by:
 
 {% include equation.html file="images/posts/article-2/Equation_7.png"
 alt="equation 7" number="7" height="30" %}
