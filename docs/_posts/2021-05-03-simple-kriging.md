@@ -130,7 +130,7 @@ The `spherical_semivariogram` function is an implementation of a 2D anisotropic 
 
 ### Set up grid
 
-First lets create a \\(\left(I, J, 2 \right) \\)array `grid` such that each \\( \left[ i, j \right] \\) node holds
+First lets create a \\(\left(I, J, 2 \right) \\) array `grid` such that each \\( \left[ i, j \right] \\) node holds
 the \\( \left( x_i, y_j \right) \\) Cartesian coordinates of that node. It is set up using the \\( \left( x_0, y_0 \right) \\) coordinates of the center of the lower left cell, the cell size and the number of rows and columns.
 
 <!--
