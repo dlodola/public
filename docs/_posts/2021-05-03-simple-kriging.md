@@ -84,7 +84,7 @@ For simplicity, we can rewrite equation (3) in vector notation as:
 alt="equation 5" number="5" height="30" %}
 
 <div class="equation">
-        <div>\[ \hat{Z} = \Lambda^TZ \]</div>
+        <div>\[ \Sigma^2 \cdot \Lambda = \Sigma_o^2 \]</div>
         <div class="equation_dots"></div>
         <div></div>
 </div>
@@ -95,7 +95,7 @@ Once we have solved Equation (5) for \\(\Lambda\\), we can estimate the value of
 alt="equation 6" number="6" height="26" %}
 
 <div class="equation">
-        <div>\[ \Sigma_{SK}^2 = \sigma^2 - \Lambda^T\Sigma_o^2 \]</div>
+        <div>\[ \hat{Z} = \Lambda^TZ \]</div>
         <div class="equation_dots"></div>
         <div></div>
 </div>
@@ -106,7 +106,7 @@ where \\(\hat{Z}\\) is an \\(M\\)-element vector of estimated values, \\(Z\\) is
 alt="equation 7" number="7" height="30" %}
 
 <div class="equation">
-        <div>\[ \sigma_{SK}^2 = E\left[ \left(z-\hat{z} \right) \right] \]</div>
+        <div>\[ \Sigma_{SK}^2 = \sigma^2 - \Lambda^T\Sigma_o^2 \]</div>
         <div class="equation_dots"></div>
         <div></div>
 </div>
