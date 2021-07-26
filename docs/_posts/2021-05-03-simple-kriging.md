@@ -25,8 +25,8 @@ Before we get started, a little refresher of how Simple Kriging works is in orde
 Kriging is a basic statistical linear estimator. A property's value \\(\hat{z}\\) in location \\(o\\), can be estimated  based on known values \\(z_i=1,\dots,I\\) as:
 
 
-{% include equation.html file="images/posts/article-2/Equation_1.png"
-alt="equation 1" number="1" height="60" %}
+<!-- {% include equation.html file="images/posts/article-2/Equation_1.png"
+alt="equation 1" number="1" height="60" %} -->
 
 <div class="equation">
         <div>\[ \hat{z} = \sum_{i=1}^I \lambda_iz_i \]</div>
@@ -36,8 +36,8 @@ alt="equation 1" number="1" height="60" %}
 
 where \\(\lambda_i\\) is the kriging weight for known point \\(z_i\\). The kriging weights for an observation point \\(o\\) can be determined by minimizing the Simple Kriging (SK) variance defined as:
 
-{% include equation.html file="images/posts/article-2/Equation_2.png"
-alt="equation 2" number="2" height="30" %}
+<!-- {% include equation.html file="images/posts/article-2/Equation_2.png"
+alt="equation 2" number="2" height="30" %} -->
 
 <div class="equation">
         <div>\[ \sigma_{SK}^2 = E\left[ \left(z-\hat{z} \right) \right] \]</div>
@@ -47,8 +47,8 @@ alt="equation 2" number="2" height="30" %}
 
 where \\(z\\) is the true, but unknown, value of our property at point \\(o\\) and \\(E\\) is the expectation. From an analytical perspective, this is achieved by seeking appropriate kriging weights such that the first derivative of the Simple Kriging variance is equal to zero. This has the advantage of removing the actual value \\(z\\) from the equation &mdash; pun intended, and allows us to find the weights without this knowledge. The reader is referred to an appropriate text (*e.g.*, Jensen *et al.*, 2003) for the full workings out and the assumptions made. To cut things short, the kriging weights can be found by solving the matrix equation:
 
-{% include equation.html file="images/posts/article-2/Equation_3.png"
-alt="equation 3" number="3" height="79" %}
+<!-- {% include equation.html file="images/posts/article-2/Equation_3.png"
+alt="equation 3" number="3" height="79" %} -->
 
 <div class="equation">
         <div>\[ \begin{vmatrix} \sigma_{11}^2 & \cdots &  \sigma_{1I}^2\\ 
@@ -67,8 +67,8 @@ alt="equation 3" number="3" height="79" %}
 where \\( \sigma_{ij}^2 \\) is the covariance between known points \\(z_i\\) and 
 \\(z_j\\), and \\( \sigma_{oi}^2 \\) is the covariance between unknown point \\(z_o\\) and known point \\(z_i\\). Given the simplifications resulting from the stationarity assumptions that we have not discussed here, the covariance between points can be determined using their semivariance as:
 
-{% include equation.html file="images/posts/article-2/Equation_4.png"
-alt="equation 4" number="4" height="31" %}
+<!-- {% include equation.html file="images/posts/article-2/Equation_4.png"
+alt="equation 4" number="4" height="31" %} -->
 
 <div class="equation">
         <div>\[ \sigma^2\left( x_i, x_j \right) = \sigma^2 - \gamma\left( h \right) \]</div>
@@ -80,8 +80,8 @@ where \\( \sigma^2 \left( x_i, x_j \right) \\) is the covariance between \\(x_i\
 
 For simplicity, we can rewrite equation (3) in vector notation as:
 
-{% include equation.html file="images/posts/article-2/Equation_5.png"
-alt="equation 5" number="5" height="30" %}
+<!-- {% include equation.html file="images/posts/article-2/Equation_5.png"
+alt="equation 5" number="5" height="30" %} -->
 
 <div class="equation">
         <div>\[ \Sigma^2 \cdot \Lambda = \Sigma_o^2 \]</div>
@@ -91,8 +91,8 @@ alt="equation 5" number="5" height="30" %}
 
 Once we have solved Equation (5) for \\(\Lambda\\), we can estimate the value of \\(Z\\) at all points on a \\((x, y)\\) grid of \\(M\\) points:
 
-{% include equation.html file="images/posts/article-2/Equation_6.png"
-alt="equation 6" number="6" height="26" %}
+<!-- {% include equation.html file="images/posts/article-2/Equation_6.png"
+alt="equation 6" number="6" height="26" %} -->
 
 <div class="equation">
         <div>\[ \hat{Z} = \Lambda^TZ \]</div>
@@ -102,8 +102,8 @@ alt="equation 6" number="6" height="26" %}
 
 where \\(\hat{Z}\\) is an \\(M\\)-element vector of estimated values, \\(Z\\) is an \\(I\\)-element vector of known values, and \\(\Lambda^T\\) is an \\(I\text{x}M\\) matrix of kriging weights. The corresponding Simple Kriging variance (or error in the estimation) is determined by:
 
-{% include equation.html file="images/posts/article-2/Equation_7.png"
-alt="equation 7" number="7" height="30" %}
+<!-- {% include equation.html file="images/posts/article-2/Equation_7.png"
+alt="equation 7" number="7" height="30" %} -->
 
 <div class="equation">
         <div>\[ \Sigma_{SK}^2 = \sigma^2 - \Lambda^T\Sigma_o^2 \]</div>
