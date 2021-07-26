@@ -28,29 +28,29 @@ Kriging is a basic statistical linear estimator. A property's value \\(\hat{z}\\
 <!-- {% include equation.html file="images/posts/article-2/Equation_1.png"
 alt="equation 1" number="1" height="60" %} -->
 
-<div class="equation">
+<!-- <div class="equation">
         <div>\\[ \hat{z} = \sum_{i=1}^I \lambda_iz_i \\]</div>
         <div class="equation_dots"></div>
         <div></div>
-</div>
+</div> -->
 
 where \\(\lambda_i\\) is the kriging weight for known point \\(z_i\\). The kriging weights for an observation point \\(o\\) can be determined by minimizing the Simple Kriging (SK) variance defined as:
 
 <!-- {% include equation.html file="images/posts/article-2/Equation_2.png"
 alt="equation 2" number="2" height="30" %} -->
 
-<div class="equation">
+<!-- <div class="equation">
         <div>\\[ \sigma_{SK}^2 = E\left[ \left(z-\hat{z} \right) \right] \\]</div>
         <div class="equation_dots"></div>
         <div></div>
-</div>
+</div> -->
 
 where \\(z\\) is the true, but unknown, value of our property at point \\(o\\) and \\(E\\) is the expectation. From an analytical perspective, this is achieved by seeking appropriate kriging weights such that the first derivative of the Simple Kriging variance is equal to zero. This has the advantage of removing the actual value \\(z\\) from the equation &mdash; pun intended, and allows us to find the weights without this knowledge. The reader is referred to an appropriate text (*e.g.*, Jensen *et al.*, 2003) for the full workings out and the assumptions made. To cut things short, the kriging weights can be found by solving the matrix equation:
 
 <!-- {% include equation.html file="images/posts/article-2/Equation_3.png"
 alt="equation 3" number="3" height="79" %} -->
 
-<div class="equation">
+<!-- <div class="equation">
         <div>\\[ \begin{vmatrix} \sigma_{11}^2 & \cdots &  \sigma_{1I}^2\\ 
                 \vdots & \ddots & \vdots \\
                 \sigma_{I1}^2 & \cdots & \sigma_{II}^2 
@@ -62,7 +62,7 @@ alt="equation 3" number="3" height="79" %} -->
                 \end{vmatrix} \\]</div>
         <div class="equation_dots"></div>
         <div></div>
-</div>
+</div> -->
 
 where \\( \sigma_{ij}^2 \\) is the covariance between known points \\(z_i\\) and 
 \\(z_j\\), and \\( \sigma_{oi}^2 \\) is the covariance between unknown point \\(z_o\\) and known point \\(z_i\\). Given the simplifications resulting from the stationarity assumptions that we have not discussed here, the covariance between points can be determined using their semivariance as:
