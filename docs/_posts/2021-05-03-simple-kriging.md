@@ -44,8 +44,8 @@ where \\(z\\) is the true, but unknown, value of our property at point \\(o\\) a
 {% include equation.html file="images/posts/article-2/Equation_3.png"
 alt="equation 3" number="3" height="79" %}
 
-where \\(\sigma^2_{ij}\\) is the covariance between known points \\(z_i\\) and 
-\\(z_j\\), and \\(\sigma_{oi}^2\\) is the covariance between unknown point \\(z_o\\) and known point \\(z_i\\). Given the simplifications resulting from the stationarity assumptions that we have not discussed here, the covariance between points can be determined using their semivariance as:
+where \\(\sigma^{2}_{ij}\\) is the covariance between known points \\(z_i\\) and 
+\\(z_j\\), and \\(\sigma_{oi}^{2}\\) is the covariance between unknown point \\(z_o\\) and known point \\(z_i\\). Given the simplifications resulting from the stationarity assumptions that we have not discussed here, the covariance between points can be determined using their semivariance as:
 
 {% include equation.html file="images/posts/article-2/Equation_4.png"
 alt="equation 4" number="4" height="31" %}
