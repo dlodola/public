@@ -50,14 +50,14 @@ where \\( \sigma_{ij}^2 \\) is the covariance between known points \\(z_i\\) and
 {% include equation.html file="images/posts/article-2/Equation_4.png"
 alt="equation 4" number="4" height="31" %}
 
-where \\( \sigma^2 \left( x_i, x_j \right) = \sigma^2 - \gamma \left( h \right) \\) is the covariance between \\(x_i\\) and \\(x_j\\), \\(h\\) is the lag distance or lag between these 2 points, \\(\gamma\\) is the semivariance, and \\(\sigma^2\\) is the sample variance.
+where \\( \sigma^2 \left( x_i, x_j \right) \\) is the covariance between \\(x_i\\) and \\(x_j\\), \\(h\\) is the lag distance or lag between these 2 points, \\(\gamma\\) is the semivariance, and \\(\sigma^2\\) is the sample variance.
 
 For simplicity, we can rewrite equation (3) in vector notation as:
 
 {% include equation.html file="images/posts/article-2/Equation_5.png"
 alt="equation 5" number="5" height="30" %}
 
-Once we have solved Equation (5) for \\(\Lambda\\), we can estimate the value of \\(Z\\) at all points on a \\((x, y)\\)* grid of \\(M\\) points:
+Once we have solved Equation (5) for \\(\Lambda\\), we can estimate the value of \\(Z\\) at all points on a \\((x, y)\\) grid of \\(M\\) points:
 
 {% include equation.html file="images/posts/article-2/Equation_6.png"
 alt="equation 6" number="6" height="26" %}
@@ -161,8 +161,8 @@ Z_sk = np.matmul(L, obs[:,2])
 S_sk = s2 - (L * s_oi).sum(axis=2)
 ```
 
-1. We apply Equation (4) to determine *&Sigma;<sub>o</sub><sup>2</sup>* used in equation (5). `grid` is repeated *K* times along a new penultimate axis &mdash; where *K* is the number of known points, from which we subtract the coordinates of the known points. This yields an (*I*, *J*, *K*, *2*) array where each element of the penultimate axis is an array of *K* vectors between grid node (*i*, *j*) and known points *k=1,...,K*. 
-These are then fed to the semivariogram function `gamma`, returning an (*I*, *J*, *K*) array where each [*i*, *j*, *k*] element is the semivariance between grid node (*i*, *j*) and known point *k*. This is then subtracted from the sample variance to give the (*I*, *J*, *K*) array of covariances between all grid nodes and all known points.
+1. We apply Equation (4) to determine \\(\Sigma_o^2 \\) used in equation (5). `grid` is repeated *K* times along a new penultimate axis &mdash; where *K* is the number of known points, from which we subtract the coordinates of the known points. This yields an (*I*, *J*, *K*, *2*) array where each element of the penultimate axis is an array of \\(k\\) vectors between grid node \\( \left( i, j \right) \\) and known points \\(k=1,\dots,K\\). 
+These are then fed to the semivariogram function `gamma`, returning an \\( \left( I, J, K \right) \\) array where each \\( \left[ i, j, k \right] \\) element is the semivariance between grid node \\( \left( i, j \right) \\) and known point \\(k\\). This is then subtracted from the sample variance to give the \\( \left( I, J, K \right) \\) array of covariances between all grid nodes and all known points.
 
 2. Similarly, Equation (4) is used to determine *&Sigma;<sup>2</sup>*. This time we provide a (*K*, *K*) array of (*x<sub>k</sub>*, *y<sub>k</sub>*) coordinates for all known points to the semivariogram function.
 We end up with a (*K*, *K*) array of covariances between all known points.
