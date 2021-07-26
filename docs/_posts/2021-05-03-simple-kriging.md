@@ -22,17 +22,17 @@ This article is not an in-depth explanation of the kriging estimator, its pros a
 
 Before we get started, a little refresher of how Simple Kriging works is in order to provide some context for the algorithm. 
 
-Kriging is a basic statistical linear estimator. A property's value *&#7825;* in location *o*, can be estimated  based on known values *z<sub>i</sub>*, *i=1,...I* as:
+Kriging is a basic statistical linear estimator. A property's value \\(\hat{z}\\) in location \\(o\\) *o*, can be estimated  based on known values *z<sub>i</sub>*, *i=1,...I* as:
 
 
-{% include equation.html file="images/posts/article-2/Equation_1.png"
-alt="equation 1" number="1" height="60" %}
+<!-- {% include equation.html file="images/posts/article-2/Equation_1.png"
+alt="equation 1" number="1" height="60" %} -->
 
-<!-- <div class="equation">
+<div class="equation">
         <div>\[ \hat{z} = \sum_{i=1}^I \lambda_iz_i \]</div>
         <div class="equation_dots"></div>
-        <div>(1)</div>
-</div> -->
+        <div></div>
+</div>
 
 where *&lambda;<sub>i</sub>* is the kriging weight for known point *z<sub>i</sub>*. The kriging weights for an observation point *o* can be determined by minimizing the Simple Kriging (SK) variance defined as:
 
