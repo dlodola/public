@@ -62,7 +62,7 @@ Once we have solved Equation (5) for \\(\Lambda\\), we can estimate the value of
 {% include equation.html file="images/posts/article-2/Equation_6.png"
 alt="equation 6" number="6" height="26" %}
 
-where \\(\hat{Z}\\) is an \\(M\\) element vector of estimated values, \\(Z\\) is an \\(I\\) element vector of known values, and \\(\Lambda^T\\) is an \\(I\text{x}M\\) matrix of kriging weights. The corresponding Simple Kriging variance (or error in the estimation) is determined by:
+where \\(\hat{Z}\\) is an \\(M\\)-element vector of estimated values, \\(Z\\) is an \\(I\\)-element vector of known values, and \\(\Lambda^T\\) is an \\(I\text{x}M\\) matrix of kriging weights. The corresponding Simple Kriging variance (or error in the estimation) is determined by:
 
 {% include equation.html file="images/posts/article-2/Equation_7.png"
 alt="equation 7" number="7" height="30" %}
@@ -238,7 +238,7 @@ Finally, all of the heavy lifting relies on NumPy which is packaged with ArcMap'
 
 ### Other kriging methods
 
-Figure 4 shows the output of our Simple Kriging example alongside the outputs from the same data and input parameters using Ordinary Kriging, and First & Second Order Universal Kriging. These other kriging methods impose more constraints on the kriging weights &mdash; they must sum up to one in Ordinary Kriging for example, but can be easily implemented from the above with the appropriate modifications to the *&Sigma;<sup>2</sup>* and *&Sigma;<sub>o</sub><sup>2</sup>* arrays. 
+Figure 4 shows the output of our Simple Kriging example alongside the outputs from the same data and input parameters using Ordinary Kriging, and First & Second Order Universal Kriging. These other kriging methods impose more constraints on the kriging weights &mdash; they must sum up to one in Ordinary Kriging for example, but can be easily implemented from the above with the appropriate modifications to the \\(\Sigma^2\\) and \\(\Sigma_o^2\\) arrays. 
 
 {% include image.html file="posts/article-2/figure-4.png"
 alt="Figure 4" number="4" link="true" caption="Alternative kriging methods." %}
@@ -253,7 +253,7 @@ There are three main areas of limitations to the algorithm proposed above:
 
 1. Though this example is efficient from both a coding and performance perspective, it is inefficient from a memory perspective as NumPy's vectorization is memory hungry. This should not be a problem for reasonably sized grids and number of known points, but it may not scale well to larger datasets.
 
-2. It cannot form the basis of stochastic simulation techniques like Sequential Gaussian Simulations as these require a random walk through the (*x<sub>i</sub>*, *y<sub>j</sub>*) points where *Z* is to be estimated. It can however be adapted to run within the loop(s) required to implement the random walk.
+2. It cannot form the basis of stochastic simulation techniques like Sequential Gaussian Simulations as these require a random walk through the \\( \left( x_i, y_j \right) \\) points where \\(Z\\) is to be estimated. It can however be adapted to run within the loop(s) required to implement the random walk.
 
 3. There is no preprocessing of the input data. In particular there is no limit on search radius &mdash; beyond which covariances may be poorly defined, nor are any declustering or detrending processes included. As stated in the opening remarks, this is beyond the scope of this article. However the algorithm presented here provides a basis upon which to build a more complete solution.
 
