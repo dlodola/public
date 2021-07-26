@@ -36,8 +36,14 @@ alt="equation 1" number="1" height="60" %} -->
 
 where \\(\lambda_i\\) is the kriging weight for known point \\(z_i\\). The kriging weights for an observation point \\(o\\) can be determined by minimizing the Simple Kriging (SK) variance defined as:
 
-{% include equation.html file="images/posts/article-2/Equation_2.png"
-alt="equation 2" number="2" height="30" %}
+<!-- {% include equation.html file="images/posts/article-2/Equation_2.png"
+alt="equation 2" number="2" height="30" %} -->
+
+<div class="equation">
+        <div>\\[ \sigma_{SK}^2 = E\left[ \left(z-\hat{z} \right) \right] \\]</div>
+        <div class="equation_dots"></div>
+        <div></div>
+</div>
 
 where \\(z\\) is the true, but unknown, value of our property at point \\(o\\) and \\(E\\) is the expectation. From an analytical perspective, this is achieved by seeking appropriate kriging weights such that the first derivative of the Simple Kriging variance is equal to zero. This has the advantage of removing the actual value \\(z\\) from the equation &mdash; pun intended, and allows us to find the weights without this knowledge. The reader is referred to an appropriate text (*e.g.*, Jensen *et al.*, 2003) for the full workings out and the assumptions made. To cut things short, the kriging weights can be found by solving the matrix equation:
 
@@ -164,13 +170,13 @@ S_sk = s2 - (L * s_oi).sum(axis=2)
 1. We apply Equation (4) to determine \\(\Sigma_o^2 \\) used in equation (5). `grid` is repeated \\(K\\) times along a new penultimate axis &mdash; where \\(K\\) is the number of known points, from which we subtract the coordinates of the known points. This yields an \\( \left( I, J, K, 2 \right) \\) array where each element of the penultimate axis is an array of \\(k\\) vectors between grid node \\( \left( i, j \right) \\) and known points \\(k=1,\dots,K\\). 
 These are then fed to the semivariogram function `gamma`, returning an \\( \left( I, J, K \right) \\) array where each \\( \left[ i, j, k \right] \\) element is the semivariance between grid node \\( \left( i, j \right) \\) and known point \\(k\\). This is then subtracted from the sample variance to give the \\( \left( I, J, K \right) \\) array of covariances between all grid nodes and all known points.
 
-2. Similarly, Equation (4) is used to determine \\(\Sigma^2\\). This time we provide a \\( \left( K, K \right) \\ array of \\( \left( x_k, y_k \right) \\) coordinates for all known points to the semivariogram function.
+2. Similarly, Equation (4) is used to determine \\(\Sigma^2\\). This time we provide a \\( \left( K, K \right) \\) array of \\( \left( x_k, y_k \right) \\) coordinates for all known points to the semivariogram function.
 We end up with a \\( \left( K, K \right) \\) array of covariances between all known points.
 
 3. We now use NumPy's [linalg.solve](https://numpy.org/doc/stable/reference/generated/numpy.linalg.solve.html?highlight=solve#numpy.linalg.solve) routine to solve Equation (6) for \\(\Lambda\\). The last two axes of \\(\Sigma_o^2\\)  are swapped to allow the arrays to broadcast properly and the output is swapped back to maintain the correct shape. This returns an \\( \left( I, J, K \right) \\) array where each \\( \left[ i, j \right] \\) element is a \\(K\\) element vector of Simple Kriging weights \\(\lambda_k\\) for point \\( \left( x_i, y_j \right) \\).
 
 4. We can now estimate the property value at each grid node using Equation (6) by summing the values of our known points multiplied by the Simple Kriging weights.
-We end up with a \\( \left( I, J \right) \\) array where each \\( \left[] i, j \right] \\) node is the estimated value for the coordinates \\( \left( x_i, y_j \right) \\).
+We end up with a \\( \left( I, J \right) \\) array where each \\( \left[ i, j \right] \\) node is the estimated value for the coordinates \\( \left( x_i, y_j \right) \\).
 
 5. Similarly, we can use Equation (7) to determine the Simple Kriging variance.
 
