@@ -1,3 +1,9 @@
+body {
+	counter-reset: figures;
+  counter-reset: equations;
+  counter-reset: h2_heading;
+}
+
 div.blog-header {
   padding:0px;
   background: #fff;
@@ -95,12 +101,17 @@ div.equation {
   display: flex;
   justify-content: center;
   margin: -15px 0 10px;
+  counter-increment: equations;
 }
 
 .equation_dots {
   border-bottom: 1px dotted rgba(0, 0, 0, 0.3);
   flex: 1;
   margin: 0px 4px;
+}
+
+div.equation_dots:after {
+  content: '(' counter(equations) ')';
 }
 
 div.linkedin {
@@ -119,12 +130,6 @@ div.tag {
 
 table.dataframe {
   font-size: 10px
-}
-
-body {
-	counter-reset: figures;
-  counter-reset: equations;
-  counter-reset: h2_heading;
 }
 
 figure {
