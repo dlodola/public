@@ -22,20 +22,6 @@ div.blog-footer {
   margin-bottom:25px;
 }
 
-section.h2:before {
-  content: counter(h2_heading) '. ';
-  counter-increment: h2_heading
-}
-
-section.h2 {
-  counter-reset: h3_heading
-}
-
-section.h3:before {
-  content: counter(h2_heading) '.' counter(h3_heading) '. ';
-  counter-increment: h2_heading
-}
-
 section.h1.a {
   color:#000;
   font-weight: bold;
@@ -148,4 +134,18 @@ figure {
 figure figcaption:before {
   font-weight: bold;
   content: 'Figure ' counter(figures) ': ';
+}
+
+section h2:before {
+  content: counter(h2_heading) '. ';
+  counter-increment: h2_heading
+}
+
+section h2 {
+  counter-reset: h3_heading;
+}
+
+section h3:before {
+  content: counter(h2_heading) '.' counter(h3_heading) '. ';
+  counter-increment: h2_heading;
 }
