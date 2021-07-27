@@ -4,7 +4,7 @@ draft: false
 title:  "Monte Carlo resource assessments in Python"
 tags: python motecarlo volumetrics
 image: empty.png
-notebook: 2021-07-27-Monte+Carlo+resource+assessments+in+Python
+notebook: 1-MonteCarlo-Resource-Assessments-part1
 ---
 We explore in this article how to easily generate your own Monte Carlo simulations in Python using a resource assessment as an example. The methodologies detailed here can however be adapted to any problem where a Monte Carlo simulation is desired.<!--more-->
 There are many advantages to using Python for this: 
@@ -685,7 +685,7 @@ The `rvs` method is already adding a layer of abstraction in that it is handling
 
 <figure>
 <p>
-<img alt="png" class="scaled" src="{{ site.url }}assets/images/posts/2021-07-27-Monte%2BCarlo%2Bresource%2Bassessments%2Bin%2BPython/1-sensitivity.png"/>
+<img alt="png" class="scaled" src="{{ site.url }}assets/images/posts/2021-07-27-Monte%2BCarlo%2Bresource%2Bassessments%2Bin%2BPython_files/1-sensitivity.png"/>
 <figcaption>Figure title.</figcaption>
 </p>
 </figure>
