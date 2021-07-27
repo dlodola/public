@@ -2,12 +2,10 @@
 layout: post
 draft: false
 title:  "Monte Carlo resource assessments in Python"
-tags: Monte Carlo resource assessments in Python
+tags: python motecarlo volumetrics
 image: empty.png
-notebook: 1-limestone-hatch
+notebook: 
 ---
-# Monte Carlo resource assessments in Python
-
 We explore in this article how to easily generate your own Monte Carlo simulations in Python using a resource assessment as an example. The methodologies detailed here can however be adapted to any problem where a Monte Carlo simulation is desired.<!--more-->
 There are many advantages to using Python for this: 
 - It's totally free &mdash; no need for any extensions to Excel (or for Excel for that matter...);
@@ -22,7 +20,7 @@ First, we will see how we can generate random variates from a known distribution
 
 ## Generating random variates from a distribution with SciPy
 
-Let's generate \\(n\\) random variates for a normal distribution with a mean of 3 and a standard deviation of 2. For this, we can use SciPy's [*norm*](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.norm.html) continuous distribution class to instantiate a normal distribution object with the desired paramaters<!--: `distribution = norm(loc=3, scale=2)`-->. We can then use its [*rvs( )*](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.rv_continuous.rvs.html) method to generate \\(n\\) random variates.
+Let's generate 10,000 random variates from a normal distribution with a mean of 3 and a standard deviation of 2. For this, we can use SciPy's [*norm*](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.norm.html) continuous distribution class to instantiate a normal distribution object with the desired parameters<!--: `distribution = norm(loc=3, scale=2)`-->. We can then use its [*rvs( )*](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.rv_continuous.rvs.html) method to generate \\(n\\) random variates.
 
 ### Import necessary libraries
 
@@ -59,6 +57,22 @@ probability = distribution.pdf(x)
 
 Seaborn has a very handy function [*histplot*](https://seaborn.pydata.org/generated/seaborn.histplot.html) for plotting histograms we can use:
 
+<div class="equation">
+	<div>\\[ 
+y = ax+b \\]</div>
+<div class="equation_dots"></div>
+<div></div>
+</div>
+
+
+<div class="equation">
+	<div>\\[ y = ax^2 + bx + c \\]</div>
+<div class="equation_dots"></div>
+<div></div>
+</div>
+
+
+
 
 ```python
 # create Pyplot axes for plotting results
@@ -88,10 +102,10 @@ plt.show()
     
 <figure>
     <p>
-        <a href="{{ site.url }}assets/images/posts/1-MonteCarlo-Resource-Assessments-part1_files/1-MonteCarlo-Resource-Assessments-part1_5_0.png">
-        <img src="{{ site.url }}assets/images/posts/1-MonteCarlo-Resource-Assessments-part1_files/1-MonteCarlo-Resource-Assessments-part1_5_0.png" alt="png" class="scaled"/>
+        <a href="{{ site.url }}assets/images/posts/2021-07-27_Monte%2BCarlo%2Bresource%2Bassessments%2Bin%2BPython_files/2021-07-27_Monte%2BCarlo%2Bresource%2Bassessments%2Bin%2BPython_5_0.png">
+        <img src="{{ site.url }}assets/images/posts/2021-07-27_Monte%2BCarlo%2Bresource%2Bassessments%2Bin%2BPython_files/2021-07-27_Monte%2BCarlo%2Bresource%2Bassessments%2Bin%2BPython_5_0.png" alt="png" class="scaled"/>
         </a>
-        <figcaption>Caption for this figure
+        <figcaption>Random variates from a known distribution.
         &nbsp;(click to enlarge)
         </figcaption>
     </p>
@@ -111,7 +125,7 @@ In addition to the normal distribution used above, there are many others availab
 - Truncated normal ([*truncnorm*](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.truncnorm.html))
 - And many more (full list [here](https://docs.scipy.org/doc/scipy/reference/stats.html#continuous-distributions))
 
-The parameters used to define these distributions are not always as user friendly as one might hope, and depending on the distribution some calculations may be needed to get to them. To make things a little simpler going forward, we will therefore create some functions to instantiate SciPy distribution objects using more user friendly parameters, especially for the log-normal distribution which we will also be using. The two functions below do this taking the \\(P_{90}\\) and \\(P_{10}\\) as input parameters; similar functions could be written other distributions if needed.
+The parameters used to define these distributions are not always as user friendly as one might hope, and depending on the distribution some calculations may be needed to get to them. To make things a little simpler going forward, we will therefore create some functions to instantiate SciPy distribution objects using more user friendly parameters, especially for the log-normal distribution which we will also be using. The two functions below do this taking the \\(P_{90}\\) and \\(P_{10}\\) as input parameters; similar functions could be written for other distributions if needed.
 
 
 ```python
@@ -446,8 +460,8 @@ plt.show()
     
 <figure>
     <p>
-        <a href="{{ site.url }}assets/images/posts/1-MonteCarlo-Resource-Assessments-part1_files/1-MonteCarlo-Resource-Assessments-part1_17_0.png">
-        <img src="{{ site.url }}assets/images/posts/1-MonteCarlo-Resource-Assessments-part1_files/1-MonteCarlo-Resource-Assessments-part1_17_0.png" alt="png" class="scaled"/>
+        <a href="{{ site.url }}assets/images/posts/2021-07-27_Monte%2BCarlo%2Bresource%2Bassessments%2Bin%2BPython_files/2021-07-27_Monte%2BCarlo%2Bresource%2Bassessments%2Bin%2BPython_17_0.png">
+        <img src="{{ site.url }}assets/images/posts/2021-07-27_Monte%2BCarlo%2Bresource%2Bassessments%2Bin%2BPython_files/2021-07-27_Monte%2BCarlo%2Bresource%2Bassessments%2Bin%2BPython_17_0.png" alt="png" class="scaled"/>
         </a>
         <figcaption>
         &nbsp;(click to enlarge)
@@ -505,8 +519,8 @@ plt.show()
     
 <figure>
     <p>
-        <a href="{{ site.url }}assets/images/posts/1-MonteCarlo-Resource-Assessments-part1_files/1-MonteCarlo-Resource-Assessments-part1_19_0.png">
-        <img src="{{ site.url }}assets/images/posts/1-MonteCarlo-Resource-Assessments-part1_files/1-MonteCarlo-Resource-Assessments-part1_19_0.png" alt="png" class="scaled"/>
+        <a href="{{ site.url }}assets/images/posts/2021-07-27_Monte%2BCarlo%2Bresource%2Bassessments%2Bin%2BPython_files/2021-07-27_Monte%2BCarlo%2Bresource%2Bassessments%2Bin%2BPython_19_0.png">
+        <img src="{{ site.url }}assets/images/posts/2021-07-27_Monte%2BCarlo%2Bresource%2Bassessments%2Bin%2BPython_files/2021-07-27_Monte%2BCarlo%2Bresource%2Bassessments%2Bin%2BPython_19_0.png" alt="png" class="scaled"/>
         </a>
         <figcaption>
         &nbsp;(click to enlarge)
