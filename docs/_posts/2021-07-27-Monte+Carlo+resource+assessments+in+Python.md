@@ -4,13 +4,13 @@ draft: false
 title:  "Monte Carlo resource assessments in Python"
 tags: python motecarlo volumetrics
 image: empty.png
-notebook: 
+notebook: 2021-07-27-Monte+Carlo+resource+assessments+in+Python
 ---
 We explore in this article how to easily generate your own Monte Carlo simulations in Python using a resource assessment as an example. The methodologies detailed here can however be adapted to any problem where a Monte Carlo simulation is desired.<!--more-->
 There are many advantages to using Python for this: 
-- It's totally free &mdash; no need for any extensions to Excel (or for Excel for that matter...);
-- It's not a black box &mdash; you know what is happening under the hood;
-- It's fully customizable &mdash; you can finally tailor the solution to your problem, including the outputs;
+- It's totally free — no need for any extensions to Excel (or for Excel for that matter...);
+- It's not a black box — you know what is happening under the hood;
+- It's fully customizable — you can finally tailor the solution to your problem, including the outputs;
 - It is easy to export your results to a wide variety of destinations, including raster and vector images, Excel spreadsheets, or even \\(\LaTeX\\) documents.
 
 Though some familiarity with Python is desirable, advanced knowledge of the language isn't needed and the code provided below should be relatively easy to adapt to your own needs. We will mostly be using [SciPy's](https://www.scipy.org) [*statistical submodule*](https://docs.scipy.org/doc/scipy/reference/stats.html) for calculations, [Pandas](https://pandas.pydata.org) for generating and summarizing results, and a combination of [Matplotlib](https://matplotlib.org)/[seaborn](https://seaborn.pydata.org) for plotting. Using seaborn for plotting automatically handles a lot of the plot formatting.
@@ -57,22 +57,6 @@ probability = distribution.pdf(x)
 
 Seaborn has a very handy function [*histplot*](https://seaborn.pydata.org/generated/seaborn.histplot.html) for plotting histograms we can use:
 
-<div class="equation">
-	<div>\[ 
-y = ax+b \]</div>
-<div class="equation_dots"></div>
-<div></div>
-</div>
-
-
-<div class="equation">
-	<div>\[ y = ax^2 + bx + c \]</div>
-<div class="equation_dots"></div>
-<div></div>
-</div>
-
-
-
 
 ```python
 # create Pyplot axes for plotting results
@@ -113,7 +97,7 @@ plt.show()
     
 
 
-> We set the `stat` argument to `density` for the histogram to normalize its total area to 1 so it can be compared to our ideal distribution.
+&gt; We set the `stat` argument to `density` for the histogram to normalize its total area to 1 so it can be compared to our ideal distribution.
 
 ### A note on distributions and their parameters in SciPy
 
@@ -183,11 +167,11 @@ for param, dist in params.items():
     seed = seed*2
 ```
 
-> Note: defining the `random_state` argument in `rvs` is not a requirement. I have opted to do this here so the outputs are always the same (still 'random', just the same 'random' every time). I have been cautious to change the random state for each parameter to avoid unwanted correlation between parameters.
+&gt; Note: defining the `random_state` argument in `rvs` is not a requirement. I have opted to do this here so the outputs are always the same (still 'random', just the same 'random' every time). I have been cautious to change the random state for each parameter to avoid unwanted correlation between parameters.
 
 ### Random variates summary
 
-Using Pandas' [*describe( )*](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html?highlight=describe) method and specifying a list of `percentiles`, we can easily generate a table of summary statistics for the input parameters. Along with our chosen percentiles, this will also provide mean, standard deviation, and min & max for each parameter. This is useful to check we have experimental distributions that match our desired ones.
+Using Pandas' [*describe( )*](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html?highlight=describe) method and specifying a list of `percentiles`, we can easily generate a table of summary statistics for the input parameters. Along with our chosen percentiles, this will also provide mean, standard deviation, and min &amp; max for each parameter. This is useful to check we have experimental distributions that match our desired ones.
 
 
 ```python
@@ -699,7 +683,12 @@ The `rvs` method is already adding a layer of abstraction in that it is handling
 (sensitivity figure/discussion here - 100,000 samples/200 realisations).
 
 
-<center><img src="./assets/1-sensitivity.png" alt="" width="60%" /><i><b>Figure 1:</b> Figure title</i></center>
+<figure>
+<p>
+<img alt="png" class="scaled" src="{{ site.url }}assets/images/posts/2021-07-27-Monte%2BCarlo%2Bresource%2Bassessments%2Bin%2BPython1-sensitivity.png"/>
+<figcaption>Figure title.</figcaption>
+</p>
+</figure>
 
     
 Another solution is to ditch `rvs` and take control of sampling. In this case we need to generate our own samples over \\( \left[0,1\right]\\) and transform them to random variates with the `ppf` method which provides an inverse cumulative probability function for a distribution. There are two main advantages to doing this:
