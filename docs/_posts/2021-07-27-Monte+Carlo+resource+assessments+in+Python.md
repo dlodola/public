@@ -685,7 +685,7 @@ The `rvs` method is already adding a layer of abstraction in that it is handling
 
 <figure>
 <p>
-<img alt="png" class="scaled" src="{{ site.url }}assets/images/posts/2021-07-27-Monte%2BCarlo%2Bresource%2Bassessments%2Bin%2BPython1-sensitivity.png"/>
+<img alt="png" class="scaled" src="{{ site.url }}assets/images/posts/2021-07-27-Monte%2BCarlo%2Bresource%2Bassessments%2Bin%2BPython/1-sensitivity.png"/>
 <figcaption>Figure title.</figcaption>
 </p>
 </figure>
