@@ -58,15 +58,15 @@ probability = distribution.pdf(x)
 Seaborn has a very handy function [*histplot*](https://seaborn.pydata.org/generated/seaborn.histplot.html) for plotting histograms we can use:
 
 <div class="equation">
-	<div>\\[ 
-y = ax+b \\]</div>
+	<div>\[ 
+y = ax+b \]</div>
 <div class="equation_dots"></div>
 <div></div>
 </div>
 
 
 <div class="equation">
-	<div>\\[ y = ax^2 + bx + c \\]</div>
+	<div>\[ y = ax^2 + bx + c \]</div>
 <div class="equation_dots"></div>
 <div></div>
 </div>
@@ -102,8 +102,8 @@ plt.show()
     
 <figure>
     <p>
-        <a href="{{ site.url }}assets/images/posts/2021-07-27_Monte%2BCarlo%2Bresource%2Bassessments%2Bin%2BPython_files/2021-07-27_Monte%2BCarlo%2Bresource%2Bassessments%2Bin%2BPython_5_0.png">
-        <img src="{{ site.url }}assets/images/posts/2021-07-27_Monte%2BCarlo%2Bresource%2Bassessments%2Bin%2BPython_files/2021-07-27_Monte%2BCarlo%2Bresource%2Bassessments%2Bin%2BPython_5_0.png" alt="png" class="scaled"/>
+        <a href="{{ site.url }}assets/images/posts/2021-07-27-Monte%2BCarlo%2Bresource%2Bassessments%2Bin%2BPython_files/2021-07-27-Monte%2BCarlo%2Bresource%2Bassessments%2Bin%2BPython_5_0.png">
+        <img src="{{ site.url }}assets/images/posts/2021-07-27-Monte%2BCarlo%2Bresource%2Bassessments%2Bin%2BPython_files/2021-07-27-Monte%2BCarlo%2Bresource%2Bassessments%2Bin%2BPython_5_0.png" alt="png" class="scaled"/>
         </a>
         <figcaption>Random variates from a known distribution.
         &nbsp;(click to enlarge)
@@ -460,8 +460,8 @@ plt.show()
     
 <figure>
     <p>
-        <a href="{{ site.url }}assets/images/posts/2021-07-27_Monte%2BCarlo%2Bresource%2Bassessments%2Bin%2BPython_files/2021-07-27_Monte%2BCarlo%2Bresource%2Bassessments%2Bin%2BPython_17_0.png">
-        <img src="{{ site.url }}assets/images/posts/2021-07-27_Monte%2BCarlo%2Bresource%2Bassessments%2Bin%2BPython_files/2021-07-27_Monte%2BCarlo%2Bresource%2Bassessments%2Bin%2BPython_17_0.png" alt="png" class="scaled"/>
+        <a href="{{ site.url }}assets/images/posts/2021-07-27-Monte%2BCarlo%2Bresource%2Bassessments%2Bin%2BPython_files/2021-07-27-Monte%2BCarlo%2Bresource%2Bassessments%2Bin%2BPython_17_0.png">
+        <img src="{{ site.url }}assets/images/posts/2021-07-27-Monte%2BCarlo%2Bresource%2Bassessments%2Bin%2BPython_files/2021-07-27-Monte%2BCarlo%2Bresource%2Bassessments%2Bin%2BPython_17_0.png" alt="png" class="scaled"/>
         </a>
         <figcaption>
         &nbsp;(click to enlarge)
@@ -519,8 +519,8 @@ plt.show()
     
 <figure>
     <p>
-        <a href="{{ site.url }}assets/images/posts/2021-07-27_Monte%2BCarlo%2Bresource%2Bassessments%2Bin%2BPython_files/2021-07-27_Monte%2BCarlo%2Bresource%2Bassessments%2Bin%2BPython_19_0.png">
-        <img src="{{ site.url }}assets/images/posts/2021-07-27_Monte%2BCarlo%2Bresource%2Bassessments%2Bin%2BPython_files/2021-07-27_Monte%2BCarlo%2Bresource%2Bassessments%2Bin%2BPython_19_0.png" alt="png" class="scaled"/>
+        <a href="{{ site.url }}assets/images/posts/2021-07-27-Monte%2BCarlo%2Bresource%2Bassessments%2Bin%2BPython_files/2021-07-27-Monte%2BCarlo%2Bresource%2Bassessments%2Bin%2BPython_19_0.png">
+        <img src="{{ site.url }}assets/images/posts/2021-07-27-Monte%2BCarlo%2Bresource%2Bassessments%2Bin%2BPython_files/2021-07-27-Monte%2BCarlo%2Bresource%2Bassessments%2Bin%2BPython_19_0.png" alt="png" class="scaled"/>
         </a>
         <figcaption>
         &nbsp;(click to enlarge)
