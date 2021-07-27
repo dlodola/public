@@ -1,0 +1,39 @@
+{% extends 'markdown/index.md.j2' %}
+
+{% set title = nb.metadata['title'] | default("Untitled") -%}
+{% set layout = nb.metadata['layout'] | default("post") -%}
+{% set draft = nb.metadata['draft'] | default("true") -%}
+{% set tags = nb.metadata['tags'] | default("") -%}
+{% set image = nb.metadata['image'] | default("empty.png") -%}
+{% set notebook = nb.metadata['notebook'] | default("") -%}
+
+{%- block header -%}
+{{ super() }}
+---
+layout: {{ layout }}
+draft: {{ draft }}
+title:  "{{ title }}"
+tags: {{ tags }}
+image: {{ image }}
+notebook: {{ notebook }}
+---
+
+{%- endblock header -%}
+
+
+{% block data_png %}
+    {% if "filenames" in output.metadata %}
+<figure>
+    <p>
+        <a href="{% raw %}{{ site.url }}assets/images/posts/{% endraw %}{{ output.metadata.filenames['image/png'] | path2url }}">
+        <img src="{% raw %}{{ site.url }}assets/images/posts/{% endraw %}{{ output.metadata.filenames['image/png'] | path2url }}" alt="png" class="scaled"/>
+        </a>
+        <figcaption>{% if 'caption' in cell.metadata %}{{ cell.metadata['caption'] }}{% endif %}
+        &nbsp;(click to enlarge)
+        </figcaption>
+    </p>
+</figure>
+    {% else %}
+![png](data:image/png;base64,{{ output.data['image/png'] }})
+    {% endif %}
+{% endblock data_png %}
