@@ -3,7 +3,7 @@ layout: post
 draft: false
 title:  "Monte Carlo resource assessments in Python"
 tags: python motecarlo volumetrics
-image: empty.png
+image: roulette
 notebook: 1-MonteCarlo-Resource-Assessments-part1
 ---
 We explore in this article how to easily generate your own Monte Carlo simulations in Python using a resource assessment as an example. The methodologies detailed here can however be adapted to any problem where a Monte Carlo simulation is desired.<!--more-->
@@ -410,6 +410,21 @@ realisations.describe(percentiles=[0.1, 0.5, 0.9])
 
 
 ### Calculating resource distribution
+
+We are now ready to do the calculations for the STOOIP and resources using the following formulas:
+
+<div class="equation">
+<div>\[ STOOIP = \frac{1}{159\text{ x }1,000} \cdot 
+\frac{GRV \cdot NTG \cdot \phi \cdot \left( 1 - S_w \right)}{FVF} \]</div>
+<div class="equation_dots"></div>
+<div></div>
+</div>
+<div class="equation">
+<div>\[ Resource = STOOIP \cdot RF \]</div>
+<div class="equation_dots"></div>
+<div></div>
+</div>
+
 
 The calculation below assumes that the gross rock volume is in \\(m^3\\) and returns a result in \\(mmbbl\\).
 
