@@ -4,7 +4,7 @@
 {% set layout = nb.metadata['layout'] | default("post") -%}
 {% set draft = nb.metadata['draft'] | default("true") -%}
 {% set tags = nb.metadata['tags'] | default("") -%}
-{% set image = nb.metadata['image'] | default("empty.png") -%}
+{% set image = nb.metadata['image'] | default("empty") -%}
 {% set notebook = nb.metadata['notebook'] | default("") -%}
 
 {%- block header -%}
@@ -14,7 +14,7 @@ layout: {{ layout }}
 draft: {{ draft }}
 title:  "{{ title }}"
 tags: {{ tags }}
-image: {{ image }}
+image: {{ image }}.png
 notebook: {{ notebook }}
 ---
 
