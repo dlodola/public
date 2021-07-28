@@ -182,7 +182,7 @@ realisations.describe(percentiles=[0.1, 0.5, 0.9])
 
 
 <div>
-<style scoped>
+<style scoped="">
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
     }
@@ -196,91 +196,91 @@ realisations.describe(percentiles=[0.1, 0.5, 0.9])
     }
 </style>
 <table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>GRV</th>
-      <th>NTG</th>
-      <th>Porosity</th>
-      <th>Sw</th>
-      <th>FVF</th>
-      <th>RF</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>count</th>
-      <td>1.000000e+05</td>
-      <td>100000.000000</td>
-      <td>100000.000000</td>
-      <td>100000.000000</td>
-      <td>100000.000000</td>
-      <td>100000.000000</td>
-    </tr>
-    <tr>
-      <th>mean</th>
-      <td>1.684093e+08</td>
-      <td>0.699864</td>
-      <td>0.174904</td>
-      <td>0.299951</td>
-      <td>1.200344</td>
-      <td>0.199975</td>
-    </tr>
-    <tr>
-      <th>std</th>
-      <td>6.246200e+07</td>
-      <td>0.077804</td>
-      <td>0.039007</td>
-      <td>0.117216</td>
-      <td>0.078205</td>
-      <td>0.039172</td>
-    </tr>
-    <tr>
-      <th>min</th>
-      <td>3.837896e+07</td>
-      <td>0.339578</td>
-      <td>-0.001573</td>
-      <td>-0.189080</td>
-      <td>0.853751</td>
-      <td>0.036569</td>
-    </tr>
-    <tr>
-      <th>10%</th>
-      <td>9.992398e+07</td>
-      <td>0.600324</td>
-      <td>0.124994</td>
-      <td>0.149439</td>
-      <td>1.100215</td>
-      <td>0.149634</td>
-    </tr>
-    <tr>
-      <th>50%</th>
-      <td>1.578452e+08</td>
-      <td>0.699836</td>
-      <td>0.174726</td>
-      <td>0.299628</td>
-      <td>1.200399</td>
-      <td>0.200028</td>
-    </tr>
-    <tr>
-      <th>90%</th>
-      <td>2.500421e+08</td>
-      <td>0.799543</td>
-      <td>0.225139</td>
-      <td>0.449945</td>
-      <td>1.300464</td>
-      <td>0.250159</td>
-    </tr>
-    <tr>
-      <th>max</th>
-      <td>7.547270e+08</td>
-      <td>1.029001</td>
-      <td>0.331260</td>
-      <td>0.781936</td>
-      <td>1.528683</td>
-      <td>0.363993</td>
-    </tr>
-  </tbody>
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>GRV</th>
+<th>NTG</th>
+<th>Porosity</th>
+<th>Sw</th>
+<th>FVF</th>
+<th>RF</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>count</th>
+<td>100,000.000</td>
+<td>100,000.000</td>
+<td>100,000.000</td>
+<td>100,000.000</td>
+<td>100,000.000</td>
+<td>100,000.000</td>
+</tr>
+<tr>
+<th>mean</th>
+<td>1.684e+08</td>
+<td>0.700</td>
+<td>0.175</td>
+<td>0.300</td>
+<td>1.200</td>
+<td>0.200</td>
+</tr>
+<tr>
+<th>std</th>
+<td>6.246e+07</td>
+<td>0.0778</td>
+<td>0.0390</td>
+<td>0.117</td>
+<td>0.0782</td>
+<td>0.0392</td>
+</tr>
+<tr>
+<th>min</th>
+<td>3.838e+07</td>
+<td>0.340</td>
+<td>-0.00157</td>
+<td>-0.189</td>
+<td>0.854</td>
+<td>0.0366</td>
+</tr>
+<tr>
+<th>10%</th>
+<td>9.992e+07</td>
+<td>0.600</td>
+<td>0.125</td>
+<td>0.149</td>
+<td>1.100</td>
+<td>0.150</td>
+</tr>
+<tr>
+<th>50%</th>
+<td>1.578e+08</td>
+<td>0.700</td>
+<td>0.175</td>
+<td>0.300</td>
+<td>1.200</td>
+<td>0.200</td>
+</tr>
+<tr>
+<th>90%</th>
+<td>2.500e+08</td>
+<td>0.800</td>
+<td>0.225</td>
+<td>0.450</td>
+<td>1.300</td>
+<td>0.250</td>
+</tr>
+<tr>
+<th>max</th>
+<td>7.547e+08</td>
+<td>1.029</td>
+<td>0.331</td>
+<td>0.782</td>
+<td>1.529</td>
+<td>0.364</td>
+</tr>
+</tbody>
 </table>
 </div>
 
@@ -301,7 +301,7 @@ realisations.describe(percentiles=[0.1, 0.5, 0.9])
 
 
 <div>
-<style scoped>
+<style scoped="">
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
     }
@@ -315,91 +315,91 @@ realisations.describe(percentiles=[0.1, 0.5, 0.9])
     }
 </style>
 <table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>GRV</th>
-      <th>NTG</th>
-      <th>Porosity</th>
-      <th>Sw</th>
-      <th>FVF</th>
-      <th>RF</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>count</th>
-      <td>1.000000e+05</td>
-      <td>100000.000000</td>
-      <td>100000.000000</td>
-      <td>100000.000000</td>
-      <td>100000.000000</td>
-      <td>100000.000000</td>
-    </tr>
-    <tr>
-      <th>mean</th>
-      <td>1.684093e+08</td>
-      <td>0.699863</td>
-      <td>0.175310</td>
-      <td>0.305519</td>
-      <td>1.200344</td>
-      <td>0.199975</td>
-    </tr>
-    <tr>
-      <th>std</th>
-      <td>6.246200e+07</td>
-      <td>0.077800</td>
-      <td>0.038069</td>
-      <td>0.107172</td>
-      <td>0.078205</td>
-      <td>0.039172</td>
-    </tr>
-    <tr>
-      <th>min</th>
-      <td>3.837896e+07</td>
-      <td>0.339578</td>
-      <td>0.100000</td>
-      <td>0.150000</td>
-      <td>0.853751</td>
-      <td>0.036569</td>
-    </tr>
-    <tr>
-      <th>10%</th>
-      <td>9.992398e+07</td>
-      <td>0.600324</td>
-      <td>0.124994</td>
-      <td>0.150000</td>
-      <td>1.100215</td>
-      <td>0.149634</td>
-    </tr>
-    <tr>
-      <th>50%</th>
-      <td>1.578452e+08</td>
-      <td>0.699836</td>
-      <td>0.174726</td>
-      <td>0.299628</td>
-      <td>1.200399</td>
-      <td>0.200028</td>
-    </tr>
-    <tr>
-      <th>90%</th>
-      <td>2.500421e+08</td>
-      <td>0.799543</td>
-      <td>0.225139</td>
-      <td>0.449945</td>
-      <td>1.300464</td>
-      <td>0.250159</td>
-    </tr>
-    <tr>
-      <th>max</th>
-      <td>7.547270e+08</td>
-      <td>1.000000</td>
-      <td>0.331260</td>
-      <td>0.700000</td>
-      <td>1.528683</td>
-      <td>0.363993</td>
-    </tr>
-  </tbody>
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>GRV</th>
+<th>NTG</th>
+<th>Porosity</th>
+<th>Sw</th>
+<th>FVF</th>
+<th>RF</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>count</th>
+<td>100,000.000</td>
+<td>100,000.000</td>
+<td>100,000.000</td>
+<td>100,000.000</td>
+<td>100,000.000</td>
+<td>100,000.000</td>
+</tr>
+<tr>
+<th>mean</th>
+<td>1.684e+08</td>
+<td>0.700</td>
+<td>0.175</td>
+<td>0.306</td>
+<td>1.200</td>
+<td>0.200</td>
+</tr>
+<tr>
+<th>std</th>
+<td>6.246e+07</td>
+<td>0.0778</td>
+<td>0.0381</td>
+<td>0.107</td>
+<td>0.0782</td>
+<td>0.0392</td>
+</tr>
+<tr>
+<th>min</th>
+<td>3.838e+07</td>
+<td>0.340</td>
+<td>0.100</td>
+<td>0.150</td>
+<td>0.854</td>
+<td>0.0366</td>
+</tr>
+<tr>
+<th>10%</th>
+<td>9.992e+07</td>
+<td>0.600</td>
+<td>0.125</td>
+<td>0.150</td>
+<td>1.100</td>
+<td>0.150</td>
+</tr>
+<tr>
+<th>50%</th>
+<td>1.578e+08</td>
+<td>0.700</td>
+<td>0.175</td>
+<td>0.300</td>
+<td>1.200</td>
+<td>0.200</td>
+</tr>
+<tr>
+<th>90%</th>
+<td>2.500e+08</td>
+<td>0.800</td>
+<td>0.225</td>
+<td>0.450</td>
+<td>1.300</td>
+<td>0.250</td>
+</tr>
+<tr>
+<th>max</th>
+<td>7.547e+08</td>
+<td>1.000</td>
+<td>0.331</td>
+<td>0.700</td>
+<td>1.529</td>
+<td>0.364</td>
+</tr>
+</tbody>
 </table>
 </div>
 
@@ -538,7 +538,7 @@ summary
 
 
 <div>
-<style scoped>
+<style scoped="">
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
     }
@@ -552,91 +552,91 @@ summary
     }
 </style>
 <table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Min</th>
-      <th>P90</th>
-      <th>P50</th>
-      <th>P10</th>
-      <th>Max</th>
-      <th>Mean</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>GRV</th>
-      <td>3.837896e+07</td>
-      <td>9.992398e+07</td>
-      <td>1.578452e+08</td>
-      <td>2.500421e+08</td>
-      <td>7.547270e+08</td>
-      <td>1.684093e+08</td>
-    </tr>
-    <tr>
-      <th>NTG</th>
-      <td>3.395776e-01</td>
-      <td>6.003238e-01</td>
-      <td>6.998363e-01</td>
-      <td>7.995425e-01</td>
-      <td>1.000000e+00</td>
-      <td>6.998628e-01</td>
-    </tr>
-    <tr>
-      <th>Porosity</th>
-      <td>1.000000e-01</td>
-      <td>1.249936e-01</td>
-      <td>1.747259e-01</td>
-      <td>2.251387e-01</td>
-      <td>3.312596e-01</td>
-      <td>1.753103e-01</td>
-    </tr>
-    <tr>
-      <th>Sw</th>
-      <td>1.500000e-01</td>
-      <td>1.500000e-01</td>
-      <td>2.996280e-01</td>
-      <td>4.499451e-01</td>
-      <td>7.000000e-01</td>
-      <td>3.055189e-01</td>
-    </tr>
-    <tr>
-      <th>FVF</th>
-      <td>8.537509e-01</td>
-      <td>1.100215e+00</td>
-      <td>1.200399e+00</td>
-      <td>1.300464e+00</td>
-      <td>1.528683e+00</td>
-      <td>1.200344e+00</td>
-    </tr>
-    <tr>
-      <th>RF</th>
-      <td>3.656859e-02</td>
-      <td>1.496338e-01</td>
-      <td>2.000276e-01</td>
-      <td>2.501588e-01</td>
-      <td>3.639929e-01</td>
-      <td>1.999747e-01</td>
-    </tr>
-    <tr>
-      <th>STOOIP</th>
-      <td>7.488700e+00</td>
-      <td>3.692494e+01</td>
-      <td>6.797166e+01</td>
-      <td>1.232692e+02</td>
-      <td>4.868506e+02</td>
-      <td>7.546385e+01</td>
-    </tr>
-    <tr>
-      <th>Resource</th>
-      <td>1.107679e+00</td>
-      <td>6.826468e+00</td>
-      <td>1.334368e+01</td>
-      <td>2.550345e+01</td>
-      <td>1.008095e+02</td>
-      <td>1.509398e+01</td>
-    </tr>
-  </tbody>
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>Min</th>
+<th>P90</th>
+<th>P50</th>
+<th>P10</th>
+<th>Max</th>
+<th>Mean</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>GRV</th>
+<td>3.838e+07</td>
+<td>9.992e+07</td>
+<td>1.578e+08</td>
+<td>2.500e+08</td>
+<td>7.547e+08</td>
+<td>1.684e+08</td>
+</tr>
+<tr>
+<th>NTG</th>
+<td>0.340</td>
+<td>0.600</td>
+<td>0.700</td>
+<td>0.800</td>
+<td>1.000</td>
+<td>0.700</td>
+</tr>
+<tr>
+<th>Porosity</th>
+<td>0.100</td>
+<td>0.125</td>
+<td>0.175</td>
+<td>0.225</td>
+<td>0.331</td>
+<td>0.175</td>
+</tr>
+<tr>
+<th>Sw</th>
+<td>0.150</td>
+<td>0.150</td>
+<td>0.300</td>
+<td>0.450</td>
+<td>0.700</td>
+<td>0.306</td>
+</tr>
+<tr>
+<th>FVF</th>
+<td>0.854</td>
+<td>1.100</td>
+<td>1.200</td>
+<td>1.300</td>
+<td>1.529</td>
+<td>1.200</td>
+</tr>
+<tr>
+<th>RF</th>
+<td>0.0366</td>
+<td>0.150</td>
+<td>0.200</td>
+<td>0.250</td>
+<td>0.364</td>
+<td>0.200</td>
+</tr>
+<tr>
+<th>STOOIP</th>
+<td>7.489</td>
+<td>36.925</td>
+<td>67.972</td>
+<td>123.269</td>
+<td>486.851</td>
+<td>75.464</td>
+</tr>
+<tr>
+<th>Resource</th>
+<td>1.108</td>
+<td>6.826</td>
+<td>13.344</td>
+<td>25.503</td>
+<td>100.809</td>
+<td>15.094</td>
+</tr>
+</tbody>
 </table>
 </div>
 
@@ -704,9 +704,3 @@ Another solution is to ditch `rvs` and take control of sampling. In this case we
 
 pseudo-randomness, sampling, LHC etc. SciPY QMC...
 
-<a href="http://www.google.com">google</a>
-
-
-```python
-
-```
