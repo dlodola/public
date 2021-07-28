@@ -3,7 +3,7 @@ layout: post
 draft: false
 title:  "Monte Carlo resource assessments in Python"
 tags: python motecarlo volumetrics
-image: roulette
+image: roulette.png
 notebook: 1-MonteCarlo-Resource-Assessments-part1
 ---
 We explore in this article how to easily generate your own Monte Carlo simulations in Python using a resource assessment as an example. The methodologies detailed here can however be adapted to any problem where a Monte Carlo simulation is desired.<!--more-->
