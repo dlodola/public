@@ -97,7 +97,7 @@ plt.show()
     
 
 
-&gt; We set the `stat` argument to `density` for the histogram to normalize its total area to 1 so it can be compared to our ideal distribution.
+> We set the `stat` argument to `density` for the histogram to normalize its total area to 1 so it can be compared to our ideal distribution.
 
 ### A note on distributions and their parameters in SciPy
 
@@ -150,7 +150,6 @@ params = {
 # number of samples in our simulation
 num_samples = 100_000
 
-################################################################################
 # create an empty DataFrame with a column for each input parameter
 realisations = pd.DataFrame([], columns=params)
 
@@ -168,7 +167,8 @@ for param, dist in params.items():
     seed = seed*2
 ```
 
-&gt; Note: defining the `random_state` argument in `rvs` is not a requirement. I have opted to do this here so the outputs are always the same (still 'random', just the same 'random' every time). I have been cautious to change the random state for each parameter to avoid unwanted correlation between parameters.
+> Note: defining the `random_state` argument in `rvs` is not a requirement. I have opted to do this here so the outputs are always the same (still 'random', just the same 'random' every time). I have been cautious to change the random state for each parameter to avoid unwanted correlation between parameters.
+
 
 ### Random variates summary
 
@@ -591,10 +591,10 @@ Matplotlib provides the option to save a figure as a file, with multiple file fo
 
 ```python
 # export STOOIP historgram to a PDF file
-# fig.savefig('./STOOIP.pdf')
+fig.savefig('./STOOIP.pdf')
 
 # export summary statistcs to an Excel spreadsheet
-# summary.to_excel('./summary.xlsx')
+summary.to_excel('./summary.xlsx')
 ```
 
 ## Summary
