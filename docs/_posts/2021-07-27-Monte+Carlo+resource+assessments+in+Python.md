@@ -150,6 +150,7 @@ params = {
 # number of samples in our simulation
 num_samples = 100_000
 
+################################################################################
 # create an empty DataFrame with a column for each input parameter
 realisations = pd.DataFrame([], columns=params)
 
