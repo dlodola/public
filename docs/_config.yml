@@ -24,3 +24,9 @@ defaults:
       type: "posts"
     values:
       category: blog
+markdown: kramdown
+kramdown:
+    highlighter: rouge
+    syntax_highlighter_opts:
+        block:
+            line_numbers: true
