@@ -455,65 +455,6 @@ plt.show()
     
 
 
-With a little bit of extra code, we can add some useful information to our plots like the \\(P_{90}\\), \\(P_{50}\\), \\(P_{10}\\) and mean values:
-
-
-```python
-# first 3 lines are copied from above
-fig, ax = plt.subplots(nrows=2, figsize=(8.3, 11.7))
-sns.histplot(realisations.STOOIP, ax=ax[0], stat='probability', bins=40)
-sns.ecdfplot(realisations.STOOIP, ax=ax[1])
-
-# display key percentiles and mean on plots
-ax[0].set_xlim(left=0)
-ax[0].set_ylim(ax[0].get_ylim()) # freeze ylim
-ax[1].set_xlim(ax[0].get_xlim())
-y_max = ax[0].get_ylim()[1]
-ls = {'c':'k', 'ls': '--', 'lw': '1'}
-for p in [0.1, 0.5, 0.9]:
-    q = realisations.STOOIP.quantile(p)
-    ax[0].plot([q]*2, [0, y_max], **ls)
-    ax[1].plot([0] + [q]*2,
-               [p]*2 + [0],
-               **ls)
-    ax[1].annotate('{:.1f}'.format(q), 
-                   (q, p),
-                   xytext=(3, 3),
-                   textcoords='offset pixels',
-                   c='k')
-    
-ls_mean = {'c':'r', 'ls': '--', 'lw': '1'}
-mean = realisations.STOOIP.mean()
-Pmean = percentileofscore(realisations.STOOIP,
-                          mean, kind='weak') / 100
-ax[0].plot([mean]*2, [0, y_max],
-           **ls_mean)
-ax[1].plot([0] + [mean]*2, [Pmean]*2 + [0],
-           **ls_mean)
-ax[1].annotate('$Mean={:.1f}$'.format(mean), 
-               (mean, Pmean),
-               xytext=(3, 3),
-               textcoords='offset pixels',
-               c='r')
-
-plt.show()
-```
-
-
-    
-<figure>
-    <p>
-        <a href="{{ site.url }}assets/images/posts/2021-07-27-Monte%2BCarlo%2Bresource%2Bassessments%2Bin%2BPython_files/2021-07-27-Monte%2BCarlo%2Bresource%2Bassessments%2Bin%2BPython_19_0.png">
-        <img src="{{ site.url }}assets/images/posts/2021-07-27-Monte%2BCarlo%2Bresource%2Bassessments%2Bin%2BPython_files/2021-07-27-Monte%2BCarlo%2Bresource%2Bassessments%2Bin%2BPython_19_0.png" alt="png" class="scaled"/>
-        </a>
-        <figcaption>
-        &nbsp;(click to enlarge)
-        </figcaption>
-    </p>
-</figure>
-    
-
-
 ### Summary statistics
 
 And we can reuse the `describe()` method to create a new DataFrame with summary statistics for both our input parameters and STOOIP/resource distributions. We take it one step further this time by transposing the DataFrame so the parameters/results are now rows, and only retaining some of the statistics that we reorder. We can also update the column names to something more useful.
