@@ -426,7 +426,7 @@ We are now ready to do the calculations for the STOOIP and resources using the f
 </div>
 
 
-The calculation below assumes that the gross rock volume is in \\(m^3\\) and returns a result in \\(mmbbl\\).
+Assuming \\(GRV\\) is in \\(m^3\\), this will return results in \\(mmbbl\\).
 
 
 ```python
