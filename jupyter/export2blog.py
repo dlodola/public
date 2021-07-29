@@ -4,11 +4,13 @@ import argparse
 from datetime import date
 from datetime import datetime
 from html.parser import HTMLParser
+import logging
 from math import ceil, log
 from os import rename, remove
 from os.path import basename, splitext, join, normpath, isdir, isfile
 import re
 from shutil import move, rmtree
+import sys
 import tempfile
 from urllib.parse import quote_plus, quote
 
@@ -20,29 +22,70 @@ from nbconvert.preprocessors import Preprocessor
 from nbconvert.writers import FilesWriter
 
 
+class CustomFormatter(logging.Formatter):
+    """Logging Formatter to add colors and count warning / errors"""
+
+    grey = "\x1b[38;21m"
+    yellow = "\x1b[33;21m"
+    red = "\x1b[31;21m"
+    bold_red = "\x1b[31;1m"
+    reset = "\x1b[0m"
+    format = "[%(levelname)-12s] %(message)s"
+
+    FORMATS = {
+        logging.DEBUG: grey + format + reset,
+        logging.INFO: grey + format + reset,
+        logging.WARNING: yellow + format + reset,
+        logging.ERROR: red + format + reset,
+        logging.CRITICAL: bold_red + format + reset
+    }
+
+    def format(self, record):
+        log_fmt = self.FORMATS.get(record.levelno)
+        formatter = logging.Formatter(log_fmt)
+        return formatter.format(record)
+
+
+rootLogger = logging.getLogger("Root Logger")
+rootLogger.setLevel(logging.DEBUG)
+# consolelogFormatter = logging.Formatter("[%(levelname)-5.5s]  %(message)s")
+consoleHandler = logging.StreamHandler(sys.stdout)
+consoleHandler.setFormatter(CustomFormatter())
+rootLogger.addHandler(consoleHandler)
+
 # extract notebook address from args
 parser = argparse.ArgumentParser()
 parser.add_argument("notebook")
 args = parser.parse_args()
-
-# notebook = './1-MonteCarlo-Resource-Assessments-part1.ipynb'
 notebook = args.notebook
 output_dir = tempfile.mkdtemp()
 notebook_name = splitext(basename(notebook))[0]
+rootLogger.info("Converting '{}'.".format(notebook))
 
 with open(notebook, 'r', encoding='utf-8') as f:
     nb = read(f, 4)
 
 try:
+    date = nb.metadata.date
+except AttributeError:
+    date = date.isoformat(date.today())
+    rootLogger.warn('No date found in notebook metadata.')
+
+try:
     output_name = quote_plus(
-        nb.metadata.date + '-' + nb.metadata.title, safe='/'
+        date
+        + '-'
+        + nb.metadata.title, safe='/'
     )
-except AttributeError and AssertionError:
-    output_name = (
-        date.isoformat(date.today())
+except AttributeError:
+    output_name = quote_plus(
+        date
         + '_'
-        + quote_plus(notebook_name)
+        + notebook_name
     )
+    rootLogger.warn('No title found in notebook metadata.')
+finally:
+    rootLogger.info("Setting post name to '{}'.".format(notebook_name))
 
 
 def format_number(a, digits=3, e_lim=1e6):
@@ -159,19 +202,24 @@ app.exporter = md_exporter
 app.writer = md_writer
 app.convert_single_notebook(notebook)
 
-for file in md_writer.files:
-    src = normpath(
-        join(
-            output_dir,
-            file
+if len(md_writer.files) > 0:
+    rootLogger.info("Collating files...")
+    for file in md_writer.files:
+        src = normpath(
+            join(
+                output_dir,
+                file
+            )
         )
-    )
-    dst = join(
-        output_dir,
-        output_name + '_files',
-        basename(file)
-    )
-    rename(src, dst)
+        dst = join(
+            output_dir,
+            output_name + '_files',
+            basename(file)
+        )
+        rename(src, dst)
+        rootLogger.info("Moving '{}'".format(src))
+        rootLogger.info("to '{}'".format(dst))
+    rootLogger.info("...done.")
 
 src = join(output_dir, output_name + '_files')
 dst = join('../docs/assets/images/posts/', output_name + '_files')
@@ -180,6 +228,7 @@ try:
 except AssertionError:
     pass
 else:
+    
     rmtree(dst)
 finally:
     try:
