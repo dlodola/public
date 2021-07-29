@@ -25,7 +25,6 @@ parser = argparse.ArgumentParser()
 parser.add_argument("notebook")
 args = parser.parse_args()
 
-# notebook = './1-MonteCarlo-Resource-Assessments-part1.ipynb'
 notebook = args.notebook
 output_dir = tempfile.mkdtemp()
 notebook_name = splitext(basename(notebook))[0]
