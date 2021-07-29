@@ -22,6 +22,8 @@ from nbconvert import MarkdownExporter
 from nbconvert.nbconvertapp import NbConvertApp
 from nbconvert.preprocessors import Preprocessor
 from nbconvert.writers import FilesWriter
+
+
 class CustomFormatter(logging.Formatter):
     """Logging Formatter to add colors and count warning / errors"""
 
@@ -43,53 +45,6 @@ class CustomFormatter(logging.Formatter):
     def format(self, record):
         log_fmt = self.FORMATS.get(record.levelno)
         formatter = logging.Formatter(log_fmt)
-        return formatter.format(record)
-
-
-rootLogger = logging.getLogger("Root Logger")
-rootLogger.setLevel(logging.DEBUG)
-# consolelogFormatter = logging.Formatter("[%(levelname)-5.5s]  %(message)s")
-consoleHandler = logging.StreamHandler(sys.stdout)
-consoleHandler.setFormatter(CustomFormatter())
-rootLogger.addHandler(consoleHandler)
-
-
-
-class CustomFormatter(logging.Formatter):
-    """Logging Formatter to add colors and count warning / errors"""
-<<<<<<< HEAD
-=======
-
-    grey = "\x1b[38;21m"
-    yellow = "\x1b[33;21m"
-    red = "\x1b[31;21m"
-    bold_red = "\x1b[31;1m"
-rootLogger.info("Converting '{}'.".format(notebook))
-    reset = "\x1b[0m"
-    format = "[%(levelname)-12s] %(message)s"
-
-    FORMATS = {
-try:
-    date = nb.metadata.date
-except AttributeError:
-    date = date.isoformat(date.today())
-    rootLogger.warn('No date found in notebook metadata.')
-
-        logging.DEBUG: grey + format + reset,
-        logging.INFO: grey + format + reset,
-        date
-        + '-'
-        + nb.metadata.title, safe='/'
-        logging.ERROR: red + format + reset,
-except AttributeError:
-    output_name = quote_plus(
-        date
-    def format(self, record):
-        + notebook_name
-        formatter = logging.Formatter(log_fmt)
-    rootLogger.warn('No title found in notebook metadata.')
-finally:
-    rootLogger.info("Setting post name to '{}'.".format(notebook_name))
         return formatter.format(record)
 
 
