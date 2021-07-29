@@ -5,12 +5,10 @@ from datetime import date
 from datetime import datetime
 from html.parser import HTMLParser
 import logging
-import logging
 from math import ceil, log
 from os import rename, remove
 from os.path import basename, splitext, join, normpath, isdir, isfile
 import re
-import sys
 from shutil import move, rmtree
 import sys
 import tempfile
@@ -161,24 +159,19 @@ class CustomPreprocess(Preprocessor):
                     str(soup),
                     flags=re.MULTILINE
                 )
-if len(md_writer.files) > 0:
-    rootLogger.info("Collating files...")
-    for file in md_writer.files:
-        src = normpath(
-            join(
-                output_dir,
-                file
-            )
-        )
-        dst = join(
-            output_dir,
-            output_name + '_files',
-            basename(file)
-        )
-        rename(src, dst)
-        rootLogger.info("Moving '{}'".format(src))
-        rootLogger.info("to '{}'".format(dst))
-    rootLogger.info("...done.")
+
+            elif cell.cell_type == 'code':
+                for output in cell.outputs:
+                    try:
+                        soup = BeautifulSoup(
+                            output.data['text/html'], 'html.parser'
+                        )
+                    except KeyError:
+                        pass
+                    else:
+                        for td in soup.findAll('td'):
+                            try:
+                                val = float(td.get_text())
                             except ValueError:
                                 pass
                             else:
@@ -187,7 +180,6 @@ if len(md_writer.files) > 0:
 
         try:
             nb.metadata.notebook
-
         except AttributeError:
             nb.metadata.notebook = notebook_name
 
