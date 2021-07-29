@@ -223,18 +223,21 @@ if len(md_writer.files) > 0:
 
 src = join(output_dir, output_name + '_files')
 dst = join('../docs/assets/images/posts/', output_name + '_files')
+
 try:
     assert isdir(dst)
 except AssertionError:
     pass
 else:
-    
     rmtree(dst)
+    rootLogger.warn(
+        "Overwriting destination folder '{}'.".format(dst))
 finally:
     try:
         assert isdir(src)
     except AssertionError:
-        pass
+        rootLogger.warn(
+            "Source folder '{}' does not exist.".format(src))
     else:
         move(src, dst)
 
@@ -246,12 +249,17 @@ except AssertionError:
     pass
 else:
     remove(dst)
+    rootLogger.warn(
+        "Overwriting destination post '{}'.".format(dst))
 finally:
     try:
         assert isfile(src)
     except AssertionError:
-        pass
+        rootLogger.warn(
+            "Source post '{}' does not exist.".format(src))
     else:
         rename(src, dst)
 
 rmtree(output_dir)
+
+rootLogger.info("Process complete.")
