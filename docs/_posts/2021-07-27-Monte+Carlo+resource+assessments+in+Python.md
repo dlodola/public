@@ -2,7 +2,7 @@
 layout: post
 draft: false
 title:  "Monte Carlo resource assessments in Python"
-tags: python motecarlo volumetrics
+tags: python montecarlo volumetrics
 image: roulette.png
 notebook: 1-MonteCarlo-Resource-Assessments-part1
 ---
@@ -109,7 +109,9 @@ In addition to the normal distribution used above, there are many others availab
 - Truncated normal ([*truncnorm*](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.truncnorm.html))
 - And many more (full list [here](https://docs.scipy.org/doc/scipy/reference/stats.html#continuous-distributions))
 
-The parameters used to define these distributions are not always as user friendly as one might hope, and depending on the distribution some calculations may be needed to get to them. To make things a little simpler going forward, we will therefore create some functions to instantiate SciPy distribution objects using more user friendly parameters, especially for the log-normal distribution which we will also be using. The two functions below do this taking the \\(P_{90}\\) and \\(P_{10}\\) as input parameters; similar functions could be written for other distributions if needed.
+The parameters used to define these distributions are not always as user friendly as one might hope, and depending on the distribution some calculations may be needed to get to them. To make things a little simpler going forward, we can create some functions to instantiate SciPy distribution objects using more user friendly parameters, especially for the log-normal distribution which we will also be using.
+
+The two functions below do this taking the \\(P_{90}\\) and \\(P_{10}\\) as input parameters; similar functions could be written for other distributions if needed.
 
 
 ```python
@@ -622,15 +624,10 @@ used a combination of Matplotlib and seaborn to plot the results and export the 
 
 ## Where next?
 
-- [ ] correlated variables
-- [ ] area depth from grid
-- [ ] GRV from 2 grids
-- [ ] risked distributions
-- [ ] multiple prospects / consolidation
 
 ### Different models
 
-An obvious evolution is to cater for different calculation models — in particular for handling gross and net rock volumes (*e.g.*, area-depth curves, top reservoir grid), or for different fluid models (*e.g.*., black oil, oil with associated gas, oil with gas cap).
+An obvious evolution is to cater for different calculation models — in particular for handling gross and net rock volumes (*e.g.*, area-depth curves, top reservoir grid), or for different fluid models (*e.g.*., oil with associated gas, oil with gas cap).
 
 All these can be achieved by building on what is presented here and will be the subject of follow-up articles.
 
