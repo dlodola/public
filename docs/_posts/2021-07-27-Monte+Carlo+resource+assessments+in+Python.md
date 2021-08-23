@@ -426,7 +426,7 @@ We are now ready to do the calculations for the STOOIP and resources using the f
 </div>
 
 
-Assuming \\(GRV\\) is in \\(m^3\\), this will return results in \\(mmbbl\\).
+Assuming \\(GRV\\) is in \\(m^3\\), this will return results in *mmbbl*.
 
 
 ```python
@@ -614,9 +614,9 @@ summary.to_excel('./summary.xlsx')
 
 ## Summary
 
-We have seen in this article how to generate random variates from a known distribution and applied this to generate random variates for the input parameters of our resource calculation.
-using Pandas for STOOIP/resource calculations and exporting tables to Excel
-using Matplotlib/seaborn to plot results and export.
+We have seen in this article how to generate random variates from a known distribution and applied this to generate random variates for the input parameters of our resource calculation. We used
+Pandas for STOOIP/resource calculations and exporting the results as tables to Excel. Finally, we 
+used a combination of Matplotlib and seaborn to plot the results and export the charts as graphic files.
 
 
 
@@ -628,14 +628,15 @@ using Matplotlib/seaborn to plot results and export.
 - [ ] risked distributions
 - [ ] multiple prospects / consolidation
 
-### Different workflows
+### Different models
 
-- area-depth
-- 1/2 grids
+An obvious evolution is to cater for different calculation models — in particular for handling gross and net rock volumes (*e.g.*, area-depth curves, top reservoir grid), or for different fluid models (*e.g.*., black oil, oil with associated gas, oil with gas cap).
+
+All these can be achieved by building on what is presented here and will be the subject of follow-up articles.
 
 ### More advanced sampling
 
-The `rvs` method is already adding a layer of abstraction in that it is handling all the sampling effort. Under the hood, it is generating \\(n\\) pseudo-random numbers from a uniform distribution over \\( \left[0,1\right]\\) and using the inverse of an appropriate cumulative distribution function to convert these to random variates of the desired distribution. With increasing numbers of parameters, this could lead to undersampling of parts of the sample space. One solution to address this is by using brute force and increasing the number of samples.
+The `rvs` method is already adding a layer of abstraction in that it is handling all the sampling effort. Under the hood, it is generating \\(n\\) pseudo-random numbers from a uniform distribution over \\( \left[0,1\right]\\), and using the inverse of an appropriate cumulative distribution function to convert these to random variates of the desired distribution. With increasing numbers of parameters, this could lead to undersampling of parts of the sample space. One solution to address this is by using brute force and increasing the number of samples.
 
 (sensitivity figure/discussion here - 100,000 samples/200 realisations).
 
@@ -652,9 +653,20 @@ The `rvs` method is already adding a layer of abstraction in that it is handling
     
 Another solution is to ditch `rvs` and take control of sampling. In this case we need to generate our own samples over \\( \left[0,1\right]\\) and transform them to random variates with the `ppf` method which provides an inverse cumulative probability function for a distribution. There are two main advantages to doing this:
 
-1. You can opt for more advanced sampling techniques like Latin hypercubes, orthogonal sampling, or low-discrepancy sequences; this is no longer pseudo-random though and enters the realm of Quasi Monte Carlo simulation. Given the low number of dimensions typical of resource calculations it is likely to offer only limited advantages. If you are using Scipy version 1.7 or later, it features a [*Quasi Monte Carlo*](https://docs.scipy.org/doc/scipy/reference/stats.qmc.html) module that provides algorithms for Latin hypercubes and low-discrepancy sequences as well as some functionalities handling covariances between dimensions.
 
-2. 
+1. You can implement correlation between variables.
+
+2. You can opt for more advanced sampling techniques like Latin hypercubes, orthogonal sampling, or low-discrepancy sequences. This is no longer pseudo-random though and enters the realm of Quasi Monte Carlo simulation. Given the low number of dimensions typical of resource calculations it is likely to offer only limited advantages.  
+If you are using Scipy version 1.7 or later, it features a [*Quasi Monte Carlo*](https://docs.scipy.org/doc/scipy/reference/stats.qmc.html) module that provides algorithms for Latin hypercubes and low-discrepancy sequences as well as some functionalities handling covariances between dimensions.
+
+
+
+### Correlated variables
+
+
+As mentioned above, it is possible to implement correlation between random variates by managing the sampling process yourself. This allows to not only have correlation between parameters for a given accumulation, but also between multiple accumulations in a portfolio approach.
+
+We will see how to implement correlated random variates in a follow-up article.
 
 
 ### Portfolio consolidations
