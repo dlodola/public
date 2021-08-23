@@ -648,12 +648,12 @@ The `rvs` method is already adding a layer of abstraction in that it is handling
 </figure>
 
     
-Another solution is to ditch `rvs` and take control of sampling. In this case we need to generate our own samples over \\( \left[0,1\right]\\) and transform them to random variates with the `ppf` method which provides an inverse cumulative probability function for a distribution. There are two main advantages to doing this:
+Another solution is to ditch `rvs` and take control of sampling. In this case we need to generate our own samples over \\( \left[0,1\right]\\) and transform them to random variates using an inverse cumulative probability function for a distribution. There are two main advantages to doing this:
 
 
 1. You can implement correlation between variables.
 
-2. You can opt for more advanced sampling techniques like Latin hypercubes, orthogonal sampling, or low-discrepancy sequences. This is no longer pseudo-random though and enters the realm of Quasi Monte Carlo simulation. Given the low number of dimensions typical of resource calculations it is likely to offer only limited advantages.  
+2. You can opt for more advanced sampling techniques like [Latin hypercubes](https://en.wikipedia.org/wiki/Latin_hypercube_sampling), orthogonal sampling, or [low-discrepancy sequences](https://en.wikipedia.org/wiki/Low-discrepancy_sequence). This is no longer pseudo-random though and enters the realm of Quasi Monte Carlo simulation. Given the low number of dimensions typical of resource calculations it is likely to offer only limited advantages.  
 If you are using Scipy version 1.7 or later, it features a [*Quasi Monte Carlo*](https://docs.scipy.org/doc/scipy/reference/stats.qmc.html) module that provides algorithms for Latin hypercubes and low-discrepancy sequences as well as some functionalities handling covariances between dimensions.
 
 
