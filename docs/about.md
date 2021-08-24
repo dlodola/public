@@ -16,7 +16,7 @@ I started using Python _c._ 2018 while creating ArcGIS toolboxes to speed up som
 
 ## Articles
 
-You will find in the [How-Tos](./posts) section a number of articles on Python tricks and tools for exploration geologists and the wider geoscience community. I hope you will find them useful and that they encourage you to explore the possibilities that coding has to offer and how it may help you in improving your own workflows. 
+You will find in the [Articles](./posts) section articles on Python tricks and tools for exploration geologists and the wider geoscience community. I hope you will find them useful and that they encourage you to explore the possibilities that coding has to offer and how it may help you in improving your own workflows. The [Archive](./archive) section provides links to all articles beyond the smaller set shown on the [Articles](./posts) section.
 
 Many of these articles will have an accompanying Jupyter Notebook or Python library. In the case of the former, a number of links to the notebook will be provided in the sidebar to the left. The table below gives an explanation of what these various links are. In the case of a library, a link to the appropriate Python file(s) will be provided.
 
