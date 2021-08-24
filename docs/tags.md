@@ -11,7 +11,7 @@ layout: default
 
 {% assign tags = alltags | split: "," | uniq %}
 
-## Tags
+# Tags
 ---
 
 {% for tag in tags %}

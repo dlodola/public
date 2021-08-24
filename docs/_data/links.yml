@@ -1,5 +1,5 @@
 - name: Home
-  url:  posts
+  url:  index
   
 - name: Archive
   url:  archive
