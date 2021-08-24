@@ -13,7 +13,7 @@ layout: default
     <tr>
         <td>{{ post.date | date: "%-d %B %Y" }}</td>
         <td><a href="{{ site.url }}{{ post.url }}">{{ post.title }}</a></td>
-        <td><small>by: {{ post.author | "author" }}</small></li></td>
+        <td><small>by: {{ post.author | "author" }}</small></td>
     </tr>
     <!-- <div class="blog-header">
         <a href="{{ site.url }}{{ post.url }}">
