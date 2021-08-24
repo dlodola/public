@@ -141,16 +141,16 @@ figure figcaption:before {
   content: 'Figure ' counter(figures) ': ';
 }
 
-section h2:before {
+article h2:before {
   content: counter(h2_heading) '. ';
   counter-increment: h2_heading;
 }
 
-section h2 {
+article h2 {
   counter-reset: h3_heading;
 }
 
-section h3:before {
+article h3:before {
   content: counter(h2_heading) '.' counter(h3_heading) '. ';
   counter-increment: h3_heading;
 }
