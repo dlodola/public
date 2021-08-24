@@ -430,6 +430,8 @@ We are now ready to do the calculations for the STOOIP and resources using the f
 
 Assuming \\(GRV\\) is in \\(m^3\\), this will return results in *mmbbl*.
 
+We can easily implement this in Pandas using basic operations between columns:
+
 
 ```python
 realisations['STOOIP'] = (realisations['GRV']
@@ -465,7 +467,7 @@ plt.show()
         <a href="{{ site.url }}assets/images/posts/2021-07-27-Monte%2BCarlo%2Bresource%2Bassessments%2Bin%2BPython_files/2021-07-27-Monte%2BCarlo%2Bresource%2Bassessments%2Bin%2BPython_17_0.png">
         <img src="{{ site.url }}assets/images/posts/2021-07-27-Monte%2BCarlo%2Bresource%2Bassessments%2Bin%2BPython_files/2021-07-27-Monte%2BCarlo%2Bresource%2Bassessments%2Bin%2BPython_17_0.png" alt="png" class="scaled"/>
         </a>
-        <figcaption>
+        <figcaption>Histogram and cumulative distribution plot of STOOIP from Monte Carlo simulation.
         &nbsp;(click to enlarge)
         </figcaption>
     </p>
@@ -643,7 +645,7 @@ The `rvs` method is already adding a layer of abstraction in that it is handling
 <a href="{{ site.url }}assets/images/posts/2021-07-27-Monte%2BCarlo%2Bresource%2Bassessments%2Bin%2BPython_files/1-sensitivity.png">
 <img alt="png" class="scaled" src="{{ site.url }}assets/images/posts/2021-07-27-Monte%2BCarlo%2Bresource%2Bassessments%2Bin%2BPython_files/1-sensitivity.png"/>
 </a>
-<figcaption>Figure title.</figcaption>
+<figcaption>Deviation from mean values for multiple independent simulations using the same parameters.</figcaption>
 </p>
 </figure>
 
