@@ -2,9 +2,9 @@
 layout: default
 ---
 
-<h1>Articles</h1>
+<!-- <h1>Articles</h1>
 
----
+--- -->
 
 <div>
 {% for post in site.posts %}

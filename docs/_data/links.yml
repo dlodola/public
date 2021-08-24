@@ -1,9 +1,9 @@
 - name: Home
-  url:  index
-  
-- type: View
-  name: How-Tos
   url:  posts
   
-- name: About
+- type: View
+  name: About
   url:  about
+  
+- name: Archive
+  url:  archive
