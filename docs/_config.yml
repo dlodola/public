@@ -3,7 +3,7 @@ title: Domenico Lodola
 description: A collection of Python tricks &amp; tools for geologists, with a focus on oil &amp; gas.
 url: https://dlodola.github.io/public/
 repository: public
-logo: logo.png
+# logo: logo.png
 equation_height: 40px
 defaults:
   -
