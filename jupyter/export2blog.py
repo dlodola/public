@@ -69,7 +69,7 @@ try:
     date = nb.metadata.date
 except AttributeError:
     date = date.isoformat(date.today())
-    rootLogger.warn('No date found in notebook metadata.')
+    rootLogger.warning('No date found in notebook metadata.')
 
 try:
     output_name = quote_plus(
@@ -83,7 +83,7 @@ except AttributeError:
         + '_'
         + notebook_name
     )
-    rootLogger.warn('No title found in notebook metadata.')
+    rootLogger.warning('No title found in notebook metadata.')
 finally:
     rootLogger.info("Setting post name to '{}'.".format(notebook_name))
 
@@ -230,13 +230,13 @@ except AssertionError:
     pass
 else:
     rmtree(dst)
-    rootLogger.warn(
+    rootLogger.warning(
         "Overwriting destination folder '{}'.".format(dst))
 finally:
     try:
         assert isdir(src)
     except AssertionError:
-        rootLogger.warn(
+        rootLogger.warning(
             "Source folder '{}' does not exist.".format(src))
     else:
         move(src, dst)
@@ -249,13 +249,13 @@ except AssertionError:
     pass
 else:
     remove(dst)
-    rootLogger.warn(
+    rootLogger.warning(
         "Overwriting destination post '{}'.".format(dst))
 finally:
     try:
         assert isfile(src)
     except AssertionError:
-        rootLogger.warn(
+        rootLogger.warning(
             "Source post '{}' does not exist.".format(src))
     else:
         rename(src, dst)
