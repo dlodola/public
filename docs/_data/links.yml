@@ -1,9 +1,9 @@
 - name: Home
   url:  posts
   
+- name: Archive
+  url:  archive
+  
 - type: View
   name: About
   url:  about
-  
-- name: Archive
-  url:  archive
