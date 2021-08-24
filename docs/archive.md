@@ -7,9 +7,10 @@ layout: default
 ---
 
 <div>
+<ul>
 {% for post in site.posts %}
     {% unless post.draft %}
-    - {{ post.date | date: "%-d %B %Y" }} - <a href="{{ site.url }}{{ post.url }}">{{ post.title }}</a>
+    <li>{{ post.date | date: "%-d %B %Y" }} &mdash; <a href="{{ site.url }}{{ post.url }}">{{ post.title }}</a> | <small>by: {{ post.author | "author" }}</small></li>
     <!-- <div class="blog-header">
         <a href="{{ site.url }}{{ post.url }}">
             <img alt="lst" class="blog-header" src="{{ site.url }}assets/images/{{ post.image }}" width="100%"/>
@@ -27,4 +28,5 @@ layout: default
     <div class="blog-footer"><small>by: {{ post.author | "author" }}</small> | <small>posted on {{ post.date | date: "%-d %B %Y" }}</small></div> -->
     {% endunless %}
 {% endfor %}
+</ul>
 </div>
